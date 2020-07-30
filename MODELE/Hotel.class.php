@@ -8,7 +8,6 @@ class Hotel
     private $nbRoomOccupied = 0;
     private $workers = array();
     private $nbCustomer = 0;
-    private $worker;
     private $rooms;
     private $roomsCVP;
     private $roomsCVJ;
@@ -77,9 +76,9 @@ class Hotel
         }
         else{
             foreach ($this->workers as $worker){
-                $arrlogWorker[] = $worker->getlogin();
+                $arrLogWorkers[] = $worker->getLogin();
             }
-            if (in_array($log, $arrlogWorker)){
+            if (in_array($log, $arrLogWorkers)){
                 return "worker";
             }else{
                 return "login inexistant";
@@ -90,7 +89,17 @@ class Hotel
     
     public function authentificationPassword()
     {
+        echo "Donnez votre mdp: ";
+        $mdp = readline();
 
+        foreach ($this->workers as $worker){
+            $arrPassword[] = $worker->getPasword();
+        }
+        if (in_array($mdp, $arrPassword)){
+            return "true";
+        }else{
+            return "mauvais mot de passe";
+        }
     }
 
     public function displayNbRoomFree(){
