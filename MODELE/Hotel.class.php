@@ -7,6 +7,8 @@ class Hotel
     private $nbRoomFree = 0;
     private $nbRoomOccupied = 0;
     private $workers = array();
+    private $nbCustomer = 0;
+    private $worker;
     private $rooms;
     private $roomsCVP;
     private $roomsCVJ;
@@ -91,6 +93,47 @@ class Hotel
 
     }
 
+    public function displayNbRoomFree(){
+
+        return "le nombre de chambres disponibles dans l'hotel est :" .$this->nbRoomFree;
+    }
+
+    public function displayNbRoomBooked(){
+
+        return "le nombre de chambres réservées dans l'hotel est :" .$this->nbRoomOccupied;
+    }
+
+    public function displayHotel(){
+        echo $this->displayNbRoomFree();
+        echo PHP_EOL;
+        echo $this->displayNbRoomBooked();
+        echo PHP_EOL;
+
+        return "Nous avons actuellement ".$this->nbCustomer. " clients présents dans notre établissement.";
+    }
+
+    public function displayFirstRoomFree(){
+        $arrayLibre = [];
+        foreach($this->rooms as $key => $listLibre){
+            if($listLibre->getIsEmpty() == 0){
+                $arrayLibre[$key] = $listLibre;
+            }
+        }
+        $preChambre = array_key_first($arrayLibre);
+        return "Le numéro de la premiere chambre libre est : ".$preChambre;
+
+    }
+
+    public function displayLastRoomFree(){
+        $arrayLibre = [];
+        foreach($this->rooms as $key => $listLibre){
+            if($listLibre->getIsEmpty() == 0){
+                $arrayLibre[$key] = $listLibre;
+            }
+        }
+        $derChambre = array_key_last($arrayLibre);
+        return "Le numéro de la derniere chambre libre est : ".$derChambre;
+    }
     /**
      * @return mixed
      */

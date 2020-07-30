@@ -10,4 +10,6 @@ $pathCsv = "../ListeChambres_V3.csv";
 $arrCsv = Tools::loadCsv($pathCsv);
 
 $hotel = new Hotel($arrCsv);
-print_r($hotel->getRooms());
+
+
+echo $hotel->displayLastRoomFree();
