@@ -6,6 +6,7 @@ class Hotel
     private $nbRoomTotal = 0;
     private $nbRoomFree = 0;
     private $nbRoomOccupied = 0;
+    private $nbCustomer = 0;
     private $worker;
     private $rooms;
     private $roomsCVP;
@@ -62,6 +63,25 @@ class Hotel
         }
     }
 
+    public function displayNbRoomFree(){
+
+        return "le nombre de chambres disponibles dans l'hotel est :" .$this->nbRoomFree;
+    }
+
+    public function displayNbRoomBooked(){
+
+        return "le nombre de chambres réservées dans l'hotel est :" .$this->nbRoomOccupied;
+    }
+
+    public function displayHotel(){
+        $this->displayNbRoomFree();
+        echo PHP_EOL;
+        $this->displayNbRoomBooked();
+        echo PHP_EOL;
+
+        return "Nous avons actuellement ".$this->nbCustomer. "présents dans notre établissement.";
+    }
+    
     /**
      * @return mixed
      */
