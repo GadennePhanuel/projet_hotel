@@ -19,6 +19,7 @@ class Hotel
     private $roomsRoyale;
     private $revenue;
     private $arrCsv;
+    private static $nbPaiement = 0;
 
 
     public function __construct($arrCsv)
@@ -143,7 +144,9 @@ class Hotel
         return "Le numéro de la derniere chambre libre est : ".$derChambre;
     }
 
-    public function paiement($prixTotal,$client1){
+    public function paiement($prixTotal,$client1, $room){
+        self::$nbPaiement++;
+        $numOfFacture = self::$nbPaiement;
         $CA = $this->revenue;
         $CA = $CA + $prixTotal;
 
@@ -152,7 +155,7 @@ class Hotel
         $cb = $client1->getMastercard();
 
         Tools::exportCSV($prixTotal,$cb);
-        Tools::facture($client1, $prixTotal);
+        Tools::facture($client1, $prixTotal, $room, $numOfFacture);
     }
 
 

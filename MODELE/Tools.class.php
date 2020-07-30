@@ -1,5 +1,5 @@
 <?php
-require_once "fpdf182/fpdf.php";
+require_once "PDF_Invoice.class.php";
 
 class Tools
 {
@@ -46,26 +46,113 @@ class Tools
         fclose($fp);
     }
 
-    public static function facture($client1, $total){
+    public static function facture($client1, $total, $room, $numOfFacture){
         date_default_timezone_set('Europe/Paris');
         $date = date('d-m-Y') .'_'. date('H') .'h'. date('i') .'min'. date('s') .'sec';
-        $nom = $client1->getNom();
-        $prenom = $client1->getPrenom();
+        $date1 = date('d-m-Y');
+        $nom = utf8_decode($client1->getNom());
+        $prenom = utf8_decode($client1->getPrenom());
         $cb = $client1->getMastercard();
+        $price = $room->getPrice();
+        $size = utf8_decode($room->getSize());
+        $type = utf8_decode($room->getType());
+        $optionsList = utf8_decode($room->getOptionList());
+        $view = utf8_decode($room->getView());
+        $dateStart = $room->getDateStart();
+        $dateStartString = $dateStart->format('d-m-Y');
+        $dateEnd = $room->getDateEnd();
+        $dateEndString = $dateEnd->format('d-m-Y');
+        $interval = $dateStart->diff($dateEnd);
+        $intervalDate = $interval->format('%d');  //format numérique en nb de jours
 
         $name = "../FILES/OUTPUT/Facture/".$nom."_".$prenom."_".$date.".pdf";
 
-        $pdf = new FPDF();
+        //création du PDF en lui même avec du Style sviouplait !
+        $pdf = new PDF_Invoice( 'P', 'mm', 'A4' );
         $pdf->AddPage();
-        $pdf->SetFont('Times','B',20);
-        $pdf->Cell(180,5,'Projet Hotel !!!', 0, 0, 'C' );
-        $pdf->Ln();
-        $pdf->SetFont('Times', 'B', 12);
-        $pdf->Cell(176, 10, 'Facture de votre séjour', 0, 0, 'C');
-        $pdf->Ln();
-        $pdf->Cell(30, 10, $nom.' '.$prenom, 0, 2, 'L');
-        $pdf->Cell(30, 10, 'Prix du séjour: '.$total, 0, 2, 'L');
-        $pdf->Cell(30, 10, 'Moyen de paiement: '.$cb, 0, 2, 'L');
+        $pdf->addSociete( "Hotel Project X",
+            "00000 DOHA/QUATAR\n" .
+            "Simaisma, A Murwab Resort\n".
+            "Capital : 490000000 " . EURO );
+        $pdf->fact_dev( "Facture ", "$numOfFacture" );
+        $pdf->temporaire( "Facture" );
+        $pdf->addDate( "$date1");
+        $pdf->addClient("$nom");
+        $pdf->addPageNumber("1");
+        $pdf->addClientAdresse("Pour\nM.(Mde.) $nom $prenom\nEmpreinte carte: $cb");
+        $pdf->addReglement("Carte bancaire à reception de la facture");
+        $pdf->addEcheance("$date1String");
+        $pdf->addNumTVA("QTR888777666");
+        $pdf->addReference("$dateStartString au $dateEndString");
+        $cols=array( "REFERENCE"    => 23,
+            "DESIGNATION"  => 78,
+            "QUANTITE"     => 22,
+            "P.U. HT"      => 26,
+            "MONTANT H.T." => 30,
+            "TVA"          => 11 );
+        $pdf->addCols( $cols);
+        $cols=array( "REFERENCE"    => "L",
+            "DESIGNATION"  => "L",
+            "QUANTITE"     => "C",
+            "P.U. HT"      => "R",
+            "MONTANT H.T." => "R",
+            "TVA"          => "C" );
+        $pdf->addLineFormat( $cols);
+        $pdf->addLineFormat($cols);
+
+        $y    = 109;
+        $line = array( "REFERENCE"    => "REF1",
+            "DESIGNATION"  => "$type\n" .
+                "$size\n" .
+                "$view\n" .
+                "$optionsList",
+            "QUANTITE"     => "$intervalDate",
+            "P.U. HT"      => "$price",
+            "MONTANT H.T." => "$total",
+            "TVA"          => "1" );
+        $size = $pdf->addLine( $y, $line );
+        $y   += $size + 2;
+
+
+
+        $pdf->addCadreTVAs();
+
+// invoice = array( "px_unit" => value,
+//                  "qte"     => qte,
+//                  "tva"     => code_tva );
+// tab_tva = array( "1"       => 19.6,
+//                  "2"       => 5.5, ... );
+// params  = array( "RemiseGlobale" => [0|1],
+//                      "remise_tva"     => [1|2...],  // {la remise s'applique sur ce code TVA}
+//                      "remise"         => value,     // {montant de la remise}
+//                      "remise_percent" => percent,   // {pourcentage de remise sur ce montant de TVA}
+//                  "FraisPort"     => [0|1],
+//                      "portTTC"        => value,     // montant des frais de ports TTC
+//                                                     // par defaut la TVA = 19.6 %
+//                      "portHT"         => value,     // montant des frais de ports HT
+//                      "portTVA"        => tva_value, // valeur de la TVA a appliquer sur le montant HT
+//                  "AccompteExige" => [0|1],
+//                      "accompte"         => value    // montant de l'acompte (TTC)
+//                      "accompte_percent" => percent  // pourcentage d'acompte (TTC)
+//                  "Remarque" => "texte"              // texte
+        $tot_prods = array( array ( "px_unit" => $price, "qte" => $intervalDate, "tva" => 1 ));
+        $tab_tva = array( "1"       => 20);
+        $params  = array( "RemiseGlobale" => 0,
+            "remise_tva"     => 1,       // {la remise s'applique sur ce code TVA}
+            "remise"         => 0,       // {montant de la remise}
+            "remise_percent" => 0,      // {pourcentage de remise sur ce montant de TVA}
+            "FraisPort"     => 1,
+            "portTTC"        => 10,      // montant des frais de ports TTC
+            // par defaut la TVA = 19.6 %
+            "portHT"         => 0,       // montant des frais de ports HT
+            "portTVA"        => 20,    // valeur de la TVA a appliquer sur le montant HT
+            "AccompteExige" => 0,
+            "accompte"         => 0,     // montant de l'acompte (TTC)
+            "accompte_percent" => 0,    // pourcentage d'acompte (TTC)
+            "Remarque" => "Sans acompte, svp..." );
+
+        $pdf->addTVAs( $params, $tab_tva, $tot_prods);
+        $pdf->addCadreEurosFrancs();
 
 
 
