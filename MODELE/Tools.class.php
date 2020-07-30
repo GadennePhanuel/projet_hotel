@@ -3,7 +3,8 @@
 
 class Tools
 {
-    private $arrayCsv = array();
+
+
 
     public static function loadCsv(String $pathCsv)
     {
@@ -23,5 +24,4 @@ class Tools
     }
 
 }
-
 
