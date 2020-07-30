@@ -6,7 +6,7 @@ class Hotel
     private $nbRoomTotal = 0;
     private $nbRoomFree = 0;
     private $nbRoomOccupied = 0;
-    private $worker;
+    private $workers = array();
     private $rooms;
     private $roomsCVP;
     private $roomsCVJ;
@@ -60,6 +60,35 @@ class Hotel
                     break;
             }
         }
+    }
+
+    public function authentificationLogin()
+    {
+        echo "Quel est votre login?: ";
+        $log = readline();
+
+        foreach ($this->rooms->getCustomers() as $customer){
+            $arrLogCustomer[] = $customer->getLogin();
+        }
+        if (in_array($log, $arrLogCustomer)){
+            return "customer";
+        }
+        else{
+            foreach ($this->workers as $worker){
+                $arrlogWorker[] = $worker->getlogin();
+            }
+            if (in_array($log, $arrlogWorker)){
+                return "worker";
+            }else{
+                return "login inexistant";
+            }
+        }
+    }
+
+    
+    public function authentificationPassword()
+    {
+
     }
 
     /**
