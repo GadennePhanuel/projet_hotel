@@ -125,24 +125,38 @@ class Hotel
         $arrayLibre = [];
         foreach($this->rooms as $key => $listLibre){
             if($listLibre->getIsEmpty() == 0){
-                $arrayLibre[$key] = $listLibre;
+                $arrayLibre[$key+1] = $listLibre;
             }
         }
         $preChambre = array_key_first($arrayLibre);
         return "Le numéro de la premiere chambre libre est : ".$preChambre;
-
     }
 
     public function displayLastRoomFree(){
         $arrayLibre = [];
         foreach($this->rooms as $key => $listLibre){
             if($listLibre->getIsEmpty() == 0){
-                $arrayLibre[$key] = $listLibre;
+                $arrayLibre[$key+1] = $listLibre;
             }
         }
         $derChambre = array_key_last($arrayLibre);
         return "Le numéro de la derniere chambre libre est : ".$derChambre;
     }
+
+    public function paiement($prixTotal,$client1){
+        $CA = $this->revenue;
+        $CA = $CA + $prixTotal;
+
+        $this->revenue = $CA;
+
+        $cb = $client1->getMastercard();
+
+        Tools::exportCSV($prixTotal,$cb);
+        Tools::facture($client1, $prixTotal);
+    }
+
+
+
     /**
      * @return mixed
      */
