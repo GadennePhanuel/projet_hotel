@@ -3,9 +3,6 @@
 
 class Tools
 {
-
-
-
     public static function loadCsv(String $pathCsv)
     {
         //si l'ouverture du fichier s'effectue correctement
@@ -22,6 +19,5 @@ class Tools
             return $arrayCsv;
         }
     }
-
 }
 
