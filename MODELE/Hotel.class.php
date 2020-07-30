@@ -74,14 +74,36 @@ class Hotel
     }
 
     public function displayHotel(){
-        $this->displayNbRoomFree();
+        echo $this->displayNbRoomFree();
         echo PHP_EOL;
-        $this->displayNbRoomBooked();
+        echo $this->displayNbRoomBooked();
         echo PHP_EOL;
 
-        return "Nous avons actuellement ".$this->nbCustomer. "présents dans notre établissement.";
+        return "Nous avons actuellement ".$this->nbCustomer. " clients présents dans notre établissement.";
     }
-    
+
+    public function displayFirstRoomFree(){
+        $arrayLibre = [];
+        foreach($this->rooms as $key => $listLibre){
+            if($listLibre->getIsEmpty() == 0){
+                $arrayLibre[$key] = $listLibre;
+            }
+        }
+        $preChambre = array_key_first($arrayLibre);
+        return "Le numéro de la premiere chambre libre est : ".$preChambre;
+
+    }
+
+    public function displayLastRoomFree(){
+        $arrayLibre = [];
+        foreach($this->rooms as $key => $listLibre){
+            if($listLibre->getIsEmpty() == 0){
+                $arrayLibre[$key] = $listLibre;
+            }
+        }
+        $derChambre = array_key_last($arrayLibre);
+        return "Le numéro de la derniere chambre libre est : ".$derChambre;
+    }
     /**
      * @return mixed
      */
