@@ -144,19 +144,6 @@ class Hotel
         return "Le numéro de la derniere chambre libre est : ".$derChambre;
     }
 
-    public function paiement($prixTotal,$client1, $room){
-        self::$nbPaiement++;
-        $numOfFacture = self::$nbPaiement;
-        $CA = $this->revenue;
-        $CA = $CA + $prixTotal;
-
-        $this->revenue = $CA;
-
-        $cb = $client1->getMastercard();
-
-        Tools::exportCSV($prixTotal,$cb);
-        Tools::facture($client1, $prixTotal, $room, $numOfFacture);
-    }
 
     public function booking (){
         $cptCVP = 0;
@@ -329,15 +316,192 @@ class Hotel
         echo "date de sortie: \n";
         $dateEnd = new DateTime(readline());
 
-        $roomChoose->setCustomers(Tools::createArrCustomers());
+        $roomChoose->setCustomers($this->createArrCustomers());
         $roomChoose->setIsEmpty(1);
         $roomChoose->setDateStart($dateStart);
         $roomChoose->setDateEnd($dateEnd);
 
         echo "Ok chambre numéro". $roomChoose->getId(). " bien réservé au nom de M.(Mde.)".$roomChoose->getCustomers()[0]->getNom();
 
+        $this->paiement($roomChoose);
     }
 
+    public function paiement($room){
+        self::$nbPaiement++;
+        $numOfFacture = self::$nbPaiement;
+
+        $dateStart = $room->getDateStart();
+        $dateEnd = $room->getDateEnd();
+        $interval = $dateStart->diff($dateEnd);
+        $intervalDate = $interval->format('%d');  //format numérique en nb de jours
+        $price = $room->getPrice();
+        $prixTotal = $intervalDate * $price;
+
+        $CA = $this->revenue;
+        $CA = $CA + $prixTotal;
+        $this->revenue = $CA;
+
+        $client1 = $room->getCustomers()[0];
+        $cb = $client1->getMastercard();
+
+        Tools::exportCSV($prixTotal,$cb);
+        Tools::facture($client1, $prixTotal, $room, $numOfFacture);
+    }
+
+
+    public function editBooking(){
+        echo "Module modification de dates de réservation\n";
+        $c1 = true;
+        while ($c1){
+            echo "Quel est le numéro de la chambre à éditer?(1 à ".count($this->rooms)."): \n";
+            $res = readline();
+            if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res-1]->getIsEmpty() == 1)){
+                self::$nbPaiement++;
+                $numOfFacture = self::$nbPaiement;
+                $room = $this->rooms[$res-1];
+                $dateStart = $room->getDateStart();
+                $dateEnd = $room->getDateEnd();
+                $interval = $dateStart->diff($dateEnd);
+                $intervalDate = $interval->format('%d');  //format numérique en nb de jours
+                $price = $room->getPrice();
+                $prixTotal = $intervalDate * $price;
+
+                echo "nouvelle date d'entrée: \n";
+                $newDateStart = new DateTime(readline());
+                echo "nouvelle date de sortie: \n";
+                $newDateEnd = new DateTime(readline());
+                $interval = $dateStart->diff($dateEnd);
+                $intervalDate = $interval->format('%d');  //format numérique en nb de jours
+                $newPrixTotal = $intervalDate * $price;
+
+                $prixDiff = $prixTotal - $newPrixTotal;
+                $cb = $room->getCustomers()[0]->getMastercard();
+                $client1 = $room->getCustomers()[0];
+                if($prixDiff > 0){
+                    $this->revenue = $this->revenue + $prixDiff;
+                    Tools::exportCSV($prixDiff,$cb);
+                    Tools::facture($client1, $prixTotal, $room, $numOfFacture);
+                }
+                else if ($prixDiff < 0){
+                        $this->revenue = $this->revenue + $prixDiff;
+                        Tools::exportCSV($prixDiff,$cb);
+                }
+                $c1 = false;
+
+            }else{
+                echo "tu dis de la merde\n";
+            }
+        }
+    }
+
+    public function freeARoom()
+    {
+        $c1 = true;
+        while ($c1) {
+            echo "Quel est le numéro de la chambre à libérer?(1 à " . count($this->rooms) . "): \n";
+            $res = readline();
+
+            if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res - 1]->getIsEmpty() == 1)) {
+                $room = $this->rooms[$res - 1];
+                $room->setIsEmpty(0);
+                $room->setCustomers(array());
+                $room->setDateStart('00-00-0000');
+                $room->setDateEnd('00-00-0000');
+                $c1 = false;
+            }
+            else{
+                echo "taper un numéro de chambre valide et/ou occupé!\n";
+            }
+        }
+    }
+
+
+    public function cancelBooking(){
+        
+    }
+
+    public function createArrCustomers()
+    {
+        echo "Bienvenu dans le module de création des clients (attention: 2 adultes & 2 enfants maximum par chambre)\n";
+        echo PHP_EOL;
+        echo "Création du client principal (Adulte obligatoire): \n";
+        $c1 = true;
+        $cptA = 1;
+        $cptE = 0;
+        $customers = array();
+        $mastercard = 0;
+        $login = 0;
+        $email = 0;
+        while($c1){
+            echo "Age: \n";
+            $age = readline();
+            if ($age <= 12){
+                echo "impossible, il faut obligatoirement un adulte\n";
+            }else{
+                echo "Nom: \n";
+                $nom = readline();
+                echo "Prenom: \n";
+                $prenom = readline();
+                echo "Email: \n";
+                $email = readline();
+                echo "Login: \n";
+                $login = readline();
+                echo "Mastercard: \n";
+                $mastercard = readline();
+
+                $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
+                $c1 = false;
+            }
+        }
+
+
+        $c2 = true;
+        while ($c2){
+            echo "Avez vous des clients secondaires à rattaché?(oui/non): \n";
+            $res = readline();
+            switch ($res){
+                case 'oui':
+                    echo "Age: \n";
+                    $age = readline();
+                    if ($age > 12){
+                        $cptA++;
+                        if ($cptA >= 2){
+                            echo "ajout impossible, il y a dèja 2 adultes\n";
+                        }else{
+                            echo "Nom: \n";
+                            $nom = readline();
+                            echo "Prenom: \n";
+                            $prenom = readline();
+
+                            $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
+                        }
+                    }else{
+                        $cptE++;
+                        if ($cptE >= 2){
+                            echo "ajout impossible, il y a dèja 2 enfants\n";
+                        }else{
+                            echo "Nom: \n";
+                            $nom = readline();
+                            echo "Prenom: \n";
+                            $prenom = readline();
+
+                            $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
+                        }
+                    }
+                    break;
+
+                case 'non':
+                    echo "ok, fin du module de création client\n";
+                    $c2=false;
+                    break;
+
+                default:
+                    echo "je n'ai pas compris votre choix, veuillez recommencer.\n";
+                    break;
+            }
+        }
+        return $customers;
+    }
 
     /**
      * @return mixed
