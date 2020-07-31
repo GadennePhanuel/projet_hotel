@@ -1,5 +1,6 @@
 <?php
 require_once "PDF_Invoice.class.php";
+require_once "Customer.class.php";
 
 class Tools
 {
@@ -157,6 +158,90 @@ class Tools
 
 
         $pdf->Output("F", $name );
+    }
+
+
+    public static function createArrCustomers()
+    {
+        echo "Bienvenu dans le module de création des clients (attention: 2 adultes & 2 enfants maximum par chambre)\n";
+        echo PHP_EOL;
+        echo "Création du client principal (Adulte obligatoire): \n";
+        $c1 = true;
+        $cptA = 1;
+        $cptE = 0;
+        $customers = array();
+        $mastercard = 0;
+        $login = 0;
+        $email = 0;
+        while($c1){
+            echo "Age: \n";
+            $age = readline();
+            if ($age <= 12){
+                echo "impossible, il faut obligatoirement un adulte\n";
+            }else{
+                echo "Nom: \n";
+                $nom = readline();
+                echo "Prenom: \n";
+                $prenom = readline();
+                echo "Email: \n";
+                $email = readline();
+                echo "Login: \n";
+                $login = readline();
+                echo "Mastercard: \n";
+                $mastercard = readline();
+
+                $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
+                $c1 = false;
+            }
+        }
+
+
+        $c2 = true;
+        while ($c2){
+            echo "Avez vous des clients secondaires à rattaché?(oui/non): \n";
+            $res = readline();
+            switch ($res){
+                case 'oui':
+                    echo "Age: \n";
+                    $age = readline();
+                    if ($age > 12){
+                        $cptA++;
+                        if ($cptA >= 2){
+                            echo "ajout impossible, il y a dèja 2 adultes\n";
+                        }else{
+                            echo "Nom: \n";
+                            $nom = readline();
+                            echo "Prenom: \n";
+                            $prenom = readline();
+
+                            $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
+                        }
+                    }else{
+                        $cptE++;
+                        if ($cptE >= 2){
+                            echo "ajout impossible, il y a dèja 2 enfants\n";
+                        }else{
+                            echo "Nom: \n";
+                            $nom = readline();
+                            echo "Prenom: \n";
+                            $prenom = readline();
+
+                            $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
+                        }
+                    }
+                    break;
+
+                case 'non':
+                    echo "ok, fin du module de création client\n";
+                    $c2=false;
+                    break;
+
+                default:
+                    echo "je n'ai pas compris votre choix, veuillez recommencer.\n";
+                    break;
+            }
+        }
+        return $customers;
     }
 }
 
