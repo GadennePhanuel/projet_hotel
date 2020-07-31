@@ -12,7 +12,9 @@ $arrCsv = Tools::loadCsv($pathCsv);
 
 $hotel = new Hotel($arrCsv);
 
+$room=$hotel->getRoomsCVP();
 
+print_r($room);
 function facture(){
     date_default_timezone_set('Europe/Paris');
     $date = date('d-m-Y') .'_'. date('H') .'h'. date('i') .'min'. date('s') .'sec';

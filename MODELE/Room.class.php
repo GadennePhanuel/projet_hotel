@@ -55,7 +55,7 @@ class Room
                     "Prix de la nuit: ". $this->price."\n".
                     "Statut: occupé\n".
                     "Occupant: ". $this->customersList."\n".
-                    "Date de réservation: ".$this->dateStart." au ".$this->dateEnd."\n";
+                    "Date de réservation: ".$this->dateStart->format('d-m-Y')." au ".$this->dateEnd->format('d-m-Y')."\n";
         }else {
             return "Chambre n°".$this->id."\n".
                     "Type: ".$this->type."\n".

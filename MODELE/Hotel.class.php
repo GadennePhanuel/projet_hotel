@@ -8,21 +8,21 @@ class Hotel
     private $nbRoomOccupied = 0;
     private $workers = array();
     private $nbCustomer = 0;
-    private $rooms;
-    private $roomsCVP;
-    private $roomsCVJ;
-    private $roomsCVO;
-    private $roomsCVIO;
-    private $roomsCDA;
-    private $roomsExec;
-    private $roomsAmb;
-    private $roomsRoyale;
+    private $rooms = array();
+    private $roomsCVP = array();
+    private $roomsCVJ = array();
+    private $roomsCVO = array();
+    private $roomsCVIO = array();
+    private $roomsCDA = array();
+    private $roomsExec = array();
+    private $roomsAmb = array();
+    private $roomsRoyale = array();
     private $revenue;
     private $arrCsv;
     private static $nbPaiement = 0;
 
 
-    public function __construct($arrCsv)
+    public function __construct(array $arrCsv)
     {
         $this->arrCsv = $arrCsv;
         $nbRow = count($this->arrCsv);
@@ -158,6 +158,185 @@ class Hotel
         Tools::facture($client1, $prixTotal, $room, $numOfFacture);
     }
 
+    public function booking (){
+        $cptCVP = 0;
+        foreach ($this->roomsCVP as $room){
+            if($room->getisEmpty() ==0){
+                $cptCVP ++;
+            }
+        }
+        if ($cptCVP > 0){
+            echo "Type de la chambre 1: ".$this->roomsCVP[0]->getType()."\n".
+                 "Vue : ".$this->roomsCVP[0]->getView()."\n".
+                 "Surface: ".$this->roomsCVP[0]->getSize()."\n".
+                 "Options :".$this->roomsCVP[0]->getOptionList()."\n".
+                 "Prix: ".$this->roomsCVP[0]->getPrice()."\n";
+        }
+
+        $cptCVJ = 0;
+        foreach ($this->roomsCVJ as $room){
+            if($room->getisEmpty() ==0){
+                $cptCVJ ++;
+            }
+        }
+        if ($cptCVJ > 0){
+            echo "Type de la chambre 2: ".$this->roomsCVJ[0]->getType()."\n".
+                "Vue : ".$this->roomsCVJ[0]->getView()."\n".
+                "Surface: ".$this->roomsCVJ[0]->getSize()."\n".
+                "Options :".$this->roomsCVJ[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsCVJ[0]->getPrice()."\n";
+        }
+
+        $cptCVO = 0;
+        foreach ($this->roomsCVO as $room){
+            if($room->getisEmpty() ==0){
+                $cptCVO ++;
+            }
+        }
+        if ($cptCVO > 0){
+            echo "Type de la chambre 3: ".$this->roomsCVO[0]->getType()."\n".
+                "Vue : ".$this->roomsCVO[0]->getView()."\n".
+                "Surface: ".$this->roomsCVO[0]->getSize()."\n".
+                "Options :".$this->roomsCVO[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsCVO[0]->getPrice()."\n";
+        }
+
+        $cptCVIO = 0;
+        foreach ($this->roomsCVIO as $room){
+            if($room->getisEmpty() ==0){
+                $cptCVIO ++;
+            }
+        }
+        if ($cptCVIO > 0){
+            echo "Type de la chambre 4: ".$this->roomsCVIO[0]->getType()."\n".
+                "Vue : ".$this->roomsCVIO[0]->getView()."\n".
+                "Surface: ".$this->roomsCVIO[0]->getSize()."\n".
+                "Options :".$this->roomsCVIO[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsCVIO[0]->getPrice()."\n";
+        }
+
+        $cptCDA = 0;
+        foreach ($this->roomsCDA as $room){
+            if($room->getisEmpty() ==0){
+                $cptCDA ++;
+            }
+        }
+        if ($cptCDA > 0){
+            echo "Type de la chambre 5: ".$this->roomsCDA[0]->getType()."\n".
+                "Vue : ".$this->roomsCDA[0]->getView()."\n".
+                "Surface: ".$this->roomsCDA[0]->getSize()."\n".
+                "Options :".$this->roomsCDA[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsCDA[0]->getPrice()."\n";
+        }
+
+        $cptExec = 0;
+        foreach ($this->roomsExec as $room){
+            if($room->getisEmpty() ==0){
+                $cptExec ++;
+            }
+        }
+        if ($cptExec > 0){
+            echo "Type de la chambre 6: ".$this->roomsExec[0]->getType()."\n".
+                "Vue : ".$this->roomsExec[0]->getView()."\n".
+                "Surface: ".$this->roomsExec[0]->getSize()."\n".
+                "Options :".$this->roomsExec[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsExec[0]->getPrice()."\n";
+        }
+
+        $cptAmb = 0;
+        foreach ($this->roomsAmb as $room){
+            if($room->getisEmpty() ==0){
+                $cptAmb ++;
+            }
+        }
+        if ($cptAmb > 0){
+            echo "Type de la chambre 7: ".$this->roomsAmb[0]->getType()."\n".
+                "Vue : ".$this->roomsAmb[0]->getView()."\n".
+                "Surface: ".$this->roomsAmb[0]->getSize()."\n".
+                "Options :".$this->roomsAmb[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsAmb[0]->getPrice()."\n";
+        }
+
+        $cptRoyale = 0;
+        foreach ($this->roomsRoyale as $room){
+            if($room->getisEmpty() ==0){
+                $cptRoyale ++;
+            }
+        }
+        if ($cptRoyale > 0){
+            echo "Type de la chambre 8: ".$this->roomsRoyale[0]->getType()."\n".
+                "Vue : ".$this->roomsRoyale[0]->getView()."\n".
+                "Surface: ".$this->roomsRoyale[0]->getSize()."\n".
+                "Options :".$this->roomsRoyale[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsRoyale[0]->getPrice()."\n";
+        }
+
+        $typechoose = "";
+        $c3 = true;
+        while ($c3){
+            echo "Quel type de chambres choisissez-vous?(1 à 8): \n";
+            $res = readline();
+            switch ($res){
+                case '1':
+                    $typechoose = "Chambre Vue Piscine";
+                    $c3 = false;
+                    break;
+                case '2':
+                    $typechoose = "Chambre Vue Jardin";
+                    $c3 = false;
+                    break;
+                case '3':
+                    $typechoose = "Chambre Vue Océan";
+                    $c3 = false;
+                    break;
+                case '4':
+                    $typechoose = "Chambre vue imprenable sur l'océan";
+                    $c3 = false;
+                    break;
+                case '5':
+                    $typechoose = "Suite CDA";
+                    $c3 = false;
+                    break;
+                case '6':
+                    $typechoose = "Suite Executive";
+                    $c3 = false;
+                    break;
+                case '7':
+                    $typechoose = "Suite Ambassadeur";
+                    $c3 = false;
+                    break;
+                case '8':
+                    $typechoose = "Suite Royale";
+                    $c3 = false;
+                    break;
+                default:
+                    echo "pas compris\n";
+            }
+        }
+
+        //selection de la première Room correspondante à son choix
+        $roomChoose = "";
+        foreach ($this->rooms as $room){
+            if (($room->getType() == $typechoose) && ($room->getIsEmpty() == 0)){
+                $roomChoose = $room;
+                break;
+            }
+        }
+
+        //on demande les dates d'entrée et de sorties
+        echo "date d'entrée: \n";
+        $dateStart = new DateTime(readline());
+        echo "date de sortie: \n";
+        $dateEnd = new DateTime(readline());
+
+        $roomChoose->setCustomers(Tools::createArrCustomers());
+        $roomChoose->setIsEmpty(1);
+        $roomChoose->setDateStart($dateStart);
+        $roomChoose->setDateEnd($dateEnd);
+
+        echo "Ok chambre numéro". $roomChoose->getId(). " bien réservé au nom de M.(Mde.)".$roomChoose->getCustomers()[0]->getNom();
+
+    }
 
 
     /**
