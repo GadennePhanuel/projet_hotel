@@ -51,7 +51,7 @@ function facture(){
     $pdf->addPageNumber("1");
     $pdf->addClientAdresse("Pour\nM.(Mde). $nom $prenom\nEmpreinte carte: $cb");
     $pdf->addReglement(utf8_decode("Carte bancaire"));
-    $pdf->addEcheance("$date1String");
+    $pdf->addEcheance("$date1");
     $pdf->addNumTVA("QTR888777666");
     $pdf->addReference("$dateStartString au $dateEndString");
     $cols=array( "REFERENCE"    => 23,
