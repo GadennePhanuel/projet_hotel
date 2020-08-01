@@ -417,7 +417,36 @@ class Hotel
 
 
     public function cancelBooking(){
-        
+        $c1 = true;
+        while ($c1) {
+            echo "Quel est le numéro de la chambre à libérer?(1 à " . count($this->rooms) . "): \n";
+            $res = readline();
+
+            if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res - 1]->getIsEmpty() == 1)) {
+                $room = $this->rooms[$res - 1];
+                $dateStart = $rooms->getDateStart();
+                $dateEnd = $rooms->getDateEnd();
+                $price = $rooms->getPrice();
+                $client1 = $room->getCustomers()[0];
+                $cb = $client1->getMastercard();
+
+                $interval = $dateStart->diff($dateEnd);
+                $intervalDate = $interval->format('%d');  //format numérique en nb de jours
+                $prixTotal = $intervalDate * $price;
+                $prixRemb = $prixTotal * -1;
+
+                $room->setIsEmpty(0);
+                $room->setCustomers(array());
+                $room->setDateStart('00-00-0000');
+                $room->setDateEnd('00-00-0000');
+
+                Tools::exportCSV($prixRemb,$cb);
+                $c1 = false;
+            }
+            else{
+                echo "taper un numéro de chambre valide et/ou occupé!\n";
+            }
+        }
     }
 
     public function createArrCustomers()
