@@ -1,5 +1,5 @@
 <?php
-
+require_once "Worker.class.php";
 
 class Hotel
 {
@@ -62,12 +62,14 @@ class Hotel
                     break;
             }
         }
+        $this->workers = array(new Worker("Gadenne", "Phanuel", 29, "Admin1", "Admin1"), new Worker("Vigin", "Marie", 26, "Admin2", "Admin2"));
     }
 
     public function authentificationLogin()
     {
         echo "Quel est votre login?: ";
         $log = readline();
+
 
         foreach ($this->rooms->getCustomers() as $customer){
             $arrLogCustomer[] = $customer->getLogin();
