@@ -25,7 +25,7 @@ class Tools
         date_default_timezone_set('Europe/Paris');
         $date = date('d-m-Y') .'_'. date('H') .'h'. date('i') .'min'. date('s') .'sec';
 
-        $pathOut = "../FILES/OUTPUT/paiement_$date.csv";
+        $pathOut = "../FILES/OUTPUT/Bilan/paiement_$date.csv";
 
         $fp = fopen($pathOut, "x");
 
@@ -35,14 +35,11 @@ class Tools
             $natureOp = "Paiement";
         }
 
-        $tmp = [$date,$natureOp,$total,$cb];
+        $tmp = array($date,$natureOp,$total,$cb);
 
-        foreach($tmp as $fields){
+        $fields = array_map("utf8_decode", $tmp);
+        fputcsv($fp, $tmp, ",", " ", " ");
 
-            $fields = array_map("utf8_decode", $fields);
-
-            fputcsv($fp, $fields, ",", " ", " ");
-        }
         fclose($fp);
     }
 
