@@ -53,16 +53,36 @@ while($cond1){
                     echo $hotel->displayLastRoomFree();
                     break;
                 case 'F':
-                    $hotel->booking();
+                    $authentification = $hotel->authentificationPassword();
+                    if ($authentification == "true"){
+                        $hotel->booking();
+                    }else{
+                        echo "mauvais mot de passe\n";
+                    }
                     break;
                 case 'G':
-                    $hotel->freeARoom();
+                    $authentification = $hotel->authentificationPassword();
+                    if ($authentification == "true"){
+                        $hotel->freeARoom();
+                    }else{
+                        echo "mauvais mot de passe\n";
+                    }
                     break;
                 case 'H':
-                    $hotel->editBooking();
+                    $authentification = $hotel->authentificationPassword();
+                    if ($authentification == "true"){
+                        $hotel->editBooking();
+                    }else{
+                        echo "mauvais mot de passe\n";
+                    }
                     break;
                 case 'I':
-                    $hotel->cancelBooking();
+                    $authentification = $hotel->authentificationPassword();
+                    if ($authentification == "true"){
+                        $hotel->cancelBooking();
+                    }else{
+                        echo "mauvais mot de passe\n";
+                    }
                     break;
                 case 'Q':
                     echo "fin du module MENU\n";

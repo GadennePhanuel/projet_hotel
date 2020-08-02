@@ -99,7 +99,7 @@ class Hotel
         $mdp = readline();
 
         foreach ($this->workers as $worker){
-            $arrPassword[] = $worker->getPasword();
+            $arrPassword[] = $worker->getPassword();
         }
         if (in_array($mdp, $arrPassword)){
             return "true";
