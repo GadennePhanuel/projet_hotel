@@ -69,10 +69,11 @@ class Hotel
     {
         echo "Quel est votre login?: ";
         $log = readline();
-
-
-        foreach ($this->rooms->getCustomers() as $customer){
-            $arrLogCustomer[] = $customer->getLogin();
+        foreach ($this->rooms as $room){
+            $customers = $room->getCustomers();
+            foreach ($customers as $customer){
+                $arrLogCustomer[] = $customer->getLogin();
+            }
         }
         if (in_array($log, $arrLogCustomer)){
             return "customer";
