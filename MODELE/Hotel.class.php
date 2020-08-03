@@ -77,11 +77,9 @@ class Hotel
         }
         if (isset($arrLogCustomer) && !empty($arrLogCustomer)){
             if (in_array($log, $arrLogCustomer)){
-<<<<<<< HEAD
+
                 return $log;
-=======
-                return "customer";
->>>>>>> f7f241389b52c9db94ff6bfc0a6e66a913ec025c
+
             }
         }
         else{
@@ -176,24 +174,27 @@ class Hotel
         return "Le numéro de la derniere chambre libre est : ".$derChambre."\n";
     }
 
-<<<<<<< HEAD
-    public function displayCustomerRoom(){
-        foreach ($this->rooms as $room){
-            if($room->getIsEmpty() == 1 ){
+
+    public function displayCustomerRoom()
+    {
+        foreach ($this->rooms as $room) {
+            if ($room->getIsEmpty() == 1) {
                 $customers = $room->getCustomers();
-                foreach($customers as $customer){
+                foreach ($customers as $customer) {
                     $login = $customer->getLogin();
-                    if($login == $this->authentificationLogin()) {
-                        return $customer->getPrenom()."\n".
-                               $customer->getNom()."\n".
-                               $room->getId."\n".
-                               $room->getType."\n".
-                               $room->dateStart()."\n".
-                               $room->dateEnd()."\n";
+                    if ($login == $this->authentificationLogin()) {
+                        return "Prenom: " . $customer->getPrenom() . "\n" .
+                            "Nom: " . $customer->getNom() . "\n" .
+                            "Numéro de chambre: " . $room->getId . "\n" .
+                            "Type de chambre: " . $room->getType . "\n" .
+                            "Date d'entrée: " . $room->dateStart() . "\n" .
+                            "Date de sortie: " . $room->dateEnd() . "\n";
                     }
                 }
-=======
-
+            }
+        }
+    }
+    
     public function booking (){
         $cptCVP = 0;
         foreach ($this->roomsCVP as $room){
