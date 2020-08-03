@@ -183,10 +183,10 @@ class Hotel
                     if($login == $this->authentificationLogin()) {
                         return "Prenom: ".$customer->getPrenom()."\n".
                                "Nom: ".$customer->getNom()."\n".
-                               "Numéro de chambre: ".$room->getId."\n".
-                               "Type de chambre: ".$room->getType."\n".
-                               "Date d'entrée: ".$room->dateStart()."\n".
-                               "Date de sortie: ".$room->dateEnd()."\n";
+                               "Numéro de chambre: ".$room->getId()."\n".
+                               "Type de chambre: ".$room->getType()."\n".
+                               "Date d'entrée: ".$room->getDateStart()->format('d-m-Y')."\n".
+                               "Date de sortie: ".$room->getDateEnd()->format('d-m-Y')."\n";
                     }
                 }
             }
@@ -391,7 +391,7 @@ class Hotel
         $intervalDate = $interval->format('%d');  //format numérique en nb de jours
         $price = $room->getPrice();
         $prixTotal = $intervalDate * $price;
-        $prixTotalTTC = $prixTotal *1.2;
+        $prixTotalTTC = $prixTotal * 1.2;
 
         $CA = $this->revenue;
         $CA = $CA + $prixTotalTTC;
