@@ -438,6 +438,7 @@ class Hotel
                 $intervalDate = $interval->format('%d');  //format numérique en nb de jours
                 $newPrixTotal = $intervalDate * $price;
 
+
                 $prixDiff = $newPrixTotal - $prixTotal;
                 $cb = $room->getCustomers()[0]->getMastercard();
                 $client1 = $room->getCustomers()[0];
