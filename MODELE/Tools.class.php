@@ -21,13 +21,13 @@ class Tools
         }
     }
 
-    public static function exportCSV($totalTTC,$cb){
+    public static function exportCSV($totalTTC,$client1){
         date_default_timezone_set('Europe/Paris');
         $date = date('d-m-Y');
 
         $pathOut = "../FILES/OUTPUT/Bilan/paiement_$date.csv";
 
-        $fp = fopen($pathOut, "x");
+        $fp = fopen($pathOut, "a+");
 
 
         if($totalTTC < 0){
@@ -35,12 +35,15 @@ class Tools
         }else{
             $natureOp = "Paiement";
         }
+        $cb = $client1->getMastercard();
+        $prenom = $client1->getPrenom();
+        $nom = $client1->getNom();
 
+        $tmp = array($nom,$prenom,$date,$natureOp,$totalTTC,$cb);
 
-        $tmp = array($date,$natureOp,$totalTTC,$cb);
 
         $fields = array_map("utf8_decode", $tmp);
-        fputcsv($fp, $tmp, ",", " ", " ");
+        fputcsv($fp, $fields, ",", " ", " ");
 
         fclose($fp);
     }
