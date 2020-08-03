@@ -77,7 +77,11 @@ class Hotel
         }
         if (isset($arrLogCustomer) && !empty($arrLogCustomer)){
             if (in_array($log, $arrLogCustomer)){
+<<<<<<< HEAD
                 return $log;
+=======
+                return "customer";
+>>>>>>> f7f241389b52c9db94ff6bfc0a6e66a913ec025c
             }
         }
         else{
@@ -172,6 +176,7 @@ class Hotel
         return "Le numéro de la derniere chambre libre est : ".$derChambre."\n";
     }
 
+<<<<<<< HEAD
     public function displayCustomerRoom(){
         foreach ($this->rooms as $room){
             if($room->getIsEmpty() == 1 ){
@@ -187,10 +192,324 @@ class Hotel
                                $room->dateEnd()."\n";
                     }
                 }
+=======
+
+    public function booking (){
+        $cptCVP = 0;
+        foreach ($this->roomsCVP as $room){
+            if($room->getisEmpty() ==0){
+                $cptCVP ++;
+            }
+        }
+        if ($cptCVP > 0){
+            echo "Chambre 1: ".$this->roomsCVP[0]->getType()."\n".
+                 "Vue : ".$this->roomsCVP[0]->getView()."\n".
+                 "Surface: ".$this->roomsCVP[0]->getSize()."\n".
+                 "Options :".$this->roomsCVP[0]->getOptionList()."\n".
+                 "Prix: ".$this->roomsCVP[0]->getPrice()."\n";
+            echo PHP_EOL;
+        }
+
+        $cptCVJ = 0;
+        foreach ($this->roomsCVJ as $room){
+            if($room->getisEmpty() ==0){
+                $cptCVJ ++;
+            }
+        }
+        if ($cptCVJ > 0){
+            echo "Chambre 2: ".$this->roomsCVJ[0]->getType()."\n".
+                "Vue : ".$this->roomsCVJ[0]->getView()."\n".
+                "Surface: ".$this->roomsCVJ[0]->getSize()."\n".
+                "Options :".$this->roomsCVJ[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsCVJ[0]->getPrice()."\n";
+            echo PHP_EOL;
+        }
+
+        $cptCVO = 0;
+        foreach ($this->roomsCVO as $room){
+            if($room->getisEmpty() ==0){
+                $cptCVO ++;
+            }
+        }
+        if ($cptCVO > 0){
+            echo "Chambre 3: ".$this->roomsCVO[0]->getType()."\n".
+                "Vue : ".$this->roomsCVO[0]->getView()."\n".
+                "Surface: ".$this->roomsCVO[0]->getSize()."\n".
+                "Options :".$this->roomsCVO[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsCVO[0]->getPrice()."\n";
+            echo PHP_EOL;
+        }
+
+        $cptCVIO = 0;
+        foreach ($this->roomsCVIO as $room){
+            if($room->getisEmpty() ==0){
+                $cptCVIO ++;
+            }
+        }
+        if ($cptCVIO > 0){
+            echo "Chambre 4: ".$this->roomsCVIO[0]->getType()."\n".
+                "Vue : ".$this->roomsCVIO[0]->getView()."\n".
+                "Surface: ".$this->roomsCVIO[0]->getSize()."\n".
+                "Options :".$this->roomsCVIO[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsCVIO[0]->getPrice()."\n";
+            echo PHP_EOL;
+        }
+
+        $cptCDA = 0;
+        foreach ($this->roomsCDA as $room){
+            if($room->getisEmpty() ==0){
+                $cptCDA ++;
+            }
+        }
+        if ($cptCDA > 0){
+            echo "Chambre 5: ".$this->roomsCDA[0]->getType()."\n".
+                "Vue : ".$this->roomsCDA[0]->getView()."\n".
+                "Surface: ".$this->roomsCDA[0]->getSize()."\n".
+                "Options :".$this->roomsCDA[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsCDA[0]->getPrice()."\n";
+            echo PHP_EOL;
+        }
+
+        $cptExec = 0;
+        foreach ($this->roomsExec as $room){
+            if($room->getisEmpty() ==0){
+                $cptExec ++;
+            }
+        }
+        if ($cptExec > 0){
+            echo "Chambre 6: ".$this->roomsExec[0]->getType()."\n".
+                "Vue : ".$this->roomsExec[0]->getView()."\n".
+                "Surface: ".$this->roomsExec[0]->getSize()."\n".
+                "Options :".$this->roomsExec[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsExec[0]->getPrice()."\n";
+            echo PHP_EOL;
+        }
+
+        $cptAmb = 0;
+        foreach ($this->roomsAmb as $room){
+            if($room->getisEmpty() ==0){
+                $cptAmb ++;
+            }
+        }
+        if ($cptAmb > 0){
+            echo "Chambre 7: ".$this->roomsAmb[0]->getType()."\n".
+                "Vue : ".$this->roomsAmb[0]->getView()."\n".
+                "Surface: ".$this->roomsAmb[0]->getSize()."\n".
+                "Options :".$this->roomsAmb[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsAmb[0]->getPrice()."\n";
+            echo PHP_EOL;
+        }
+
+        $cptRoyale = 0;
+        foreach ($this->roomsRoyale as $room){
+            if($room->getisEmpty() ==0){
+                $cptRoyale ++;
+            }
+        }
+        if ($cptRoyale > 0){
+            echo "Chambre 8: ".$this->roomsRoyale[0]->getType()."\n".
+                "Vue : ".$this->roomsRoyale[0]->getView()."\n".
+                "Surface: ".$this->roomsRoyale[0]->getSize()."\n".
+                "Options :".$this->roomsRoyale[0]->getOptionList()."\n".
+                "Prix: ".$this->roomsRoyale[0]->getPrice()."\n";
+            echo PHP_EOL;
+        }
+
+        $typechoose = "";
+        $c3 = true;
+        while ($c3){
+            echo "Quel type de chambres choisissez-vous?(1 à 8): \n";
+            $res = readline();
+            switch ($res){
+                case '1':
+                    $typechoose = "Chambre Vue Piscine";
+                    $c3 = false;
+                    break;
+                case '2':
+                    $typechoose = "Chambre Vue Jardin";
+                    $c3 = false;
+                    break;
+                case '3':
+                    $typechoose = "Chambre Vue Océan";
+                    $c3 = false;
+                    break;
+                case '4':
+                    $typechoose = "Chambre vue imprenable sur l'océan";
+                    $c3 = false;
+                    break;
+                case '5':
+                    $typechoose = "Suite CDA";
+                    $c3 = false;
+                    break;
+                case '6':
+                    $typechoose = "Suite Executive";
+                    $c3 = false;
+                    break;
+                case '7':
+                    $typechoose = "Suite Ambassadeur";
+                    $c3 = false;
+                    break;
+                case '8':
+                    $typechoose = "Suite Royale";
+                    $c3 = false;
+                    break;
+                default:
+                    echo "pas compris\n";
+            }
+        }
+
+        //selection de la première Room correspondante à son choix
+        $roomChoose = "";
+        foreach ($this->rooms as $room){
+            if (($room->getType() == $typechoose) && ($room->getIsEmpty() == 0)){
+                $roomChoose = $room;
+                break;
+            }
+        }
+
+        //on demande les dates d'entrée et de sorties
+        echo "date d'entrée (jj-mm-aaaa): \n";
+        $dateStart = new DateTime(readline());
+        echo "date de sortie (jj-mm-aaaa): \n";
+        $dateEnd = new DateTime(readline());
+
+        $roomChoose->setCustomers($this->createArrCustomers());
+        $roomChoose->setIsEmpty(1);
+        $roomChoose->setDateStart($dateStart);
+        $roomChoose->setDateEnd($dateEnd);
+
+        echo "Ok chambre numéro ". $roomChoose->getId(). " bien réservé au nom de M.(Mde.)".$roomChoose->getCustomers()[0]->getNom()."\n";
+        $this->paiement($roomChoose);
+    }
+
+    public function paiement($room){
+        self::$nbPaiement++;
+        $numOfFacture = self::$nbPaiement;
+
+        $dateStart = $room->getDateStart();
+        $dateEnd = $room->getDateEnd();
+        $interval = $dateStart->diff($dateEnd);
+        $intervalDate = $interval->format('%d');  //format numérique en nb de jours
+        $price = $room->getPrice();
+        $prixTotal = $intervalDate * $price;
+
+        $CA = $this->revenue;
+        $CA = $CA + $prixTotal;
+        $this->revenue = $CA;
+
+        $client1 = $room->getCustomers()[0];
+        $cb = $client1->getMastercard();
+
+        Tools::exportCSV($prixTotal,$cb);
+        Tools::facture($client1, $prixTotal, $room, $numOfFacture);
+    }
+
+
+    public function editBooking(){
+        echo "Module modification de dates de réservation\n";
+        $c1 = true;
+        while ($c1){
+            echo "Quel est le numéro de la chambre à éditer?(1 à ".count($this->rooms)."): \n";
+            $res = readline();
+            if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res-1]->getIsEmpty() == 1)){
+                self::$nbPaiement++;
+                $numOfFacture = self::$nbPaiement;
+                $room = $this->rooms[$res-1];
+
+                $dateStart = $room->getDateStart();
+                $dateEnd = $room->getDateEnd();
+                $interval = $dateStart->diff($dateEnd);
+                $intervalDate = $interval->format('%d');  //format numérique en nb de jours
+                $price = $room->getPrice();
+                $prixTotal = $intervalDate * $price;
+
+                echo "nouvelle date d'entrée: \n";
+                $newDateStart = new DateTime(readline());
+                $room->setDateStart($newDateStart);
+                echo "nouvelle date de sortie: \n";
+                $newDateEnd = new DateTime(readline());
+                $room->setDateEnd($newDateEnd);
+                $interval = $newDateStart->diff($newDateEnd);
+                $intervalDate = $interval->format('%d');  //format numérique en nb de jours
+                $newPrixTotal = $intervalDate * $price;
+
+                $prixDiff = $newPrixTotal - $prixTotal;
+                $cb = $room->getCustomers()[0]->getMastercard();
+                $client1 = $room->getCustomers()[0];
+                if($prixDiff > 0){
+                    $this->revenue = $this->revenue + $prixDiff;
+                    Tools::exportCSV($prixDiff,$cb);
+                    Tools::facture($client1, $prixDiff, $room, $numOfFacture);
+                }
+                else if ($prixDiff < 0){
+                        $this->revenue = $this->revenue + $prixDiff;
+                        Tools::exportCSV($prixDiff,$cb);
+                }
+                $c1 = false;
+
+            }else{
+                echo "tu dis de la merde\n";
             }
         }
     }
 
+    public function freeARoom()
+    {
+        $c1 = true;
+        while ($c1) {
+            echo "Quel est le numéro de la chambre à libérer?(1 à " . count($this->rooms) . "): \n";
+            $res = readline();
+
+            if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res - 1]->getIsEmpty() == 1)) {
+                $room = $this->rooms[$res - 1];
+                $room->setIsEmpty(0);
+                $room->setCustomers(array());
+                $room->setDateStart('00-00-0000');
+                $room->setDateEnd('00-00-0000');
+                $c1 = false;
+            }
+            else{
+                echo "taper un numéro de chambre valide et/ou occupé!\n";
+            }
+        }
+    }
+
+
+    public function cancelBooking(){
+        $c1 = true;
+        while ($c1) {
+            echo "Quel est le numéro de la chambre à libérer?(1 à " . count($this->rooms) . "): \n";
+            $res = readline();
+
+            if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res - 1]->getIsEmpty() == 1)) {
+                $room = $this->rooms[$res - 1];
+                $dateStart = $room->getDateStart();
+                $dateEnd = $room->getDateEnd();
+                $price = $room->getPrice();
+                $client1 = $room->getCustomers()[0];
+                $cb = $client1->getMastercard();
+
+                $interval = $dateStart->diff($dateEnd);
+                $intervalDate = $interval->format('%d');  //format numérique en nb de jours
+                $prixTotal = $intervalDate * $price;
+                $prixRemb = $prixTotal * -1;
+
+                $room->setIsEmpty(0);
+                $room->setCustomers(array());
+                $room->setDateStart('00-00-0000');
+                $room->setDateEnd('00-00-0000');
+
+                Tools::exportCSV($prixRemb,$cb);
+                $c1 = false;
+            }
+            else{
+                echo "taper un numéro de chambre valide et/ou occupé!\n";
+>>>>>>> f7f241389b52c9db94ff6bfc0a6e66a913ec025c
+            }
+        }
+    }
+
+<<<<<<< HEAD
     public function booking (){
         $cptCVP = 0;
         foreach ($this->roomsCVP as $room){
@@ -505,6 +824,8 @@ class Hotel
         }
     }
 
+=======
+>>>>>>> f7f241389b52c9db94ff6bfc0a6e66a913ec025c
     public function createArrCustomers()
     {
         echo "Bienvenu dans le module de création des clients (attention: 2 adultes & 2 enfants maximum par chambre)\n";

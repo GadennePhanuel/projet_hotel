@@ -156,6 +156,5 @@ class Tools
         $pdf->Output("F", $name );
     }
 
-
 }
 
