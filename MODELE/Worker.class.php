@@ -3,7 +3,6 @@ require_once "Person.class.php";
 
 class Worker extends Person
 {
-    private $person;
     private $password;
 
    public function __construct(String $nom, String $prenom, int $age, String $login, String $password)
