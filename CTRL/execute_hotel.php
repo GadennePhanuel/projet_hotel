@@ -15,8 +15,10 @@ $hotel = new Hotel($arrCsv);
 $cond1 = true;
 while($cond1){
     $identification = $hotel->authentificationLogin();
-    if ($identification == "customer"){
-        echo $hotel->displayCustomerRoom();
+    if ($identification[1] == "customer"){
+
+        echo $hotel->displayCustomerRoom($identification[0]);
+
     }
     else if ($identification == "worker"){
         $cond2 = true;

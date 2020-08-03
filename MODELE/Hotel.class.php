@@ -79,7 +79,9 @@ class Hotel
         }
         if (isset($arrLogCustomer) && !empty($arrLogCustomer)){
             if (in_array($log, $arrLogCustomer)){
-                return $log;
+
+                return array($log, "customer");
+
             }
         }
         else{
@@ -174,25 +176,30 @@ class Hotel
         return "Le numéro de la derniere chambre libre est : ".$derChambre."\n";
     }
 
-    public function displayCustomerRoom(){
-        foreach ($this->rooms as $room){
-            if($room->getIsEmpty() == 1 ){
+
+    public function displayCustomerRoom($log)
+    {
+        foreach ($this->rooms as $room) {
+            if ($room->getIsEmpty() == 1) {
                 $customers = $room->getCustomers();
-                foreach($customers as $customer){
+                foreach ($customers as $customer) {
                     $login = $customer->getLogin();
-                    if($login == $this->authentificationLogin()) {
-                        return "Prenom: ".$customer->getPrenom()."\n".
-                               "Nom: ".$customer->getNom()."\n".
-                               "Numéro de chambre: ".$room->getId()."\n".
-                               "Type de chambre: ".$room->getType()."\n".
-                               "Date d'entrée: ".$room->getDateStart()->format('d-m-Y')."\n".
-                               "Date de sortie: ".$room->getDateEnd()->format('d-m-Y')."\n";
+
+                    if ($login == $log) {
+                        $tmp1 = $room->getDateStart();
+                        $tmp2 = $room->getDateEnd();
+                        return "Prenom: " . $customer->getPrenom() . "\n" .
+                            "Nom: " . $customer->getNom() . "\n" .
+                            "Numéro de chambre: " . $room->getId() . "\n" .
+                            "Type de chambre: " . $room->getType() . "\n" .
+                            "Date d'entrée: " . $tmp1->format('d-m-Y') . "\n" .
+                            "Date de sortie: " . $tmp2->format('d-m-Y') . "\n";
                     }
                 }
             }
         }
     }
-
+    
     public function booking (){
         $cptCVP = 0;
         foreach ($this->roomsCVP as $room){
@@ -202,10 +209,10 @@ class Hotel
         }
         if ($cptCVP > 0){
             echo "Chambre 1: ".$this->roomsCVP[0]->getType()."\n".
-                "Vue : ".$this->roomsCVP[0]->getView()."\n".
-                "Surface: ".$this->roomsCVP[0]->getSize()."\n".
-                "Options :".$this->roomsCVP[0]->getOptionList()."\n".
-                "Prix: ".$this->roomsCVP[0]->getPrice()."\n";
+                 "Vue : ".$this->roomsCVP[0]->getView()."\n".
+                 "Surface: ".$this->roomsCVP[0]->getSize()."\n".
+                 "Options :".$this->roomsCVP[0]->getOptionList()."\n".
+                 "Prix: ".$this->roomsCVP[0]->getPrice()."\n";
             echo PHP_EOL;
         }
 
