@@ -23,7 +23,7 @@ class Tools
 
     public static function exportCSV($totalTTC,$cb){
         date_default_timezone_set('Europe/Paris');
-        $date = date('d-m-Y') .'_'. date('H') .'h'. date('i') .'min'. date('s') .'sec';
+        $date = date('d-m-Y');
 
         $pathOut = "../FILES/OUTPUT/Bilan/paiement_$date.csv";
 

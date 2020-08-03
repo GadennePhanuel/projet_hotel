@@ -405,9 +405,9 @@ class Hotel
         $this->revenue = $CA;
 
         $client1 = $room->getCustomers()[0];
-        $cb = $client1->getMastercard();
 
-        Tools::exportCSV($prixTotalTTC,$cb);
+
+        Tools::exportCSV($prixTotalTTC,$client1);
         Tools::facture($client1, $prixTotal, $room, $numOfFacture);
     }
 
@@ -429,6 +429,7 @@ class Hotel
                 $intervalDate = $interval->format('%d');  //format numérique en nb de jours
                 $price = $room->getPrice();
                 $prixTotal = $intervalDate * $price;
+                $prixTotalTTC = $prixTotal * 1.2;
 
                 echo "nouvelle date d'entrée: \n";
                 $newDateStart = new DateTime(readline());
@@ -439,18 +440,20 @@ class Hotel
                 $interval = $newDateStart->diff($newDateEnd);
                 $intervalDate = $interval->format('%d');  //format numérique en nb de jours
                 $newPrixTotal = $intervalDate * $price;
+                $newPrixTotalTTC = $newPrixTotal * 1.2;
 
-                $prixDiff = $newPrixTotal - $prixTotal;
-                $cb = $room->getCustomers()[0]->getMastercard();
+                $prixDiff = $newPrixTotalTTC - $prixTotalTTC;
+
                 $client1 = $room->getCustomers()[0];
+
                 if($prixDiff > 0){
                     $this->revenue = $this->revenue + $prixDiff;
-                    Tools::exportCSV($prixDiff,$cb);
+                    Tools::exportCSV($prixDiff,$client1);
                     Tools::facture($client1, $prixDiff, $room, $numOfFacture);
                 }
                 else if ($prixDiff < 0){
                         $this->revenue = $this->revenue + $prixDiff;
-                        Tools::exportCSV($prixDiff,$cb);
+                        Tools::exportCSV($prixDiff,$client1);
                 }
                 $c1 = false;
 
@@ -494,19 +497,21 @@ class Hotel
                 $dateEnd = $room->getDateEnd();
                 $price = $room->getPrice();
                 $client1 = $room->getCustomers()[0];
-                $cb = $client1->getMastercard();
+
 
                 $interval = $dateStart->diff($dateEnd);
                 $intervalDate = $interval->format('%d');  //format numérique en nb de jours
                 $prixTotal = $intervalDate * $price;
-                $prixRemb = $prixTotal * -1;
+                $prixTotalTTC = $prixTotal * 1.2;
+
+                $prixRemb = $prixTotalTTC * -1;
 
                 $room->setIsEmpty(0);
                 $room->setCustomers(array());
                 $room->setDateStart('00-00-0000');
                 $room->setDateEnd('00-00-0000');
 
-                Tools::exportCSV($prixRemb,$cb);
+                Tools::exportCSV($prixRemb,$client1);
                 $c1 = false;
             }
             else{
