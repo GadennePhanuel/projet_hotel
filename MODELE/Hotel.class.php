@@ -69,6 +69,8 @@ class Hotel
     {
         echo "Quel est votre login?: ";
         $log = readline();
+
+
         foreach ($this->rooms as $room){
             $customers = $room->getCustomers();
             foreach ($customers as $customer){
@@ -389,15 +391,16 @@ class Hotel
         $intervalDate = $interval->format('%d');  //format numérique en nb de jours
         $price = $room->getPrice();
         $prixTotal = $intervalDate * $price;
+        $prixTotalTTC = $prixTotal *1.2;
 
         $CA = $this->revenue;
-        $CA = $CA + $prixTotal;
+        $CA = $CA + $prixTotalTTC;
         $this->revenue = $CA;
 
         $client1 = $room->getCustomers()[0];
         $cb = $client1->getMastercard();
 
-        Tools::exportCSV($prixTotal,$cb);
+        Tools::exportCSV($prixTotalTTC,$cb);
         Tools::facture($client1, $prixTotal, $room, $numOfFacture);
     }
 

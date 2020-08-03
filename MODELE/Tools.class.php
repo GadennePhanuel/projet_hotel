@@ -21,7 +21,7 @@ class Tools
         }
     }
 
-    public static function exportCSV($total,$cb){
+    public static function exportCSV($totalTTC,$cb){
         date_default_timezone_set('Europe/Paris');
         $date = date('d-m-Y') .'_'. date('H') .'h'. date('i') .'min'. date('s') .'sec';
 
@@ -29,13 +29,14 @@ class Tools
 
         $fp = fopen($pathOut, "x");
 
-        if($total < 0){
+
+        if($totalTTC < 0){
            $natureOp = "remboursement";
         }else{
             $natureOp = "Paiement";
         }
 
-        $tmp = array($date,$natureOp,$total,$cb);
+        $tmp = array($date,$natureOp,$totalTTC,$cb);
 
         $fields = array_map("utf8_decode", $tmp);
         fputcsv($fp, $tmp, ",", " ", " ");
