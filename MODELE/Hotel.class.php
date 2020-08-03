@@ -77,12 +77,8 @@ class Hotel
                 $arrLogCustomer[] = $customer->getLogin();
             }
         }
-        if (isset($arrLogCustomer) && !empty($arrLogCustomer)){
-            if (in_array($log, $arrLogCustomer)){
-
+        if ((isset($arrLogCustomer) && !empty($arrLogCustomer)) && in_array($log, $arrLogCustomer)){
                 return array($log, "customer");
-
-            }
         }
         else{
             foreach ($this->workers as $worker){
@@ -90,8 +86,6 @@ class Hotel
             }
             if (in_array($log, $arrLogWorkers)){
                 return array($log, "worker");
-            }else{
-                return "login inexistant";
             }
         }
     }
