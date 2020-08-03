@@ -35,6 +35,8 @@ class Tools
             $natureOp = "Paiement";
         }
 
+        $total = $total * 1.20;
+
         $tmp = array($date,$natureOp,$total,$cb);
 
         $fields = array_map("utf8_decode", $tmp);
@@ -77,20 +79,20 @@ class Tools
         $pdf->addClient("$nom");
         $pdf->addPageNumber("1");
         $pdf->addClientAdresse("Pour\nM.(Mde.) $nom $prenom\nEmpreinte carte: $cb");
-        $pdf->addReglement("Carte bancaire à reception de la facture");
+        $pdf->addReglement("Carte bancaire");
         $pdf->addEcheance("$date1");
         $pdf->addNumTVA("QTR888777666");
         $pdf->addReference("$dateStartString au $dateEndString");
         $cols=array( "REFERENCE"    => 23,
             "DESIGNATION"  => 78,
-            "QUANTITE"     => 22,
+            "Nb jour"     => 22,
             "P.U. HT"      => 26,
             "MONTANT H.T." => 30,
             "TVA"          => 11 );
         $pdf->addCols( $cols);
         $cols=array( "REFERENCE"    => "L",
             "DESIGNATION"  => "L",
-            "QUANTITE"     => "C",
+            "Nb jour"     => "C",
             "P.U. HT"      => "R",
             "MONTANT H.T." => "R",
             "TVA"          => "C" );
@@ -103,7 +105,7 @@ class Tools
                 "$size\n" .
                 "$view\n" .
                 "$optionsList",
-            "QUANTITE"     => "$intervalDate",
+            "Nb jour"     => "$intervalDate",
             "P.U. HT"      => "$price",
             "MONTANT H.T." => "$total",
             "TVA"          => "1" );
@@ -138,7 +140,7 @@ class Tools
             "remise_tva"     => 1,       // {la remise s'applique sur ce code TVA}
             "remise"         => 0,       // {montant de la remise}
             "remise_percent" => 0,      // {pourcentage de remise sur ce montant de TVA}
-            "FraisPort"     => 1,
+            "FraisPort"     => 0,
             "portTTC"        => 10,      // montant des frais de ports TTC
             // par defaut la TVA = 19.6 %
             "portHT"         => 0,       // montant des frais de ports HT
