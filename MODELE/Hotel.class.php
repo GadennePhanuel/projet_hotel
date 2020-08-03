@@ -89,7 +89,7 @@ class Hotel
                 $arrLogWorkers[] = $worker->getLogin();
             }
             if (in_array($log, $arrLogWorkers)){
-                return "worker";
+                return array($log, "worker");
             }else{
                 return "login inexistant";
             }
@@ -97,18 +97,17 @@ class Hotel
     }
 
     
-    public function authentificationPassword()
+    public function authentificationPassword($log)
     {
         echo "Donnez votre mdp: ";
         $mdp = readline();
 
         foreach ($this->workers as $worker){
-            $arrPassword[] = $worker->getPassword();
-        }
-        if (in_array($mdp, $arrPassword)){
-            return "true";
-        }else{
-            return "mauvais mot de passe";
+            $password = $worker->getPassword();
+            $login = $worker->getLogin();
+            if ($log == $login && $mdp == $password){
+                return "true";
+            }
         }
     }
 

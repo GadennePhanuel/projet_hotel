@@ -20,7 +20,7 @@ while($cond1){
         echo $hotel->displayCustomerRoom($identification[0]);
 
     }
-    else if ($identification == "worker"){
+    else if ($identification[1] == "worker"){
         $cond2 = true;
         while($cond2){
             echo "--------------------Module MENU--------------------\n";
@@ -55,7 +55,7 @@ while($cond1){
                     echo $hotel->displayLastRoomFree();
                     break;
                 case 'F':
-                    $authentification = $hotel->authentificationPassword();
+                    $authentification = $hotel->authentificationPassword($identification[0]);
                     if ($authentification == "true"){
                         $hotel->booking();
                     }else{
@@ -63,7 +63,7 @@ while($cond1){
                     }
                     break;
                 case 'G':
-                    $authentification = $hotel->authentificationPassword();
+                    $authentification = $hotel->authentificationPassword($identification[0]);
                     if ($authentification == "true"){
                         $hotel->freeARoom();
                     }else{
@@ -71,7 +71,7 @@ while($cond1){
                     }
                     break;
                 case 'H':
-                    $authentification = $hotel->authentificationPassword();
+                    $authentification = $hotel->authentificationPassword($identification[0]);
                     if ($authentification == "true"){
                         $hotel->editBooking();
                     }else{
@@ -79,7 +79,7 @@ while($cond1){
                     }
                     break;
                 case 'I':
-                    $authentification = $hotel->authentificationPassword();
+                    $authentification = $hotel->authentificationPassword($identification[0]);
                     if ($authentification == "true"){
                         $hotel->cancelBooking();
                     }else{
