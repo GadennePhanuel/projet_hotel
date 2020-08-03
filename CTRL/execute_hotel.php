@@ -16,7 +16,7 @@ $cond1 = true;
 while($cond1){
     $identification = $hotel->authentificationLogin();
     if ($identification == "customer"){
-        $hotel->displayCustomerRoom();
+        echo $hotel->displayCustomerRoom();
     }
     else if ($identification == "worker"){
         $cond2 = true;

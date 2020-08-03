@@ -179,12 +179,12 @@ class Hotel
                 foreach($customers as $customer){
                     $login = $customer->getLogin();
                     if($login == $this->authentificationLogin()) {
-                        return $customer->getPrenom()."\n".
-                               $customer->getNom()."\n".
-                               $room->getId."\n".
-                               $room->getType."\n".
-                               $room->dateStart()."\n".
-                               $room->dateEnd()."\n";
+                        return "Prenom: ".$customer->getPrenom()."\n".
+                               "Nom: ".$customer->getNom()."\n".
+                               "Numéro de chambre: ".$room->getId."\n".
+                               "Type de chambre: ".$room->getType."\n".
+                               "Date d'entrée: ".$room->dateStart()."\n".
+                               "Date de sortie: ".$room->dateEnd()."\n";
                     }
                 }
             }
