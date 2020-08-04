@@ -4,7 +4,7 @@
 
 ?>
 
-<<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,5 +22,21 @@
         <input type="submit" value="envoyer" />
     </div>
 
+    <?php
+        if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
+        foreach ($_SESSION["message"] as $value){
+    ?>
+    <div class="error_msg">
+        <?php        echo $value;   ?>
+    </div>
+    <?php
+        }
+        unset($_SESSION["message"]);
+    }
+
+    ?>
+
 </body>
+
+
 </html>
