@@ -1,7 +1,5 @@
 <?php
 session_start();
-$hotel = $_SESSION['hotel'];
-$log = $_SESSION['login'];
 ?>
 
 <!DOCTYPE html>

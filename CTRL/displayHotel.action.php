@@ -14,7 +14,7 @@ $hotel = $_SESSION["hotel"];
 
 $displayHotel= $hotel->displayHotel();
 
-$_SESSION['displayHotel'];
+$_SESSION['displayHotel'] = $displayHotel;
 header("Location: ../VIEW/etatHotel.php");
 
 

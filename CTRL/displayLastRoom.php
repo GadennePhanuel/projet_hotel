@@ -8,3 +8,9 @@ require_once "../MODELE/Room.class.php";
 require_once "../MODELE/Hotel.class.php";
 require_once "../MODELE/PDF_Invoice.class.php";
 session_start();
+$hotel = $_SESSION["hotel"];
+
+$roomLastFreeHotel= $hotel->displayNbRoomFree();
+
+$_SESSION['displayLastRoomFree'] = $roomLastFreeHotel;
+header("Location: ../VIEW/statutRoom.php");
