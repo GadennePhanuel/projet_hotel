@@ -128,10 +128,10 @@ class Hotel
     }
 
     public function displayHotel(){
-        echo $this->displayNbRoomFree();
-        echo PHP_EOL;
-        echo $this->displayNbRoomBooked();
-        echo PHP_EOL;
+        $displayNbRoomFree = $this->displayNbRoomFree();
+
+        $displayNbRoomBooked = $this->displayNbRoomBooked();
+
         $cpt = 0;
         foreach ($this->rooms as $room){
             $customers = $room->getCustomers();
@@ -144,7 +144,7 @@ class Hotel
             }
         }
         $this->nbCustomer = $cpt;
-        return "Nous avons actuellement ".$this->nbCustomer. " clients présents dans notre établissement.\n";
+        return $displayNbRoomFree . "\n" . $displayNbRoomBooked . "\n" . "Nous avons actuellement ".$this->nbCustomer. " clients présents dans notre établissement.\n";
     }
 
     public function displayFirstRoomFree(){
