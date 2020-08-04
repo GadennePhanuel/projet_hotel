@@ -1,0 +1,25 @@
+body{
+    background-color: aquamarine;
+}
+.container-xl{
+    background-color: white;
+    height: 100vh;
+}
+h1{
+    font-size: 80px;
+    margin: 40px 0 80px 0;
+    text-align: center;    
+}
+.menuList{
+    padding-right: 0;
+}
+.menuSubmit{
+    padding-left: 0;
+}
+.list-group-item-1{
+    padding-top: 19px;
+    padding-bottom: 19px;
+}
+.list-group-item-2{
+    text-align: center;
+}
