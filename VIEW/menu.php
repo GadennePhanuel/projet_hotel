@@ -9,6 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
 
     <title>Menu.php</title>
@@ -46,35 +47,35 @@ session_start();
 
                     <form action="" method="post">
                         <li class="list-group-item list-group-item-2 list-group-item-primary">
-                            <button type="submit" class="btn btn-primary" formaction="">Let's Go</button>
+                            <button type="submit" class="btn btn-primary" formaction="../CTRL/displayHotel.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-success">
-                            <button type="button" class="btn btn-success">Let's Go</button>
+                            <button type="submit" class="btn btn-success" formaction="../CTRL/displayBookedRoom.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-success">
-                            <button type="button" class="btn btn-success">Let's Go</button>
+                            <button type="submit" class="btn btn-success" formaction="../CTRL/displayFreeRoom.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-info">
-                            <button type="button" class="btn btn-info">Let's Go</button>
+                            <button type="submit" class="btn btn-info" formaction="../CTRL/displayFirstRoom.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-info">
-                            <button type="button" class="btn btn-info">Let's Go</button>
+                            <button type="submit" class="btn btn-info" formaction="../CTRL/displayLastRoom.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="button" class="btn btn-warning">Let's Go</button>
+                            <button type="submit" class="btn btn-warning" formaction="../CTRL/bookingRoom.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="button" class="btn btn-warning">Let's Go</button>
+                            <button type="submit" class="btn btn-warning" formaction="../CTRL/freeARoom.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="button" class="btn btn-warning">Let's Go</button>
+                            <button type="submit" class="btn btn-warning" formaction="../CTRL/editBooking.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="button" class="btn btn-warning">Let's Go</button>
+                            <button type="submit" class="btn btn-warning" formaction="../CTRL/cancelBooking.action.php">Let's Go</button>
                         </li>
 
                         <li class="list-group-item list-group-item-2 list-group-item-danger">
-                            <button type="button" class="btn btn-danger">Let's Go</button>
+                            <button type="button" class="btn btn-danger"> <a href="#">Let's Go</a> </button>
                         </li>
                     </form>
                 </ul>
