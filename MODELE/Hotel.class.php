@@ -65,11 +65,8 @@ class Hotel
         $this->workers = array(new Worker("Gadenne", "Phanuel", 29, "Admin1", "Admin1"), new Worker("Vigin", "Marie", 26, "Admin2", "Admin2"));
     }
 
-    public function authentificationLogin()
+    public function authentificationLogin($log)
     {
-        echo "Quel est votre login?: ";
-        $log = readline();
-
 
         foreach ($this->rooms as $room){
             $customers = $room->getCustomers();
