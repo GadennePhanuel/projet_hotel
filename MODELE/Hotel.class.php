@@ -1,5 +1,6 @@
 <?php
 require_once "Worker.class.php";
+require_once "Room.class.php";
 
 class Hotel
 {
@@ -125,23 +126,22 @@ class Hotel
     }
 
     public function displayHotel(){
-        $displayNbRoomFree = $this->displayNbRoomFree();
-
-        $displayNbRoomBooked = $this->displayNbRoomBooked();
-
-        $cpt = 0;
+        $allRoom = "";
+        //création d'un tableau contenant toutes les chambres occupés
+        $roomsBooked =array();
         foreach ($this->rooms as $room){
-            $customers = $room->getCustomers();
-            if (isset($customers) && !empty($customers)){
-                foreach ($customers as $customer){
-                    if (isset($customer) && !empty($customer)){
-                        $cpt++;
-                    }
-                }
+            if($room->getIsEmpty() == 1){
+                $roomsBooked[] = $room;
             }
         }
-        $this->nbCustomer = $cpt;
-        return $displayNbRoomFree . "\n" . $displayNbRoomBooked . "\n" . "Nous avons actuellement ".$this->nbCustomer. " clients présents dans notre établissement.\n";
+
+        foreach ($roomsBooked as $room){
+            $roomDisplay = $room->displayRoom();
+            $allRoom = $allRoom . $roomDisplay;
+        }
+
+        return $allRoom;
+
     }
 
     public function displayFirstRoomFree(){
