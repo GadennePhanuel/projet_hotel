@@ -8,3 +8,25 @@ require_once "../MODELE/Room.class.php";
 require_once "../MODELE/Hotel.class.php";
 require_once "../MODELE/PDF_Invoice.class.php";
 session_start();
+
+//recupere le password
+$password = $_POST['password'];
+$login = $_SESSION['login'];
+$hotel = $_SESSION['hotel'];
+$authentificationPassword =  $hotel->authentificationPassword($login);
+$identification = $hotel->authentificationLogin($login);
+
+$messages = array(
+    'mdp' => '',
+    'formulaire' => ''
+);
+
+if($password != $authentificationPassword){
+    $message['mdp'] = "Mauvais mot de passe";
+    $_SESSION['message'] = $message;
+
+    header("Location: ../VIEW/passwordBooking.php");
+}elseif($password == $authentificationPassword  && $login == $identification){
+
+    header("Location: ../VIEW/booking.php");
+}
