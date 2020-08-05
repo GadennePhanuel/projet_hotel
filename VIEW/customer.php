@@ -16,9 +16,13 @@
 <body>
 
 
-<p>
-    <?php echo $_SESSION['displayCustomerRoom']; ?>
-</p>
+    <?php $customerRoom = $_SESSION['displayCustomerRoom'];
+        foreach($customerRoom as $key => $value){?>
+            <p> <?php echo $key. ' ' .$value. "<br>" ?></p>
+        <?php } ?>
+
+
+
 
 </body>
 </html>

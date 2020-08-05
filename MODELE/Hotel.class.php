@@ -169,6 +169,7 @@ class Hotel
 
     public function displayCustomerRoom($log)
     {
+        $customerRoom = [];
         foreach ($this->rooms as $room) {
             if ($room->getIsEmpty() == 1) {
                 $customers = $room->getCustomers();
@@ -178,138 +179,163 @@ class Hotel
                     if ($login == $log) {
                         $tmp1 = $room->getDateStart();
                         $tmp2 = $room->getDateEnd();
-                        return "Prenom: " . $customer->getPrenom() . "\n" .
-                            "Nom: " . $customer->getNom() . "\n" .
-                            "Numéro de chambre: " . $room->getId() . "\n" .
-                            "Type de chambre: " . $room->getType() . "\n" .
-                            "Date d'entrée: " . $tmp1->format('d-m-Y') . "\n" .
-                            "Date de sortie: " . $tmp2->format('d-m-Y') . "\n";
+
+                        return $customerRoom = [
+                            "Prenom: " => $customer->getPrenom(),
+                            "Nom" =>  $customer->getNom(),
+                            "Numéro de chambre: " => $room->getId(),
+                            "Type de chambre: " => $room->getType(),
+                            "Date d'entrée: " => $tmp1->format('d-m-Y'),
+                            "Date de sortie: " => $tmp2->format('d-m-Y')
+                        ];
                     }
                 }
             }
         }
     }
-    
-    public function booking (){
+
+    public function displayRoomType(){
         $cptCVP = 0;
+        $arrayCVP = [];
         foreach ($this->roomsCVP as $room){
             if($room->getisEmpty() ==0){
                 $cptCVP ++;
             }
         }
         if ($cptCVP > 0){
-            echo "Chambre 1: ".$this->roomsCVP[0]->getType()."\n".
-                 "Vue : ".$this->roomsCVP[0]->getView()."\n".
-                 "Surface: ".$this->roomsCVP[0]->getSize()."\n".
-                 "Options :".$this->roomsCVP[0]->getOptionList()."\n".
-                 "Prix: ".$this->roomsCVP[0]->getPrice()."\n";
-            echo PHP_EOL;
+            $arrayCVP = [
+                "Chambre 1: " => $this->roomsCVP[0]->getType(),
+                "Vue : " => $this->roomsCVP[0]->getView(),
+                "Surface: " => $this->roomsCVP[0]->getSize(),
+                "Options :" => $this->roomsCVP[0]->getOptionList(),
+                "Prix: " => $this->roomsCVP[0]->getPrice()
+            ];
+
         }
 
         $cptCVJ = 0;
+        $arrayCVJ = [];
         foreach ($this->roomsCVJ as $room){
             if($room->getisEmpty() ==0){
                 $cptCVJ ++;
             }
         }
         if ($cptCVJ > 0){
-            echo "Chambre 2: ".$this->roomsCVJ[0]->getType()."\n".
-                "Vue : ".$this->roomsCVJ[0]->getView()."\n".
-                "Surface: ".$this->roomsCVJ[0]->getSize()."\n".
-                "Options :".$this->roomsCVJ[0]->getOptionList()."\n".
-                "Prix: ".$this->roomsCVJ[0]->getPrice()."\n";
-            echo PHP_EOL;
+            $arrayCVJ = [
+                "Chambre 2: " => $this->roomsCVJ[0]->getType(),
+                "Vue : " => $this->roomsCVJ[0]->getView(),
+                "Surface: " => $this->roomsCVJ[0]->getSize(),
+                "Options :" => $this->roomsCVJ[0]->getOptionList(),
+                "Prix: " => $this->roomsCVJ[0]->getPrice()
+            ];
         }
 
         $cptCVO = 0;
+        $arrayCVO = [];
         foreach ($this->roomsCVO as $room){
             if($room->getisEmpty() ==0){
                 $cptCVO ++;
             }
         }
         if ($cptCVO > 0){
-            echo "Chambre 3: ".$this->roomsCVO[0]->getType()."\n".
-                "Vue : ".$this->roomsCVO[0]->getView()."\n".
-                "Surface: ".$this->roomsCVO[0]->getSize()."\n".
-                "Options :".$this->roomsCVO[0]->getOptionList()."\n".
-                "Prix: ".$this->roomsCVO[0]->getPrice()."\n";
-            echo PHP_EOL;
+            $arrayCVO =[
+                "Chambre 3: " => $this->roomsCVO[0]->getType(),
+                "Vue : " => $this->roomsCVO[0]->getView(),
+                "Surface: " => $this->roomsCVO[0]->getSize(),
+                "Options :" => $this->roomsCVO[0]->getOptionList(),
+                "Prix: " => $this->roomsCVO[0]->getPrice()
+                ];
+
         }
 
         $cptCVIO = 0;
+        $arrayCVIO = [];
         foreach ($this->roomsCVIO as $room){
             if($room->getisEmpty() ==0){
                 $cptCVIO ++;
             }
         }
         if ($cptCVIO > 0){
-            echo "Chambre 4: ".$this->roomsCVIO[0]->getType()."\n".
-                "Vue : ".$this->roomsCVIO[0]->getView()."\n".
-                "Surface: ".$this->roomsCVIO[0]->getSize()."\n".
-                "Options :".$this->roomsCVIO[0]->getOptionList()."\n".
-                "Prix: ".$this->roomsCVIO[0]->getPrice()."\n";
-            echo PHP_EOL;
+            $arrayCVIO = [
+                "Chambre 4: " => $this->roomsCVIO[0]->getType(),
+                "Vue : " => $this->roomsCVIO[0]->getView(),
+                "Surface: " => $this->roomsCVIO[0]->getSize(),
+                "Options :" => $this->roomsCVIO[0]->getOptionList(),
+                "Prix: " => $this->roomsCVIO[0]->getPrice()
+            ];
         }
 
         $cptCDA = 0;
+        $arrayCDA = [];
         foreach ($this->roomsCDA as $room){
             if($room->getisEmpty() ==0){
                 $cptCDA ++;
             }
         }
         if ($cptCDA > 0){
-            echo "Chambre 5: ".$this->roomsCDA[0]->getType()."\n".
-                "Vue : ".$this->roomsCDA[0]->getView()."\n".
-                "Surface: ".$this->roomsCDA[0]->getSize()."\n".
-                "Options :".$this->roomsCDA[0]->getOptionList()."\n".
-                "Prix: ".$this->roomsCDA[0]->getPrice()."\n";
-            echo PHP_EOL;
+            $arrayCDA = [
+                "Chambre 5: " => $this->roomsCDA[0]->getType(),
+                "Vue : " => $this->roomsCDA[0]->getView(),
+                "Surface: " => $this->roomsCDA[0]->getSize(),
+                "Options :" => $this->roomsCDA[0]->getOptionList(),
+                "Prix: " => $this->roomsCDA[0]->getPrice()
+            ];
         }
 
         $cptExec = 0;
+        $arrayCptExec = [];
         foreach ($this->roomsExec as $room){
             if($room->getisEmpty() ==0){
                 $cptExec ++;
             }
         }
         if ($cptExec > 0){
-            echo "Chambre 6: ".$this->roomsExec[0]->getType()."\n".
-                "Vue : ".$this->roomsExec[0]->getView()."\n".
-                "Surface: ".$this->roomsExec[0]->getSize()."\n".
-                "Options :".$this->roomsExec[0]->getOptionList()."\n".
-                "Prix: ".$this->roomsExec[0]->getPrice()."\n";
-            echo PHP_EOL;
+            $arrayCptExec = [
+                "Chambre 6: " => $this->roomsExec[0]->getType(),
+                "Vue : " => $this->roomsExec[0]->getView(),
+                "Surface: " => $this->roomsExec[0]->getSize(),
+                "Options :" => $this->roomsExec[0]->getOptionList(),
+                "Prix: " => $this->roomsExec[0]->getPrice()
+            ];
         }
 
         $cptAmb = 0;
+        $arrayCptAmb = [];
         foreach ($this->roomsAmb as $room){
             if($room->getisEmpty() ==0){
                 $cptAmb ++;
             }
         }
         if ($cptAmb > 0){
-            echo "Chambre 7: ".$this->roomsAmb[0]->getType()."\n".
-                "Vue : ".$this->roomsAmb[0]->getView()."\n".
-                "Surface: ".$this->roomsAmb[0]->getSize()."\n".
-                "Options :".$this->roomsAmb[0]->getOptionList()."\n".
-                "Prix: ".$this->roomsAmb[0]->getPrice()."\n";
-            echo PHP_EOL;
+            $arrayCptAmb = [
+                "Chambre 7: " => $this->roomsAmb[0]->getType(),
+                "Vue : " => $this->roomsAmb[0]->getView(),
+                "Surface: " => $this->roomsAmb[0]->getSize(),
+                "Options :" => $this->roomsAmb[0]->getOptionList(),
+                "Prix: " => $this->roomsAmb[0]->getPrice()
+            ];
         }
 
         $cptRoyale = 0;
+        $arrayCptRoyale = [];
         foreach ($this->roomsRoyale as $room){
             if($room->getisEmpty() ==0){
                 $cptRoyale ++;
             }
         }
         if ($cptRoyale > 0){
-            echo "Chambre 8: ".$this->roomsRoyale[0]->getType()."\n".
-                "Vue : ".$this->roomsRoyale[0]->getView()."\n".
-                "Surface: ".$this->roomsRoyale[0]->getSize()."\n".
-                "Options :".$this->roomsRoyale[0]->getOptionList()."\n".
-                "Prix: ".$this->roomsRoyale[0]->getPrice()."\n";
-            echo PHP_EOL;
+            $arrayCptRoyale = [
+                "Chambre 8: " => $this->roomsRoyale[0]->getType(),
+                "Vue : " => $this->roomsRoyale[0]->getView(),
+                "Surface: " => $this->roomsRoyale[0]->getSize(),
+                "Options :" => $this->roomsRoyale[0]->getOptionList(),
+                "Prix: " => $this->roomsRoyale[0]->getPrice()
+            ];
         }
+        return $res = [$arrayCVP, $arrayCVJ, $arrayCVO, $arrayCVIO, $arrayCDA, $arrayCptExec, $arrayCptAmb, $arrayCptRoyale];
+    }
+    public function booking (){
+        $typeRoom = $this->displayRoomType();
 
         $typechoose = "";
         $c3 = true;
