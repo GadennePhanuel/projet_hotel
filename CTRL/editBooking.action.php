@@ -20,6 +20,10 @@ $message = array(
 //on appelle la fonction de vérification du mot de passe
 
 if ($hotel->authentificationPassword($login,$password) == "true"){
+
+    $arrRoomsBookedSimple = $hotel->displayRoomsBookedSimple();
+    $_SESSION['roomsBookedSimple'] = $arrRoomsBookedSimple;
+
     header("Location: ../VIEW/editBooking.php");
 }else{
     $message['mdp'] = "Mauvais mot de passe";
