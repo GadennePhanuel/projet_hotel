@@ -11,7 +11,7 @@ session_start();
 
 $hotel = $_SESSION["hotel"];
 
-$roomFirstFreeHotel= $hotel->displayNbRoomFree();
+$roomFirstFreeHotel= $hotel->displayFirstRoomFree();
 
 $_SESSION['displayFirstRoomFree'] = $roomFirstFreeHotel;
 header("Location: ../VIEW/statutRoom.php");

@@ -10,7 +10,7 @@ require_once "../MODELE/PDF_Invoice.class.php";
 session_start();
 $hotel = $_SESSION["hotel"];
 
-$roomLastFreeHotel= $hotel->displayNbRoomFree();
+$roomLastFreeHotel= $hotel->displayLastRoomFree();
 
 $_SESSION['displayLastRoomFree'] = $roomLastFreeHotel;
 header("Location: ../VIEW/statutRoom.php");
