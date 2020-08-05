@@ -126,7 +126,7 @@ class Hotel
     }
 
     public function displayHotel(){
-        $allRoom = "";
+        $allRoom = array();
         //création d'un tableau contenant toutes les chambres occupés
         $roomsBooked =array();
         foreach ($this->rooms as $room){
@@ -134,14 +134,15 @@ class Hotel
                 $roomsBooked[] = $room;
             }
         }
-
-        foreach ($roomsBooked as $room){
-            $roomDisplay = $room->displayRoom();
-            $allRoom = $allRoom . $roomDisplay;
+        if (isset($roomsBooked) && !empty($roomsBooked)){
+            foreach ($roomsBooked as $room){
+                $roomDisplay = $room->displayRoom();
+                $allRoom[] = $roomDisplay;
+            }
+            return $allRoom;
+        }else{
+            return "Aucune réservation dans l'hotel";
         }
-
-        return $allRoom;
-
     }
 
     public function displayFirstRoomFree(){

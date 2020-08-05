@@ -47,25 +47,37 @@ class Room
             foreach ($this->customers as $customer){
                 $this->customersList = $this->customersList." ". $customer;
             }
-            return "Chambre n°".$this->id."\n".
-                    "Type: ".$this->type."\n".
-                    "Vue: ". $this->view."\n".
-                    "Taille: ". $this->size."\n".
-                    "Options: ". $this->optionList."\n".
-                    "Prix de la nuit: ". $this->price."\n".
-                    "Statut: occupé\n".
-                    "Occupant: ". $this->customersList."\n".
-                    "Date de réservation: ".$this->dateStart->format('d-m-Y')." au ".$this->dateEnd->format('d-m-Y')."\n";
+            $ch = "Chambre n°".$this->id;
+            $ty = "Type: ".$this->type;
+            $vu = "Vue: ". $this->view;
+            $taille = "Taille: ". $this->size;
+            $opt = "Options: ". $this->optionList;
+            $prix = "Prix de la nuit: ". $this->price;
+            $stat = "Statut: occupé";
+            $client = "Occupant: ". $this->customersList;
+            $dateReserv = "Date de réservation: ".$this->dateStart->format('d-m-Y')." au ".$this->dateEnd->format('d-m-Y');
+
+            $result = array($ch, $ty, $vu, $taille, $opt, $prix, $stat, $client, $dateReserv);
+
+            return $result;
+
         }else {
-            return "Chambre n°".$this->id."\n".
-                    "Type: ".$this->type."\n".
-                    "Vue: ". $this->view."\n".
-                    "Taille: ". $this->size."\n".
-                    "Options: ". $this->optionList."\n".
-                    "Prix de la nuit: ". $this->price."\n".
-                    "Statut: libre\n";
+            $ch = "Chambre n°".$this->id;
+            $ty = "Type: ".$this->type;
+            $vu = "Vue: ". $this->view;
+            $taille = "Taille: ". $this->size;
+            $opt = "Options: ". $this->optionList;
+            $prix = "Prix de la nuit: ". $this->price;
+            $stat = "Statut: libre";
+
+            $result = array($ch, $ty, $vu, $taille, $opt, $prix, $stat);
+
+            return $result;
         }
     }
+
+
+
 
     /**
      * @return String

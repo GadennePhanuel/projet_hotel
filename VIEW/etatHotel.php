@@ -20,14 +20,27 @@ session_start();
                 <h1>ETAT DE L'HOTEL</h1>
             </div>
         </div>
-
-        <div class="row justify-content-center">
-            <div class="col-8">
-                <p>
-                    <?php echo $_SESSION['displayHotel']; ?>
-                </p>
+        <?php if (is_array($_SESSION['displayHotel'])){ ?>
+            <?php foreach ($_SESSION['displayHotel'] as $room){ ?>
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <p>
+                            <?php foreach ($room as $content){ ?>
+                                      <?php echo $content. "<br>"?>
+                            <?php } ?>
+                        </p>
+                    </div>
+                </div>
+            <?php } ?>
+        <?php }else{ ?>
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <p>
+                        <?php echo $_SESSION['displayHotel']. "<br>"?>
+                    </p>
+                </div>
             </div>
-        </div>
+        <?php } ?>
 
         <div class="row justify-content-center">
             <div class="col-3">
