@@ -333,7 +333,6 @@ class Hotel
         return $res = [$arrayCVP, $arrayCVJ, $arrayCVO, $arrayCVIO, $arrayCDA, $arrayCptExec, $arrayCptAmb, $arrayCptRoyale];
     }
     public function booking (){
-        $typeRoom = $this->displayRoomType();
 
         $typechoose = "";
         $c3 = true;

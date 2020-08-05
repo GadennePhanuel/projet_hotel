@@ -27,6 +27,8 @@ if( $authentificationPassword != "true"){
 
     header("Location: ../VIEW/passwordBooking.php");
 }elseif($authentificationPassword == "true" ){
+    $displayRoomType= $hotel->displayRoomType();
+    $_SESSION['displayRoomType'] = $displayRoomType;
 
     header("Location: ../VIEW/booking.php");
 }
