@@ -35,6 +35,7 @@
     }
 
     ?>
+    <?php unset($_SESSION['login']);?>
     <?php unset($_SESSION['displayCustomerRoom']);?>
 </body>
 

@@ -9,6 +9,8 @@ session_start();
 
 //recupere login
 $login = $_POST['login'];
+//stockage du login
+$_SESSION['login'] = $login;
 
 // recupere objet hotel
 $hotel = $_SESSION['hotel'];
