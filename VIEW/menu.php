@@ -56,22 +56,22 @@ session_start();
                             <button type="submit" class="btn btn-success" formaction="../CTRL/displayFreeRoom.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-info">
-                            <button type="submit" class="btn btn-info" formaction="../CTRL/displayFirstRoom.php">Let's Go</button>
+                            <button type="submit" class="btn btn-info" formaction="../CTRL/displayFirstRoom.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-info">
-                            <button type="submit" class="btn btn-info" formaction="../CTRL/displayLastRoom.php">Let's Go</button>
+                            <button type="submit" class="btn btn-info" formaction="../CTRL/displayLastRoom.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="submit" class="btn btn-warning" formaction="../CTRL/bookingRoom.action.php">Let's Go</button>
+                            <button type="submit" class="btn btn-warning" formaction="../CTRL/passwordBooking.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="submit" class="btn btn-warning" formaction="../CTRL/freeARoom.action.php">Let's Go</button>
+                            <button type="submit" class="btn btn-warning" formaction="../CTRL/passwordFree.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="submit" class="btn btn-warning" formaction="../CTRL/editBooking.action.php">Let's Go</button>
+                            <button type="submit" class="btn btn-warning" formaction="../CTRL/passwordEdit.action.php">Let's Go</button>
                         </li>
                         <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="submit" class="btn btn-warning" formaction="../CTRL/cancelBooking.action.php">Let's Go</button>
+                            <button type="submit" class="btn btn-warning" formaction="../CTRL/passwordCancel.action.php">Let's Go</button>
                         </li>
 
                         <li class="list-group-item list-group-item-2 list-group-item-danger">
