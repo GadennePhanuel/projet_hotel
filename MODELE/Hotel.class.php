@@ -91,9 +91,6 @@ class Hotel
     
     public function authentificationPassword($log)
     {
-        echo "Donnez votre mdp: ";
-        $mdp = readline();
-
         foreach ($this->workers as $worker){
             $password = $worker->getPassword();
             $login = $worker->getLogin();
