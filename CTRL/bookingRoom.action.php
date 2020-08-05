@@ -13,20 +13,20 @@ session_start();
 $password = $_POST['password'];
 $login = $_SESSION['login'];
 $hotel = $_SESSION['hotel'];
-$authentificationPassword =  $hotel->authentificationPassword($login);
-$identification = $hotel->authentificationLogin($login);
+$authentificationPassword =  $hotel->authentificationPassword($login,$password);
 
-$messages = array(
+
+$message = array(
     'mdp' => '',
     'formulaire' => ''
 );
 
-if($password != $authentificationPassword){
+if( $authentificationPassword != "true"){
     $message['mdp'] = "Mauvais mot de passe";
     $_SESSION['message'] = $message;
 
     header("Location: ../VIEW/passwordBooking.php");
-}elseif($password == $authentificationPassword  && $login == $identification){
+}elseif($authentificationPassword == "true" ){
 
     header("Location: ../VIEW/booking.php");
 }

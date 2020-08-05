@@ -13,11 +13,17 @@ $password = $_POST['password'];
 $login = $_SESSION['login'];
 $hotel  = $_SESSION['hotel'];
 
+$message = array(
+    'mdp' => '',
+    'formulaire' => ''
+);
 //on appelle la fonction de vérification du mot de passe
 
-if ($hotel->authentificationPassword($login) == "true"){
+if ($hotel->authentificationPassword($login,$password) == "true"){
     header("Location: ../VIEW/editBooking.php");
 }else{
-    $_SESSION["message"] = "mauvais mot de passe";
+    $message['mdp'] = "Mauvais mot de passe";
+    $_SESSION['message'] = $message;
+
     header("Location: ../VIEW/passwordEdit.php");
 }

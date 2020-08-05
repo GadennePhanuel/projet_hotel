@@ -89,7 +89,7 @@ class Hotel
     }
 
     
-    public function authentificationPassword($log)
+    public function authentificationPassword($log,$mdp)
     {
         foreach ($this->workers as $worker){
             $password = $worker->getPassword();
