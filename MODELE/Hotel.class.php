@@ -332,49 +332,35 @@ class Hotel
         }
         return $res = [$arrayCVP, $arrayCVJ, $arrayCVO, $arrayCVIO, $arrayCDA, $arrayCptExec, $arrayCptAmb, $arrayCptRoyale];
     }
-    public function booking ($type,$dateStart,$dateEnd){
+    public function booking ($dateStart,$dateEnd,$customer,$typechoose){
 
-        $typechoose = "";
-        $c3 = true;
-        while ($c3){
-            switch ($type){
-                case '1':
-                    $typechoose = "Chambre Vue Piscine";
-                    $c3 = false;
-                    break;
-                case '2':
-                    $typechoose = "Chambre Vue Jardin";
-                    $c3 = false;
-                    break;
-                case '3':
-                    $typechoose = "Chambre Vue Océan";
-                    $c3 = false;
-                    break;
-                case '4':
-                    $typechoose = "Chambre vue imprenable sur l'océan";
-                    $c3 = false;
-                    break;
-                case '5':
-                    $typechoose = "Suite CDA";
-                    $c3 = false;
-                    break;
-                case '6':
-                    $typechoose = "Suite Executive";
-                    $c3 = false;
-                    break;
-                case '7':
-                    $typechoose = "Suite Ambassadeur";
-                    $c3 = false;
-                    break;
-                case '8':
-                    $typechoose = "Suite Royale";
-                    $c3 = false;
-                    break;
-                default:
-                    echo "pas compris\n";
-            }
+        switch ($typechoose){
+            case '1':
+                $typechoose = "Chambre Vue Piscine";
+                break;
+            case '2':
+                $typechoose = "Chambre Vue Jardin";
+                break;
+            case '3':
+                $typechoose = "Chambre Vue Océan";
+                break;
+            case '4':
+                $typechoose = "Chambre vue imprenable sur l'océan";
+                break;
+            case '5':
+                $typechoose = "Suite CDA";
+                break;
+            case '6':
+                $typechoose = "Suite Executive";
+                break;
+            case '7':
+                $typechoose = "Suite Ambassadeur";
+                break;
+            case '8':
+                $typechoose = "Suite Royale";
+                break;
+
         }
-
         //selection de la première Room correspondante à son choix
         $roomChoose = "";
         foreach ($this->rooms as $room){
@@ -388,13 +374,15 @@ class Hotel
         $dateStart = new DateTime($dateStart);
         $dateEnd = new DateTime($dateEnd);
 
-        $roomChoose->setCustomers($this->createArrCustomers());
+        $roomChoose->setCustomers($customer);
         $roomChoose->setIsEmpty(1);
         $roomChoose->setDateStart($dateStart);
         $roomChoose->setDateEnd($dateEnd);
 
-        echo "Ok chambre numéro ". $roomChoose->getId(). " bien réservé au nom de M.(Mde.)".$roomChoose->getCustomers()[0]->getNom()."\n";
+
         $this->paiement($roomChoose);
+
+        return $roomChoose;
     }
 
     public function paiement($room){

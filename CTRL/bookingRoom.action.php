@@ -9,27 +9,30 @@ require_once "../MODELE/Hotel.class.php";
 require_once "../MODELE/PDF_Invoice.class.php";
 session_start();
 
-//recupere le password
-$password = $_POST['password'];
-$login = $_SESSION['login'];
-$_SESSION['password'] = $password;
-$hotel = $_SESSION['hotel'];
-$authentificationPassword =  $hotel->authentificationPassword($login,$password);
+$typechoose = $_POST['type'];
+$dateStart = $_POST['dateStart'];
+$dateEnd = $_POST['dateEnd'];
 
+$customer = $_SESSION['customer'];
+$hotel = $_SESSION['hotel'];
 
 $message = array(
-    'mdp' => '',
+    'saisi' => '',
     'formulaire' => ''
 );
 
-if( $authentificationPassword != "true"){
-    $message['mdp'] = "Mauvais mot de passe";
+if(isset($typechoose) && !empty($typechoose) || $typechoose = 0 || $typechoose > 8) {
+    $message['saisi'] = "Veuillez saisir un nombre entre 1 et 8";
     $_SESSION['message'] = $message;
 
-    header("Location: ../VIEW/passwordBooking.php");
-}elseif($authentificationPassword == "true" ){
-    $displayRoomType= $hotel->displayRoomType();
-    $_SESSION['displayRoomType'] = $displayRoomType;
-
     header("Location: ../VIEW/booking.php");
+
+}elseif($typechoose >= 1 && $typechoose <= 8){
+
+    $booking = $hotel->booking($dateStart,$dateEnd,$customer,$typechoose);
+    $booking = $booking->displayRoom();
+    $_SESSION['booking'] = $booking;
+
+    header("Location: ../VIEW/confirmBooking.php");
 }
+
