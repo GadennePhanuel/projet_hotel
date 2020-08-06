@@ -46,7 +46,8 @@ if ((isset($nom) && !empty($nom)) && (isset($prenom) && !empty($prenom)) && (iss
         $message['saisi'] = "Le client principal doit avoir 18 ans";
         $_SESSION['message'] = $message;
 
-    header("Location: ../VIEW/createClient.php");
+    exit(header("Location: ../VIEW/createClient.php"));
+
     }else{
 
         $customer = $hotel->createArrCustomers($nom, $prenom, $age, $login, $email, $mastercard);
@@ -62,10 +63,10 @@ if ((isset($nomSec) && !empty($nomSec)) && (isset($prenomSec) && !empty($prenomS
         $cptA++;
     }
     elseif ($ageSec >= 18 && $cptA >= 2){
-        $message['saisi'] = "Vous ne pouvez entrer que 2 adulte maximum";
+        $message['saisi'] = "Vous ne pouvez entrer que 2 adultes maximum";
         $_SESSION['message'] = $message;
 
-        header("Location: ../VIEW/createClient.php");
+        exit(header("Location: ../VIEW/createClient.php"));
     }
     elseif ($ageSec < 18 && $cptE < 2){
         $customer = $hotel->createArrCustomers($nomSec, $prenomSec, $ageSec, $login, $email, $mastercard);
@@ -73,10 +74,10 @@ if ((isset($nomSec) && !empty($nomSec)) && (isset($prenomSec) && !empty($prenomS
         $cptE++;
     }
     elseif ($ageSec < 18 && $cptE >= 2){
-        $message['saisi'] = "Vous ne pouvez entrer que 2 enfant maximum";
+        $message['saisi'] = "Vous ne pouvez entrer que 2 enfants maximum";
         $_SESSION['message'] = $message;
 
-        header("Location: ../VIEW/createClient.php");
+       exit(header("Location: ../VIEW/createClient.php"));
     }
 }
 
@@ -88,10 +89,10 @@ if ((isset($nomSec2) && !empty($nomSec2)) && (isset($prenomSec2) && !empty($pren
         $cptA++;
     }
     elseif ($ageSec2 >= 18 && $cptA >= 2){
-        $message['saisi'] = "Vous ne pouvez entrer que 2 adulte maximum";
+        $message['saisi'] = "Vous ne pouvez entrer que 2 adultes maximum";
         $_SESSION['message'] = $message;
 
-        header("Location: ../VIEW/createClient.php");
+        exit(header("Location: ../VIEW/createClient.php"));
     }
     elseif ($ageSec2 < 18 && $cptE < 2){
         $customer = $hotel->createArrCustomers($nomSec2, $prenomSec2, $ageSec2, $login, $email, $mastercard);
@@ -99,10 +100,10 @@ if ((isset($nomSec2) && !empty($nomSec2)) && (isset($prenomSec2) && !empty($pren
         $cptE++;
     }
     elseif ($ageSec2 < 18 && $cptE >= 2){
-        $message['saisi'] = "Vous ne pouvez entrer que 2 enfant maximum";
+        $message['saisi'] = "Vous ne pouvez entrer que 2 enfants maximum";
         $_SESSION['message'] = $message;
 
-        header("Location: ../VIEW/createClient.php");
+        exit(header("Location: ../VIEW/createClient.php"));
     }
 }
 
@@ -113,10 +114,10 @@ if ((isset($nomSec3) && !empty($nomSec3)) && (isset($prenomSec3) && !empty($pren
         $cptA++;
     }
     elseif ($ageSec3 >= 18 && $cptA >= 2){
-        $message['saisi'] = "Vous ne pouvez entrer que 2 adulte maximum";
+        $message['saisi'] = "Vous ne pouvez entrer que 2 adultes maximum";
         $_SESSION['message'] = $message;
 
-        header("Location: ../VIEW/createClient.php");
+        exit(header("Location: ../VIEW/createClient.php"));
     }
     elseif ($ageSec3 < 18 && $cptE < 2){
         $customer = $hotel->createArrCustomers($nomSec3, $prenomSec3, $ageSec3, $login, $email, $mastercard);
@@ -124,10 +125,10 @@ if ((isset($nomSec3) && !empty($nomSec3)) && (isset($prenomSec3) && !empty($pren
         $cptE++;
     }
     elseif ($ageSec3 < 18 && $cptE >= 2){
-        $message['saisi'] = "Vous ne pouvez entrer que 2 enfant maximum";
+        $message['saisi'] = "Vous ne pouvez entrer que 2 enfants maximum";
         $_SESSION['message'] = $message;
 
-        header("Location: ../VIEW/createClient.php");
+       exit(header("Location: ../VIEW/createClient.php"));
     }
 }
 
