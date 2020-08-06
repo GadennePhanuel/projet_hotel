@@ -37,7 +37,11 @@ session_start();
             </div>
         </div>
     <?php } ?>
-
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
+        </div>
+    </div>
 </div>
 
 

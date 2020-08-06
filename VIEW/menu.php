@@ -82,7 +82,7 @@ session_start();
                         </li>
 
                         <li class="list-group-item list-group-item-2 list-group-item-danger">
-                            <button type="button" class="btn btn-danger"> <a href="#">Let's Go</a> </button>
+                            <button type="button" class="btn btn-danger"> <a href="../VIEW/login.php">Let's Go</a> </button>
                         </li>
                     </form>
                 </ul>

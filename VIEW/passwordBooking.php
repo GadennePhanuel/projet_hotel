@@ -30,6 +30,11 @@ session_start();
             <input type="submit" value="envoyer" />
         </div>
 
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
+            </div>
+        </div>
         <?php
         if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
             foreach ($_SESSION["message"] as $value){
@@ -44,6 +49,8 @@ session_start();
 
         ?>
         <?php unset($_SESSION['password']);?>
+
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
