@@ -29,7 +29,7 @@ require_once "../MODELE/PDF_Invoice.class.php";
 
     <div class="row justify-content-center">
         <div class="col-3">
-            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
+            <button type="button" class="btn btn-primary"><a href="login.php">Retour au login</a></button>
         </div>
     </div>
 
