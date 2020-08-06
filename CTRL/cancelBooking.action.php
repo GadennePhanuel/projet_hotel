@@ -29,5 +29,5 @@ if ($hotel->authentificationPassword($login,$password) == "true"){
     $message['mdp'] = "Mauvais mot de passe";
     $_SESSION['message'] = $message;
 
-    header("Location: ../VIEW/passwordEdit.php");
+    header("Location: ../VIEW/passwordCancel.php");
 }
