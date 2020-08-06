@@ -39,6 +39,7 @@ session_start();
             <input type="text" name="mastercard" id="mastercard" required>
         </p>
     <br>
+
         <div>
             <p>
                 <label for="nomSec">Nom: </label>
@@ -53,7 +54,10 @@ session_start();
                 <input type="text" name="ageSec" id="ageSec" >
             </p>
         </div>
+
     <br>
+
+
         <div>
             <p>
                 <label for="nomSec2">Nom: </label>
@@ -68,8 +72,10 @@ session_start();
                 <input type="text" name="ageSec2" id="ageSec2" >
             </p>
         </div>
+
     <br>
         <div>
+
             <p>
                 <label for="nomSec3">Nom: </label>
                 <input type="text" name="nomSec3" id="nomSec3" >
