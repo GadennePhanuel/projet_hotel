@@ -13,8 +13,8 @@ session_start();
 </head>
 <body>
     <h2>Module de création client</h2>
-    <form action="../CTRL/createClientCheck.action.php" method="post" class="form-example">
-        <div class="form-example">
+    <form action="../CTRL/createClientCheck.action.php" method="post" >
+        <div >
             <label for="nom">Nom: </label>
             <input type="text" name="nom" id="nom" required>
         </div>
@@ -38,12 +38,59 @@ session_start();
             <label for="mastercard">Carte bancaire: </label>
             <input type="text" name="mastercard" id="mastercard" required>
         </p>
-        <p>
-            <label for="clientSec">Souhaitez-vous créer un client secondaire (oui/non): </label>
-            <input type="text" name="clientSec" id="clientSec" required>
-        </p>
-
+    </form>
+    <br>
+    <form action="../CTRL/createClientCheck.action.php" method="post" >
+        <div>
+            <p>
+                <label for="nomSec">Nom: </label>
+                <input type="text" name="nomSec" id="nomSec" required>
+            </p>
+            <p>
+                <label for="prenomSec">Prenom:  </label>
+                <input type="text" name="prenomSec" id="prenomSec" required>
+            </p>
+            <p>
+                <label for="ageSec">Age: </label>
+                <input type="text" name="ageSec" id="ageSec" required>
+            </p>
+        </div>
+    </form>
+    <br>
+    <form action="../CTRL/createClientCheck.action.php" method="post" >
+        <div>
+            <p>
+                <label for="nomSec2">Nom: </label>
+                <input type="text" name="nomSec2" id="nomSec2" required>
+            </p>
+            <p>
+                <label for="prenomSec2">Prenom: </label>
+                <input type="text" name="prenomSec2" id="prenomSec2" required>
+            </p>
+            <p>
+                <label for="ageSec2">Age: </label>
+                <input type="text" name="ageSec2" id="ageSec2" required>
+            </p>
+        </div>
+    </form>
+    <br>
+    <form action="../CTRL/createClientCheck.action.php" method="post" >
+    <div>
+            <p>
+                <label for="nomSec3">Nom: </label>
+                <input type="text" name="nomSec3" id="nomSec3" required>
+            </p>
+            <p>
+                <label for="prenomSec3">Prenom: </label>
+                <input type="text" name="prenomSec3" id="prenomSec3" required>
+            </p>
+            <p>
+                <label for="ageSec3">Age: </label>
+                <input type="text" name="ageSec3" id="ageSec3" required>
+            </p>
+        </div>
         <input type="submit" value="envoyer" />
+    </form>
 
         <?php
         if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){

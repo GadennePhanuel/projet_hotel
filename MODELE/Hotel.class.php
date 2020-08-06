@@ -541,54 +541,12 @@ class Hotel
         }
     }
 
-    public function createArrCustomers($nom, $prenom, $age, $login, $email, $mastercard, $clientSec)
+    public function createArrCustomers($nom, $prenom, $age, $login, $email, $mastercard)
     {
-        $c1 = true;
-        $cptA = 1;
-        $cptE = 0;
-        $customers = array();
 
-        while($c1){
-            if ($age <= 12){
-                echo "impossible, il faut obligatoirement un adulte\n";
-            }else{
+        $customer= new Customer($nom, $prenom, $age, $login, $email, $mastercard);
 
-                $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
-                $c1 = false;
-            }
-        }
-
-
-        $c2 = true;
-        while ($c2){
-            switch ($clientSec){
-                case 'oui':
-                    if ($age > 12){
-                        $cptA++;
-                        if ($cptA > 2){
-                            echo "ajout impossible, il y a dèja 2 adultes\n";
-                        }else{
-
-                            $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
-                        }
-                    }else{
-                        $cptE++;
-                        if ($cptE > 2){
-                            echo "ajout impossible, il y a dèja 2 enfants\n";
-                        }else{
-
-                            $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
-                        }
-                    }
-                    break;
-
-                case 'non':
-                    $c2=false;
-                    break;
-
-            }
-        }
-        return $customers;
+        return $customer;
     }
 
     /**
