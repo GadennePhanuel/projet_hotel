@@ -39,7 +39,7 @@ session_start();
     <?php } ?>
     <div class="row justify-content-center">
         <div class="col-3">
-            <a href="menu.php">Retour au menu</a>
+            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
         </div>
     </div>
 </div>
