@@ -45,9 +45,9 @@ class Room
         if ($this->isEmpty == 1) {
             //si la chambre est occupé il y a forcément 1 ou plusieurs occupant, on parcours donc le tableau et on en fait un string pour l'affichage
             foreach ($this->customers as $customer) {
-                foreach ($customer as $value) {
-                    $this->customersList = $this->customersList . " " . $value[2] . " " . $value[3] . " " . $value[4];
-                }
+
+                $this->customersList = $this->customersList . " " . $customer->getNom() . " " . $customer->getPrenom() . " " . $customer->getAge() . " - ";
+
             }
             $ch = "Chambre n°".$this->id;
             $ty = "Type: ".$this->type;
