@@ -44,11 +44,15 @@ class Room
         //si la chambre est occupé on inclus les infos général de ses occupants, et les dates de réservation
         if ($this->isEmpty == 1) {
             //si la chambre est occupé il y a forcément 1 ou plusieurs occupant, on parcours donc le tableau et on en fait un string pour l'affichage
-            foreach ($this->customers as $customer) {
 
-                $this->customersList = $this->customersList . " " . $customer->getNom() . " " . $customer->getPrenom() . " " . $customer->getAge() . " - ";
+            if (!isset($this->customersList) && empty($this->customersList)){
+                foreach ($this->customers as $customer) {
 
+                    $this->customersList = $this->customersList . " " . $customer->getNom() . " " . $customer->getPrenom() . " " . $customer->getAge() . " - ";
+
+                }
             }
+
             $ch = "Chambre n°".$this->id;
             $ty = "Type: ".$this->type;
             $vu = "Vue: ". $this->view;

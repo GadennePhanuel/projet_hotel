@@ -430,6 +430,8 @@ class Hotel
     }
 
     public function editBooking($numRoom, $newDateStart, $newDateEnd){
+            $newDateStart = new DateTime($newDateStart);
+            $newDateEnd = new DateTime($newDateEnd);
 
             if (($numRoom > 0 && $numRoom <= count($this->rooms)) && ($this->rooms[$numRoom-1]->getIsEmpty() == 1)){
                 self::$nbPaiement++;
@@ -448,6 +450,7 @@ class Hotel
                 $room->setDateStart($newDateStart);
 
                 $room->setDateEnd($newDateEnd);
+
                 $interval = $newDateStart->diff($newDateEnd);
                 $intervalDate = $interval->format('%d');  //format numérique en nb de jours
                 $newPrixTotal = $intervalDate * $price;
