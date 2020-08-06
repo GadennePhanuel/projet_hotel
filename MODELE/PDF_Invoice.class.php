@@ -337,7 +337,7 @@ class PDF_Invoice extends FPDF
         $this->Line( $r1, $y1+6, $r1+$r2, $y1+6);
         $colX = $r1;
         $colonnes = $tab;
-        while ( list( $lib, $pos ) = each ($tab) )
+        foreach ($tab as $lib => $pos)
         {
             $this->SetXY( $colX, $y1+2 );
             $this->Cell( $pos, 1, $lib, 0, 0, "C");
@@ -350,7 +350,7 @@ class PDF_Invoice extends FPDF
     {
         global $format, $colonnes;
 
-        while ( list( $lib, $pos ) = each ($colonnes) )
+        foreach ($colonnes as $lib => $pos)
         {
             if ( isset( $tab["$lib"] ) )
                 $format[ $lib ] = $tab["$lib"];
@@ -363,7 +363,7 @@ class PDF_Invoice extends FPDF
 
         reset( $colonnes );
         $maxSize=0;
-        while ( list( $lib, $pos ) = each ($colonnes) )
+        foreach ($colonnes as $lib => $pos)
         {
             $texte = $tab[ $lib ];
             $longCell  = $pos -2;
@@ -390,7 +390,7 @@ class PDF_Invoice extends FPDF
         $maxSize      = $ligne;
 
         reset( $colonnes );
-        while ( list( $lib, $pos ) = each ($colonnes) )
+        foreach ($colonnes as $lib => $pos)
         {
             $longCell  = $pos -2;
             $texte     = $tab[ $lib ];
@@ -502,7 +502,7 @@ class PDF_Invoice extends FPDF
 
         reset ($invoice);
         $px = array();
-        while ( list( $k, $prod) = each( $invoice ) )
+        foreach ($invoice as $k => $prod)
         {
             $tva = $prod["tva"];
             @ $px[$tva] += $prod["qte"] * $prod["px_unit"];
@@ -515,7 +515,7 @@ class PDF_Invoice extends FPDF
         $y = 261;
         reset ($px);
         natsort( $px );
-        while ( list($code_tva, $articleHT) = each( $px ) )
+        foreach ($px as $code_tva => $articleHT)
         {
             $tva = $tab_tva[$code_tva];
             $this->SetXY(17, $y);

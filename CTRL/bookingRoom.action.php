@@ -21,7 +21,7 @@ $message = array(
     'formulaire' => ''
 );
 
-if(isset($typechoose) && !empty($typechoose) || $typechoose = 0 || $typechoose > 8) {
+if((isset($typechoose) && !empty($typechoose)) && ($typechoose == 0 || $typechoose > 8)) {
     $message['saisi'] = "Veuillez saisir un nombre entre 1 et 8";
     $_SESSION['message'] = $message;
 
