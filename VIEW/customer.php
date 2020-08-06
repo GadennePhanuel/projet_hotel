@@ -27,7 +27,11 @@ require_once "../MODELE/PDF_Invoice.class.php";
             <p> <?php echo $key. ' ' .$value. "<br>" ?></p>
         <?php } ?>
 
-
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <a href="menu.php">Retour au menu</a>
+        </div>
+    </div>
 
 
 </body>

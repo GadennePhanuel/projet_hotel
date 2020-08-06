@@ -29,6 +29,11 @@ session_start();
         <input type="text" name="password" id="password" required>
         <input type="submit" value="envoyer" />
     </div>
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <a href="menu.php">Retour au menu</a>
+        </div>
+    </div>
 
     <?php
     if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){

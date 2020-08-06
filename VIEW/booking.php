@@ -49,5 +49,10 @@ session_start();
                    min="2020-09-01" max="2023-01-01">
         </div>
         <input type="submit" value="envoyer" />
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <a href="menu.php">Retour au menu</a>
+            </div>
+        </div>
 </body>
 </html>
