@@ -332,15 +332,12 @@ class Hotel
         }
         return $res = [$arrayCVP, $arrayCVJ, $arrayCVO, $arrayCVIO, $arrayCDA, $arrayCptExec, $arrayCptAmb, $arrayCptRoyale];
     }
-    public function booking (){
-        $typeRoom = $this->displayRoomType();
+    public function booking ($type,$dateStart,$dateEnd){
 
         $typechoose = "";
         $c3 = true;
         while ($c3){
-            echo "Quel type de chambres choisissez-vous?(1 à 8): \n";
-            $res = readline();
-            switch ($res){
+            switch ($type){
                 case '1':
                     $typechoose = "Chambre Vue Piscine";
                     $c3 = false;
@@ -388,10 +385,8 @@ class Hotel
         }
 
         //on demande les dates d'entrée et de sorties
-        echo "date d'entrée (jj-mm-aaaa): \n";
-        $dateStart = new DateTime(readline());
-        echo "date de sortie (jj-mm-aaaa): \n";
-        $dateEnd = new DateTime(readline());
+        $dateStart = new DateTime($dateStart);
+        $dateEnd = new DateTime($dateEnd);
 
         $roomChoose->setCustomers($this->createArrCustomers());
         $roomChoose->setIsEmpty(1);
@@ -541,34 +536,17 @@ class Hotel
 
     }
 
-    public function createArrCustomers()
+    public function createArrCustomers($nom, $prenom, $age, $login, $email, $mastercard, $clientSec)
     {
-        echo "Bienvenu dans le module de création des clients (attention: 2 adultes & 2 enfants maximum par chambre)\n";
-        echo PHP_EOL;
-        echo "Création du client principal (Adulte obligatoire): \n";
         $c1 = true;
         $cptA = 1;
         $cptE = 0;
         $customers = array();
-        $mastercard = 0;
-        $login = 0;
-        $email = 0;
+
         while($c1){
-            echo "Age: \n";
-            $age = readline();
             if ($age <= 12){
                 echo "impossible, il faut obligatoirement un adulte\n";
             }else{
-                echo "Nom: \n";
-                $nom = readline();
-                echo "Prenom: \n";
-                $prenom = readline();
-                echo "Email: \n";
-                $email = readline();
-                echo "Login: \n";
-                $login = readline();
-                echo "Mastercard: \n";
-                $mastercard = readline();
 
                 $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
                 $c1 = false;
@@ -578,21 +556,13 @@ class Hotel
 
         $c2 = true;
         while ($c2){
-            echo "Avez vous des clients secondaires à rattaché?(oui/non): \n";
-            $res = readline();
-            switch ($res){
+            switch ($clientSec){
                 case 'oui':
-                    echo "Age: \n";
-                    $age = readline();
                     if ($age > 12){
                         $cptA++;
                         if ($cptA > 2){
                             echo "ajout impossible, il y a dèja 2 adultes\n";
                         }else{
-                            echo "Nom: \n";
-                            $nom = readline();
-                            echo "Prenom: \n";
-                            $prenom = readline();
 
                             $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
                         }
@@ -601,10 +571,6 @@ class Hotel
                         if ($cptE > 2){
                             echo "ajout impossible, il y a dèja 2 enfants\n";
                         }else{
-                            echo "Nom: \n";
-                            $nom = readline();
-                            echo "Prenom: \n";
-                            $prenom = readline();
 
                             $customers[] = new Customer($nom, $prenom, $age, $login, $email, $mastercard);
                         }
@@ -612,13 +578,9 @@ class Hotel
                     break;
 
                 case 'non':
-                    echo "ok, fin du module de création client\n";
                     $c2=false;
                     break;
 
-                default:
-                    echo "je n'ai pas compris votre choix, veuillez recommencer.\n";
-                    break;
             }
         }
         return $customers;

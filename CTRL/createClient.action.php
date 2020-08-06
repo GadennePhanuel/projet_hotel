@@ -9,6 +9,7 @@ require_once "../MODELE/Hotel.class.php";
 require_once "../MODELE/PDF_Invoice.class.php";
 session_start();
 
+
 //recupere le password
 $password = $_POST['password'];
 $login = $_SESSION['login'];
@@ -28,8 +29,6 @@ if( $authentificationPassword != "true"){
 
     header("Location: ../VIEW/passwordBooking.php");
 }elseif($authentificationPassword == "true" ){
-    $displayRoomType= $hotel->displayRoomType();
-    $_SESSION['displayRoomType'] = $displayRoomType;
 
-    header("Location: ../VIEW/booking.php");
+    header("Location: ../VIEW/createClient.php");
 }

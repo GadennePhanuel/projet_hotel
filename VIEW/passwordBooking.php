@@ -16,7 +16,7 @@ session_start();
 </head>
 
 <body>
-    <form action="../CTRL/bookingRoom.action.php" method="post" class="form-example">
+    <form action="../CTRL/createClient.action.php" method="post" class="form-example">
         <div class="form-example">
             <label for="password">Saisissez votre mot de passe: </label>
             <input type="text" name="password" id="password" required>
