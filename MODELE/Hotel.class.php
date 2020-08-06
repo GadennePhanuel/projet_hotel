@@ -421,16 +421,32 @@ class Hotel
     }
 
 
-    public function editBooking(){
-        echo "Module modification de dates de réservation\n";
-        $c1 = true;
-        while ($c1){
-            echo "Quel est le numéro de la chambre à éditer?(1 à ".count($this->rooms)."): \n";
-            $res = readline();
-            if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res-1]->getIsEmpty() == 1)){
+    public function displayRoomsBookedSimple(){
+        //création d'un tableau contenant toutes les chambres occupés
+        $roomsBooked =array();
+        foreach ($this->rooms as $room){
+            if($room->getIsEmpty() == 1){
+                $numRoom = $room->getId();
+                $clients = $room->getCustomers();
+                $name = $clients[0]->getNom();
+                $firstName = $clients[0]->getPrenom();
+
+                $roomsBooked[] = array($numRoom, $name, $firstName);
+            }
+        }
+        if (isset($roomsBooked) && !empty($roomsBooked)){
+            return $roomsBooked;
+        }else{
+            return "pas de chambre occupé";
+        }
+    }
+
+    public function editBooking($numRoom, $newDateStart, $newDateEnd){
+
+            if (($numRoom > 0 && $numRoom <= count($this->rooms)) && ($this->rooms[$numRoom-1]->getIsEmpty() == 1)){
                 self::$nbPaiement++;
                 $numOfFacture = self::$nbPaiement;
-                $room = $this->rooms[$res-1];
+                $room = $this->rooms[$numRoom-1];
 
                 $dateStart = $room->getDateStart();
                 $dateEnd = $room->getDateEnd();
@@ -440,11 +456,9 @@ class Hotel
                 $prixTotal = $intervalDate * $price;
                 $prixTotalTTC = $prixTotal * 1.2;
 
-                echo "nouvelle date d'entrée: \n";
-                $newDateStart = new DateTime(readline());
+
                 $room->setDateStart($newDateStart);
-                echo "nouvelle date de sortie: \n";
-                $newDateEnd = new DateTime(readline());
+
                 $room->setDateEnd($newDateEnd);
                 $interval = $newDateStart->diff($newDateEnd);
                 $intervalDate = $interval->format('%d');  //format numérique en nb de jours
@@ -465,12 +479,9 @@ class Hotel
                         $this->revenue = $this->revenue + $prixDiff;
                         Tools::exportCSV($prixDiff,$client1);
                 }
-                $c1 = false;
 
-            }else{
-                echo "tu dis de la merde\n";
+                return $room;
             }
-        }
     }
 
     public function freeARoom()
