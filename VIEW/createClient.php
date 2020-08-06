@@ -44,15 +44,15 @@ session_start();
         <div>
             <p>
                 <label for="nomSec">Nom: </label>
-                <input type="text" name="nomSec" id="nomSec" required>
+                <input type="text" name="nomSec" id="nomSec" >
             </p>
             <p>
                 <label for="prenomSec">Prenom:  </label>
-                <input type="text" name="prenomSec" id="prenomSec" required>
+                <input type="text" name="prenomSec" id="prenomSec" >
             </p>
             <p>
                 <label for="ageSec">Age: </label>
-                <input type="text" name="ageSec" id="ageSec" required>
+                <input type="text" name="ageSec" id="ageSec" >
             </p>
         </div>
     </form>
@@ -61,15 +61,15 @@ session_start();
         <div>
             <p>
                 <label for="nomSec2">Nom: </label>
-                <input type="text" name="nomSec2" id="nomSec2" required>
+                <input type="text" name="nomSec2" id="nomSec2" >
             </p>
             <p>
                 <label for="prenomSec2">Prenom: </label>
-                <input type="text" name="prenomSec2" id="prenomSec2" required>
+                <input type="text" name="prenomSec2" id="prenomSec2" >
             </p>
             <p>
                 <label for="ageSec2">Age: </label>
-                <input type="text" name="ageSec2" id="ageSec2" required>
+                <input type="text" name="ageSec2" id="ageSec2" >
             </p>
         </div>
     </form>
@@ -78,15 +78,15 @@ session_start();
     <div>
             <p>
                 <label for="nomSec3">Nom: </label>
-                <input type="text" name="nomSec3" id="nomSec3" required>
+                <input type="text" name="nomSec3" id="nomSec3" >
             </p>
             <p>
                 <label for="prenomSec3">Prenom: </label>
-                <input type="text" name="prenomSec3" id="prenomSec3" required>
+                <input type="text" name="prenomSec3" id="prenomSec3" >
             </p>
             <p>
                 <label for="ageSec3">Age: </label>
-                <input type="text" name="ageSec3" id="ageSec3" required>
+                <input type="text" name="ageSec3" id="ageSec3" >
             </p>
         </div>
         <input type="submit" value="envoyer" />
