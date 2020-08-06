@@ -511,11 +511,8 @@ class Hotel
     }
 
 
-    public function cancelBooking(){
-        $c1 = true;
-        while ($c1) {
-            echo "Quel est le numéro de la chambre à libérer?(1 à " . count($this->rooms) . "): \n";
-            $res = readline();
+    public function cancelBooking($res){
+
 
             if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res - 1]->getIsEmpty() == 1)) {
                 $room = $this->rooms[$res - 1];
@@ -538,12 +535,10 @@ class Hotel
                 $room->setDateEnd('00-00-0000');
 
                 Tools::exportCSV($prixRemb,$client1);
-                $c1 = false;
             }
-            else{
-                echo "taper un numéro de chambre valide et/ou occupé!\n";
-            }
-        }
+
+            return $room;
+
     }
 
     public function createArrCustomers()
