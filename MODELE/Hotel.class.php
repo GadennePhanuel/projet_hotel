@@ -484,12 +484,8 @@ class Hotel
             }
     }
 
-    public function freeARoom()
+    public function freeARoom($res)
     {
-        $c1 = true;
-        while ($c1) {
-            echo "Quel est le numéro de la chambre à libérer?(1 à " . count($this->rooms) . "): \n";
-            $res = readline();
 
             if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res - 1]->getIsEmpty() == 1)) {
                 $room = $this->rooms[$res - 1];
@@ -497,20 +493,17 @@ class Hotel
                 $room->setCustomers(array());
                 $room->setDateStart('00-00-0000');
                 $room->setDateEnd('00-00-0000');
-                $c1 = false;
+
+                return $room;
+
             }
-            else{
-                echo "taper un numéro de chambre valide et/ou occupé!\n";
-            }
-        }
+
+
     }
 
 
-    public function cancelBooking(){
-        $c1 = true;
-        while ($c1) {
-            echo "Quel est le numéro de la chambre à libérer?(1 à " . count($this->rooms) . "): \n";
-            $res = readline();
+    public function cancelBooking($res){
+
 
             if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res - 1]->getIsEmpty() == 1)) {
                 $room = $this->rooms[$res - 1];
@@ -533,12 +526,10 @@ class Hotel
                 $room->setDateEnd('00-00-0000');
 
                 Tools::exportCSV($prixRemb,$client1);
-                $c1 = false;
             }
-            else{
-                echo "taper un numéro de chambre valide et/ou occupé!\n";
-            }
-        }
+
+            return $room;
+
     }
 
     public function createArrCustomers($nom, $prenom, $age, $login, $email, $mastercard)
