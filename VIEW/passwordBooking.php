@@ -27,7 +27,7 @@ session_start();
         <div class="form-example">
             <label for="password">Saisissez votre mot de passe: </label>
             <input type="text" name="password" id="password" required>
-            <input type="submit" value="envoyer" />
+            <input type="submit" class="btn btn-success" value="envoyer" />
         </div>
 
         <div class="row justify-content-center">

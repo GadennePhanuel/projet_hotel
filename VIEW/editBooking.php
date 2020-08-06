@@ -60,7 +60,7 @@ session_start();
 
             <div class="row justify-content-center">
                 <div class="col-8">
-                    <button type="submit">Envoyer</button>
+                    <button type="submit" class="btn btn-success">Envoyer</button>
                 </div>
             </div>
         </form>
