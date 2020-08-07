@@ -462,7 +462,7 @@ class Hotel
                 $client1 = $room->getCustomers()[0];
 
 
-                return $room;
+                return array($room, $client1, $prixDiff, $numOfFacture);
             }
     }
 
@@ -486,6 +486,7 @@ class Hotel
 
     public function cancelBooking($res){
 
+            $array = [];
 
             if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res - 1]->getIsEmpty() == 1)) {
                 $room = $this->rooms[$res - 1];
@@ -508,8 +509,8 @@ class Hotel
                 $room->setDateEnd('00-00-0000');
 
             }
-
-            return $room;
+            $array = [$room, $client1, $prixRemb];
+            return $array;
 
     }
 

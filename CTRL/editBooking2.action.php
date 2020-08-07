@@ -14,11 +14,14 @@ $newDateStart = $_POST['newDateStart'];
 $newDateEnd = $_POST['newDateEnd'];
 $hotel  = $_SESSION['hotel'];
 
-$roomModified = $hotel->editBooking($numRoom, $newDateStart, $newDateEnd);
+$roomModified = $hotel->editBooking($numRoom, $newDateStart, $newDateEnd);  //recupére un tableau ($room, $client1, $prixDiff, $numOfFacture)
+$_SESSION['room'] = $roomModified[0];
+$_SESSION['prixDiff'] = $roomModified[2];
+$_SESSION['client1'] = $roomModified[1];
+$_SESSION['numOfFacture'] = $roomModified[3];
+$roomModified[0] = $roomModified[0]->displayRoom();
 
-$roomModified = $roomModified->displayRoom();
-
-$_SESSION['roomModified'] = $roomModified;
+$_SESSION['roomModified'] = $roomModified[0];
 
 
-header("Location: ../VIEW/confirmEditBooking.php");
+header("Location: ../VIEW/paiementEditBooking.php");

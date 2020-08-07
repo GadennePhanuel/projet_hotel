@@ -16,9 +16,13 @@ $hotel  = $_SESSION['hotel'];
 
 $roomCancel = $hotel->cancelBooking($numRoom);
 
-$roomCancel = $roomCancel->displayRoom();
+$_SESSION['remboursement'] = $roomCancel[2];
+$_SESSION['room'] = $roomCancel[0];
+$_SESSION['client1'] = $roomCancel[1];
+
+$roomCancel = $roomCancel[0]->displayRoom();
 
 $_SESSION['roomCancel'] = $roomCancel;
 
 
-header("Location: ../VIEW/confirmCancelBooking.php");
+header("Location: ../VIEW/remboursementCancelBooking.php");

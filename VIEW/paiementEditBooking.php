@@ -18,23 +18,44 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
 
-    <title>editBooking.php</title>
+    <title>confirm Booking</title>
 </head>
 <body>
 <div class="container-xl">
     <div class="row justify-content-center">
         <div class="col-8">
+            <h1>Recapitulatif de la réservation</h1>
+        </div>
+    </div>
+
+    <?php foreach ($_SESSION['roomModified'] as $content){ ?>
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <p>
+                    <?php echo $content. "<br>"?>
+                </p>
+            </div>
+        </div>
+    <?php } ?>
+    <div class="row justify-content-center">
+        <div class="col-8">
             <p>
-                Mr/Mme <?php echo $_SESSION['client1']->getPrenom() ?>  <?php echo $_SESSION['client1']->getNom() ?> a été remboursé de <?php echo abs($_SESSION['remboursement'])?> €
-                <br>
+                Prix total TTC : <?php echo $_SESSION['prixDiff']. "<br>"?>
             </p>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
+    <form action="../CTRL/paiementEditBooking2.action.php" method="post" >
+        <p>
+            <label for="mastercard">Carte bancaire: </label>
+            <input type="text" name="mastercard" id="mastercard" required>
+        </p>
+
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <input type="submit" class="btn btn-success" value="envoyer" />
+                <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
+            </div>
         </div>
-    </div>
 </div>
 
 
