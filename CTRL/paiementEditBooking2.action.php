@@ -15,7 +15,7 @@ $hotel = $_SESSION['hotel'];
 
 $prixDiff = $_SESSION['prixDiff'];
 $client1 = $_SESSION['client1'];
-
+$numOfFacture = $_SESSION['numOfFacture'];
 if ($prixDiff >= 0){
     Tools::exportCSV($prixDiff, $client1, $cb);
     Tools::facture($client1, $prixDiff, $room, $numOfFacture, $cb);
