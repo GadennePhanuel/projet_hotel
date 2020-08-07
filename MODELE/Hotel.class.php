@@ -406,6 +406,7 @@ class Hotel
 
         Tools::exportCSV($prixTotalTTC,$client1);
         Tools::facture($client1, $prixTotal, $room, $numOfFacture);
+
     }
 
 

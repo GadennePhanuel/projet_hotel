@@ -46,10 +46,6 @@ session_start();
             <label for="email">Mail: </label>
             <input type="text" name="email" id="email" required>
         </p>
-        <p>
-            <label for="mastercard">Carte bancaire: </label>
-            <input type="text" name="mastercard" id="mastercard" required>
-        </p>
     <br>
 
         <div>
