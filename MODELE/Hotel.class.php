@@ -462,7 +462,7 @@ class Hotel
                 $client1 = $room->getCustomers()[0];
 
 
-                return $room;
+                return array($room, $client1, $prixDiff, $numOfFacture);
             }
     }
 
