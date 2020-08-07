@@ -380,12 +380,10 @@ class Hotel
         $roomChoose->setDateEnd($dateEnd);
 
 
-        $this->paiement($roomChoose);
-
         return $roomChoose;
     }
 
-    public function paiement($room){
+    public static function paiement($room, $cb){
         self::$nbPaiement++;
         $numOfFacture = self::$nbPaiement;
 
@@ -404,8 +402,9 @@ class Hotel
         $client1 = $room->getCustomers()[0];
 
 
-        Tools::exportCSV($prixTotalTTC,$client1);
-        Tools::facture($client1, $prixTotal, $room, $numOfFacture);
+        Tools::exportCSV($prixTotalTTC,$client1, $cb);
+        Tools::facture($client1, $prixTotal, $room, $numOfFacture, $cb);
+
     }
 
 
@@ -461,15 +460,6 @@ class Hotel
 
                 $client1 = $room->getCustomers()[0];
 
-                if($prixDiff > 0){
-                    $this->revenue = $this->revenue + $prixDiff;
-                    Tools::exportCSV($prixDiff,$client1);
-                    Tools::facture($client1, $prixDiff, $room, $numOfFacture);
-                }
-                else if ($prixDiff < 0){
-                        $this->revenue = $this->revenue + $prixDiff;
-                        Tools::exportCSV($prixDiff,$client1);
-                }
 
                 return $room;
             }
@@ -516,7 +506,6 @@ class Hotel
                 $room->setDateStart('00-00-0000');
                 $room->setDateEnd('00-00-0000');
 
-                Tools::exportCSV($prixRemb,$client1);
             }
 
             return $room;

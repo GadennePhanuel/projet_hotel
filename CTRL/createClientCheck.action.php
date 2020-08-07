@@ -16,7 +16,6 @@ $prenom = $_POST["prenom"];
 $age = $_POST["age"];
 $login = $_POST['login'];
 $email = $_POST['email'];
-$mastercard = $_POST['mastercard'];
 
 
 $nomSec = $_POST['nomSec'];
@@ -41,7 +40,7 @@ $message = array(
 $cptA = 0;
 $cptE = 0;
 
-if ((isset($nom) && !empty($nom)) && (isset($prenom) && !empty($prenom)) && (isset($age) && !empty($age)) && (isset($login) && !empty($login)) && (isset($email) && !empty($email)) && (isset($mastercard) && !empty($mastercard))){
+if ((isset($nom) && !empty($nom)) && (isset($prenom) && !empty($prenom)) && (isset($age) && !empty($age)) && (isset($login) && !empty($login)) && (isset($email) && !empty($email))){
     if ($age < 18){
         $message['saisi'] = "Le client principal doit avoir 18 ans";
         $_SESSION['message'] = $message;
@@ -50,7 +49,7 @@ if ((isset($nom) && !empty($nom)) && (isset($prenom) && !empty($prenom)) && (iss
 
     }else{
 
-        $customer = $hotel->createArrCustomers($nom, $prenom, $age, $login, $email, $mastercard);
+        $customer = $hotel->createArrCustomers($nom, $prenom, $age, $login, $email);
         $_SESSION['customer'][] = $customer;
         $cptA++;
     }
@@ -58,7 +57,7 @@ if ((isset($nom) && !empty($nom)) && (isset($prenom) && !empty($prenom)) && (iss
 
 if ((isset($nomSec) && !empty($nomSec)) && (isset($prenomSec) && !empty($prenomSec)) && (isset($ageSec) && !empty($ageSec))){
     if ($ageSec >= 18 && $cptA < 2){
-        $customer = $hotel->createArrCustomers($nomSec, $prenomSec, $ageSec, $login, $email, $mastercard);
+        $customer = $hotel->createArrCustomers($nomSec, $prenomSec, $ageSec, $login, $email);
         $_SESSION['customer'][] = $customer;
         $cptA++;
     }
@@ -69,7 +68,7 @@ if ((isset($nomSec) && !empty($nomSec)) && (isset($prenomSec) && !empty($prenomS
         exit(header("Location: ../VIEW/createClient.php"));
     }
     elseif ($ageSec < 18 && $cptE < 2){
-        $customer = $hotel->createArrCustomers($nomSec, $prenomSec, $ageSec, $login, $email, $mastercard);
+        $customer = $hotel->createArrCustomers($nomSec, $prenomSec, $ageSec, $login, $email);
         $_SESSION['customer'][] = $customer;
         $cptE++;
     }
@@ -84,7 +83,7 @@ if ((isset($nomSec) && !empty($nomSec)) && (isset($prenomSec) && !empty($prenomS
 
 if ((isset($nomSec2) && !empty($nomSec2)) && (isset($prenomSec2) && !empty($prenomSec2)) && (isset($ageSec2) && !empty($ageSec2))){
     if ($ageSec2 >= 18 && $cptA < 2){
-        $customer = $hotel->createArrCustomers($nomSec2, $prenomSec2, $ageSec2, $login, $email, $mastercard);
+        $customer = $hotel->createArrCustomers($nomSec2, $prenomSec2, $ageSec2, $login, $email);
         $_SESSION['customer'][] = $customer;
         $cptA++;
     }
@@ -95,7 +94,7 @@ if ((isset($nomSec2) && !empty($nomSec2)) && (isset($prenomSec2) && !empty($pren
         exit(header("Location: ../VIEW/createClient.php"));
     }
     elseif ($ageSec2 < 18 && $cptE < 2){
-        $customer = $hotel->createArrCustomers($nomSec2, $prenomSec2, $ageSec2, $login, $email, $mastercard);
+        $customer = $hotel->createArrCustomers($nomSec2, $prenomSec2, $ageSec2, $login, $email);
         $_SESSION['customer'][] = $customer;
         $cptE++;
     }
@@ -109,7 +108,7 @@ if ((isset($nomSec2) && !empty($nomSec2)) && (isset($prenomSec2) && !empty($pren
 
 if ((isset($nomSec3) && !empty($nomSec3)) && (isset($prenomSec3) && !empty($prenomSec3)) && (isset($ageSec3) && !empty($ageSec3))){
     if ($ageSec >= 18 && $cptA < 2){
-        $customer = $hotel->createArrCustomers($nomSec3, $prenomSec3, $ageSec3, $login, $email, $mastercard);
+        $customer = $hotel->createArrCustomers($nomSec3, $prenomSec3, $ageSec3, $login, $email);
         $_SESSION['customer'][] = $customer;
         $cptA++;
     }
@@ -120,7 +119,7 @@ if ((isset($nomSec3) && !empty($nomSec3)) && (isset($prenomSec3) && !empty($pren
         exit(header("Location: ../VIEW/createClient.php"));
     }
     elseif ($ageSec3 < 18 && $cptE < 2){
-        $customer = $hotel->createArrCustomers($nomSec3, $prenomSec3, $ageSec3, $login, $email, $mastercard);
+        $customer = $hotel->createArrCustomers($nomSec3, $prenomSec3, $ageSec3, $login, $email);
         $_SESSION['customer'][] = $customer;
         $cptE++;
     }

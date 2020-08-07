@@ -21,7 +21,7 @@ class Tools
         }
     }
 
-    public static function exportCSV($totalTTC,$client1){
+    public static function exportCSV($totalTTC,$client1, $cb){
         date_default_timezone_set('Europe/Paris');
         $date = date('d-m-Y');
 
@@ -35,7 +35,6 @@ class Tools
         }else{
             $natureOp = "Paiement";
         }
-        $cb = $client1->getMastercard();
         $prenom = $client1->getPrenom();
         $nom = $client1->getNom();
 
@@ -48,13 +47,12 @@ class Tools
         fclose($fp);
     }
 
-    public static function facture($client1, $total, $room, $numOfFacture){
+    public static function facture($client1, $total, $room, $numOfFacture, $cb){
         date_default_timezone_set('Europe/Paris');
         $date = date('d-m-Y') .'_'. date('H') .'h'. date('i') .'min'. date('s') .'sec';
         $date1 = date('d-m-Y');
         $nom = utf8_decode($client1->getNom());
         $prenom = utf8_decode($client1->getPrenom());
-        $cb = $client1->getMastercard();
         $price = $room->getPrice();
         $size = utf8_decode($room->getSize());
         $type = utf8_decode($room->getType());
