@@ -41,7 +41,7 @@ session_start();
     <div class="row justify-content-center">
         <div class="col-8">
             <p>
-                Paiement/Remboursement TTC : <?php echo $_SESSION['prixDiff']. "<br>"?>
+                Montant dû TTC : <?php echo $_SESSION['prixDiff']. "<br>"?>
             </p>
         </div>
     </div>
