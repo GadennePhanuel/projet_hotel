@@ -41,6 +41,7 @@ if((isset($typechoose) && !empty($typechoose)) && ($typechoose == 0 || $typechoo
     $prixTotalHT = $prix * $days;
     $prixTotalTTC = $prixTotalHT * 1.2;
     $_SESSION['prixTotalTTC'] = $prixTotalTTC;
+    $_SESSION['room'] = $booking;
 
     $booking = $booking->displayRoom();
     $_SESSION['booking'] = $booking;

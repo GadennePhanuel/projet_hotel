@@ -18,8 +18,8 @@ class Hotel
     private $roomsExec = array();
     private $roomsAmb = array();
     private $roomsRoyale = array();
-    private $revenue;
     private $arrCsv;
+    private static $revenue;
     private static $nbPaiement = 0;
 
 
@@ -395,9 +395,9 @@ class Hotel
         $prixTotal = $intervalDate * $price;
         $prixTotalTTC = $prixTotal * 1.2;
 
-        $CA = $this->revenue;
+        $CA = self::$revenue;
         $CA = $CA + $prixTotalTTC;
-        $this->revenue = $CA;
+        self::$revenue = $CA;
 
         $client1 = $room->getCustomers()[0];
 
