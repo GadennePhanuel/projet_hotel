@@ -402,6 +402,7 @@ class Hotel
         $client1 = $room->getCustomers()[0];
 
 
+
         Tools::exportCSV($prixTotalTTC,$client1, $cb);
         Tools::facture($client1, $prixTotal, $room, $numOfFacture, $cb);
 
@@ -512,10 +513,10 @@ class Hotel
 
     }
 
-    public function createArrCustomers($nom, $prenom, $age, $login, $email, $mastercard)
+    public function createArrCustomers($nom, $prenom, $age, $login, $email)
     {
 
-        $customer= new Customer($nom, $prenom, $age, $login, $email, $mastercard);
+        $customer= new Customer($nom, $prenom, $age, $login, $email);
 
         return $customer;
     }
