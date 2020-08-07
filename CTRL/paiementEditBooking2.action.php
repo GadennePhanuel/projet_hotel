@@ -23,4 +23,4 @@ if ($prixDiff >= 0){
     Tools::exportCSV($prixDiff, $client1, $cb);
 }
 
-header("Location: ../VIEW/confirmBooking.php");
+header("Location: ../VIEW/confirmEditBooking.php");
