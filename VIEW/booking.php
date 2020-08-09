@@ -59,6 +59,19 @@ session_start();
                        min="<?php $d=strtotime("+1 Day"); echo date("Y-m-d", $d); ?>" max="<?php $d=strtotime("+2 Years"); echo date("Y-m-d", $d); ?>">
             </div>
 
+            <?php
+            if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
+                foreach ($_SESSION["message"] as $value){
+                    ?>
+                    <div class="error_msg">
+                        <?php        echo $value;   ?>
+                    </div>
+                    <?php
+                }
+                unset($_SESSION["message"]);
+            }
+            ?>
+
             <div class="row justify-content-center">
                 <div class="col-3">
                     <input type="submit"  class="btn btn-success" value="envoyer" />

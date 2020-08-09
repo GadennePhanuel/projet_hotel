@@ -21,31 +21,42 @@ $message = array(
     'saisi' => '',
     'formulaire' => ''
 );
+$dateStart1 = new DateTime($dateStart);
+$dateEnd1 = new DateTime($dateEnd);
 
-if((isset($typechoose) && !empty($typechoose)) && ($typechoose == 0 || $typechoose > 8)) {
-    $message['saisi'] = "Veuillez saisir un nombre entre 1 et 8";
+
+if ($dateStart1 > $dateEnd1 || $dateStart1 == $dateEnd1){
+    $message['saisi'] = "veuillez saisir des dates de réservation valide";
     $_SESSION['message'] = $message;
 
     header("Location: ../VIEW/booking.php");
+}else{
+    if((isset($typechoose) && !empty($typechoose)) && ($typechoose == 0 || $typechoose > 8)) {
+        $message['saisi'] = "Veuillez saisir un nombre entre 1 et 8";
+        $_SESSION['message'] = $message;
 
-}elseif($typechoose >= 1 && $typechoose <= 8){
+        header("Location: ../VIEW/booking.php");
 
-    $booking = $hotel->booking($dateStart,$dateEnd,$customer,$typechoose);
+    }elseif($typechoose >= 1 && $typechoose <= 8){
 
-    $dateStart = $booking->getDateStart();
-    $dateEnd = $booking->getDateEnd();
+        $booking = $hotel->booking($dateStart,$dateEnd,$customer,$typechoose);
 
-    $interval = $dateStart->diff($dateEnd);
-    $days = $interval->d;
-    $prix = $booking->getPrice();
-    $prixTotalHT = $prix * $days;
-    $prixTotalTTC = $prixTotalHT * 1.2;
-    $_SESSION['prixTotalTTC'] = $prixTotalTTC;
-    $_SESSION['room'] = $booking;
+        $dateStart = $booking->getDateStart();
+        $dateEnd = $booking->getDateEnd();
 
-    $booking = $booking->displayRoom();
-    $_SESSION['booking'] = $booking;
+        $interval = $dateStart->diff($dateEnd);
+        $days = $interval->d;
+        $prix = $booking->getPrice();
+        $prixTotalHT = $prix * $days;
+        $prixTotalTTC = $prixTotalHT * 1.2;
+        $_SESSION['prixTotalTTC'] = $prixTotalTTC;
+        $_SESSION['room'] = $booking;
 
-    header("Location: ../VIEW/paiementBooking.php");
+        $booking = $booking->displayRoom();
+        $_SESSION['booking'] = $booking;
+
+        header("Location: ../VIEW/paiementBooking.php");
+    }
+
 }
 

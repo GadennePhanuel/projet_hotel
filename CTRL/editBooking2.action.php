@@ -14,14 +14,27 @@ $newDateStart = $_POST['newDateStart'];
 $newDateEnd = $_POST['newDateEnd'];
 $hotel  = $_SESSION['hotel'];
 
-$roomModified = $hotel->editBooking($numRoom, $newDateStart, $newDateEnd);  //recupére un tableau ($room, $client1, $prixDiff, $numOfFacture)
-$_SESSION['room'] = $roomModified[0];
-$_SESSION['prixDiff'] = $roomModified[2];
-$_SESSION['client1'] = $roomModified[1];
-$_SESSION['numOfFacture'] = $roomModified[3];
-$roomModified[0] = $roomModified[0]->displayRoom();
-
-$_SESSION['roomModified'] = $roomModified[0];
+$dateStart1 = new DateTime($newDateStart);
+$dateEnd1 = new DateTime($newDateEnd);
 
 
-header("Location: ../VIEW/paiementEditBooking.php");
+if ($dateStart1 > $dateEnd1 || $dateStart1 == $dateEnd1){
+    $message['saisi'] = "veuillez saisir des dates de réservation valide";
+    $_SESSION['message'] = $message;
+
+    header("Location: ../VIEW/editBooking.php");
+}else{
+    $roomModified = $hotel->editBooking($numRoom, $newDateStart, $newDateEnd);  //recupére un tableau ($room, $client1, $prixDiff, $numOfFacture)
+    $_SESSION['room'] = $roomModified[0];
+    $_SESSION['prixDiff'] = $roomModified[2];
+    $_SESSION['client1'] = $roomModified[1];
+    $_SESSION['numOfFacture'] = $roomModified[3];
+    $roomModified[0] = $roomModified[0]->displayRoom();
+
+    $_SESSION['roomModified'] = $roomModified[0];
+
+
+    header("Location: ../VIEW/paiementEditBooking.php");
+}
+
+
