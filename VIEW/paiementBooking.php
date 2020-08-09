@@ -65,7 +65,7 @@ session_start();
     <div class="row justify-content-center">
         <div class="col-3">
             <input type="submit" class="btn btn-success" value="envoyer" />
-            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
+
         </div>
     </div>
 
