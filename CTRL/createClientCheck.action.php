@@ -37,6 +37,12 @@ $message = array(
     'formulaire' => ''
 );
 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $message['saisi'] = "Votre adresse email n'est pas valide";
+    $_SESSION['message'] = $message;
+    exit(header("Location: ../VIEW/createClient.php"));
+}
+
 $cptA = 0;
 $cptE = 0;
 
