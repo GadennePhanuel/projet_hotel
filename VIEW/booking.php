@@ -46,15 +46,17 @@ session_start();
                 <label for="dateStart">Start date:</label>
 
                 <input type="date" id="dateStart" name="dateStart"
+                       required
                        value="0000-00-00"
-                       min="2020-09-01" max="2023-01-01">
+                       min="<?php echo date("Y-m-d"); ?>" max="<?php $d=strtotime("+2 Years"); echo date("Y-m-d", $d); ?>">
             </div>
             <div >
                 <label for="dateEnd">Ending date:</label>
 
                 <input type="date" id="dateEnd" name="dateEnd"
+                       required
                        value="0000-00-00"
-                       min="2020-09-01" max="2023-01-01">
+                       min="<?php $d=strtotime("+1 Day"); echo date("Y-m-d", $d); ?>" max="<?php $d=strtotime("+2 Years"); echo date("Y-m-d", $d); ?>">
             </div>
 
             <div class="row justify-content-center">

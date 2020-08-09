@@ -47,14 +47,23 @@ session_start();
 
             <div class="row justify-content-center">
                 <div class="col-8">
-                    <label for="newDateStart">Nouvelle date d'arrivée</label>
-                    <input type="date" id="newDateStart" name="newDateStart" required>
+                    <label for="dateStart">Start date:</label>
+
+                    <input type="date" id="dateStart" name="dateStart"
+                           required
+                           value="0000-00-00"
+                           min="<?php echo date("Y-m-d"); ?>" max="<?php $d=strtotime("+2 Years"); echo date("Y-m-d", $d); ?>">
+
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-8">
-                    <label for="newDateEnd">Nouvelle date de départ</label>
-                    <input type="date" id="newDateEnd" name="newDateEnd" required>
+                    <label for="dateEnd">Nouvelle date de fin:</label>
+
+                    <input type="date" id="dateEnd" name="dateEnd"
+                           required
+                           value="0000-00-00"
+                           min="<?php $d=strtotime("+1 Day"); echo date("Y-m-d", $d); ?>" max="<?php $d=strtotime("+2 Years"); echo date("Y-m-d", $d); ?>">
                 </div>
             </div>
 
