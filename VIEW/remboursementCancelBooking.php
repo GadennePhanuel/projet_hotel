@@ -46,10 +46,21 @@ session_start();
     </div>
     <form action="../CTRL/remboursementCancelBooking.action.php" method="post" >
         <p>
-            <label for="mastercard">Carte bancaire: </label>
-            <input type="text" name="mastercard" id="mastercard" required>
+            <label for="mastercard">N° carte bancaire (16): </label>
+            <input type="text" minlength="16" maxlength="16" name="mastercard" id="mastercard" required>
         </p>
-
+        <?php
+        if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
+            foreach ($_SESSION["message"] as $value){
+                ?>
+                <div class="error_msg">
+                    <?php        echo $value;   ?>
+                </div>
+                <?php
+            }
+            unset($_SESSION["message"]);
+        }
+        ?>
         <div class="row justify-content-center">
         <div class="col-3">
             <input type="submit" class="btn btn-success" value="envoyer" />

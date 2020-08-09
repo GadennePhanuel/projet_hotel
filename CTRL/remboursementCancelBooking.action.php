@@ -12,6 +12,19 @@ $client1 = $_SESSION['client1'];
 $totalTTC = $_SESSION['remboursement'];
 $cb = $_POST['mastercard'];
 
-Tools::exportCSV($totalTTC,$client1, $cb);
 
-header("Location: ../VIEW/confirmCancelBooking.php");
+$message = array(
+    'mastercard' => '',
+    'formulaire' => ''
+);
+
+if (strlen((int)$cb) == 16){
+    Tools::exportCSV($totalTTC,$client1, $cb);
+    header("Location: ../VIEW/confirmCancelBooking.php");
+}else{
+    $message['mdp'] = "Numéro de carte invalide";
+    $_SESSION['message'] = $message;
+
+    header("Location: ../VIEW/remboursementCancelBooking.php");
+}
+

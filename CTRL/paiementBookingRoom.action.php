@@ -13,6 +13,23 @@ $cb = $_POST['mastercard'];
 $room = $_SESSION['room'];
 $hotel = $_SESSION['hotel'];
 
-$hotel::paiement($room, $cb);
 
-header("Location: ../VIEW/confirmBooking.php");
+$message = array(
+    'mastercard' => '',
+    'formulaire' => ''
+);
+
+if (strlen((int)$cb) == 16){
+    $hotel::paiement($room, $cb);
+    header("Location: ../VIEW/confirmBooking.php");
+}else{
+    $message['mdp'] = "Numéro de carte invalide";
+    $_SESSION['message'] = $message;
+
+    header("Location: ../VIEW/paiementBooking.php");
+}
+
+
+
+
+

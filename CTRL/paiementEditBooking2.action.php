@@ -16,11 +16,26 @@ $hotel = $_SESSION['hotel'];
 $prixDiff = $_SESSION['prixDiff'];
 $client1 = $_SESSION['client1'];
 $numOfFacture = $_SESSION['numOfFacture'];
-if ($prixDiff >= 0){
-    Tools::exportCSV($prixDiff, $client1, $cb);
-    Tools::facture($client1, $prixDiff, $room, $numOfFacture, $cb);
+
+
+$message = array(
+    'mastercard' => '',
+    'formulaire' => ''
+);
+
+if (strlen((int)$cb) == 16){
+    if ($prixDiff >= 0){
+        Tools::exportCSV($prixDiff, $client1, $cb);
+        Tools::facture($client1, $prixDiff, $room, $numOfFacture, $cb);
+    }else{
+        Tools::exportCSV($prixDiff, $client1, $cb);
+    }
+    header("Location: ../VIEW/confirmEditBooking.php");
 }else{
-    Tools::exportCSV($prixDiff, $client1, $cb);
+    $message['mdp'] = "Numéro de carte invalide";
+    $_SESSION['message'] = $message;
+
+    header("Location: ../VIEW/paiementEditBooking.php");
 }
 
-header("Location: ../VIEW/confirmEditBooking.php");
+
