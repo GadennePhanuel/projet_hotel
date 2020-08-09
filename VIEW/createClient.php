@@ -99,14 +99,6 @@ session_start();
             </p>
         </div>
 
-
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <input type="submit" class="btn btn-success" value="envoyer" />
-            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
-        </div>
-    </div>
-</div>
         <?php
         if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
             foreach ($_SESSION["message"] as $value){
@@ -120,5 +112,14 @@ session_start();
         }
         unset($_SESSION['customer'])
         ?>
+
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <input type="submit" class="btn btn-success" value="envoyer" />
+            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
