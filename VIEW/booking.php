@@ -19,22 +19,23 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-    <?php $displayRoomType = $_SESSION['displayRoomType'];
-    foreach($displayRoomType as $type){?>
-        <div>
-            <?php $list = $type;
-            foreach ($list as $key => $value){?>
-                <p><?php echo $key. ' ' .$value. "<br>" ?></p>
-            <?php } ?>
-        </div>
-        <br>
-   <?php } ?>
+
     <div class="container-xl">
         <div class="row justify-content-center">
             <div class="col-8">
                 <h1>Chambres occupés</h1>
             </div>
         </div>
+        <?php $displayRoomType = $_SESSION['displayRoomType'];
+        foreach($displayRoomType as $type){?>
+            <div>
+                <?php $list = $type;
+                foreach ($list as $key => $value){?>
+                    <p><?php echo $key. ' ' .$value. "<br>" ?></p>
+                <?php } ?>
+            </div>
+            <br>
+        <?php } ?>
         <form action="../CTRL/bookingRoom.action.php" method="post" >
             <div class="form-example">
                 <label for="type">Saisissez le type de chambre souhaitée (1 à 8) </label>
