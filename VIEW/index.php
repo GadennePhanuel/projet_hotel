@@ -31,7 +31,7 @@ require_once "../MODELE/PDF_Invoice.class.php";
         <main role="main" class="inner cover">
             <h1 class="cover-heading">Utilisez notre appli web de gestion hôtelière !</h1>
 
-            <p class="lead">Chargez votre fichier .csv contenant toutes les infos nécessaires à la gestion interne de votre hotel puis créer votre version personnalisée !</p>
+            <p class="lead">Selectionnez votre fichier .csv contenant toutes les infos nécessaires à la gestion interne de votre hotel puis créer votre version personnalisée de l'appli !</p>
 
             <p class="lead">
                 <?php // il faut utiliser l'attribut `enctype="multipart/form-data"` pour que le fichier puisse être envoyé ?>

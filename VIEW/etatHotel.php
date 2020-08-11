@@ -21,39 +21,47 @@ session_start();
     <title>Menu.php</title>
 </head>
 <body>
-    <div class="container-xl">
+    <div class="container">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <h3 class="masthead-brand">VotreHôtel.fr</h3>
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link" href="menu.php">Retour au menu</a>
+                </nav>
+            </div>
+        </header>
+
         <div class="row justify-content-center">
-            <div class="col-8">
-                <h1>ETAT DE L'HOTEL</h1>
+            <div class="col-12">
+                <h1>ETAT DES RESERVATIONS L'HOTEL</h1>
             </div>
         </div>
-        <?php if (is_array($_SESSION['displayHotel'])){ ?>
-            <?php foreach ($_SESSION['displayHotel'] as $room){ ?>
+        <div class="main">
+            <?php if (is_array($_SESSION['displayHotel'])){ ?>
+                <div class="firstDiv">
+                        <p><?php echo $_SESSION['hotel']->displayNbRoomBooked() ?></p><br>
+                        <h3>Liste des chambres réservées: </h3>   
+                </div> 
+                <?php foreach ($_SESSION['displayHotel'] as $room){ ?>
+                    <div class="row justify-content-center bookedRoom">
+                            <p>
+                                <?php foreach ($room as $content){ ?>
+                                        <?php echo $content. "<br>"?>
+                                <?php } ?>
+                            </p>
+                    </div>
+                <?php } ?>
+            <?php }else{ ?>
                 <div class="row justify-content-center">
-                    <div class="col-8">
+                    <div class="col-12">
                         <p>
-                            <?php foreach ($room as $content){ ?>
-                                      <?php echo $content. "<br>"?>
-                            <?php } ?>
+                            <?php echo $_SESSION['displayHotel']. "<br>"?>
                         </p>
                     </div>
                 </div>
             <?php } ?>
-        <?php }else{ ?>
-            <div class="row justify-content-center">
-                <div class="col-8">
-                    <p>
-                        <?php echo $_SESSION['displayHotel']. "<br>"?>
-                    </p>
-                </div>
-            </div>
-        <?php } ?>
-
-        <div class="row justify-content-center">
-            <div class="col-3">
-                <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
-            </div>
-        </div>
+        </div>       
+       
     </div>
 
 

@@ -108,7 +108,7 @@ class Hotel
             }
         }
         $this->nbRoomFree = $cpt;
-        return "le nombre de chambres disponibles dans l'hotel est :" .$this->nbRoomFree."\n";
+        return "Le nombre de chambres disponibles dans l'hotel est de " .$this->nbRoomFree."."."\n";
     }
 
     public function displayNbRoomBooked(){
@@ -119,7 +119,7 @@ class Hotel
             }
         }
         $this->nbRoomOccupied = $cpt;
-        return "le nombre de chambres réservées dans l'hotel est :" .$this->nbRoomOccupied."\n";
+        return "Le nombre de chambres réservées dans l'hotel est de " .$this->nbRoomOccupied."."."\n";
     }
 
     public function displayHotel(){
@@ -138,7 +138,7 @@ class Hotel
             }
             return $allRoom;
         }else{
-            return "Aucune réservation dans l'hotel";
+            return "Aucune réservation";
         }
     }
 

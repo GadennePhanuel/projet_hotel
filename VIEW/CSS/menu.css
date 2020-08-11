@@ -72,6 +72,37 @@ h1{
     text-align: center;
 }
 
+
+/* 
+  * etatHotel.php 
+*/
+.main{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.main>.firstDiv{
+  width: 100%;
+
+}
+h3{
+  text-align: center;
+}
+.bookedRoom{
+  padding: 15px;
+  max-width: 50%;
+}
+.bookedRoom>p{
+  text-align: center;
+}
+
+
+
+
+
+
+
+
 /*
  * Header
  */
@@ -121,6 +152,6 @@ h1{
 footer {
     color: rgba(255, 255, 255, .5);
   }
-p {
+footer>p {
     text-align: center;
   }

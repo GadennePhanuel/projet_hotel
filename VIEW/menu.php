@@ -52,12 +52,12 @@ session_start();
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Afficher l’état de l’hôtel</td>  
-                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/displayBookedRoom.action.php">Let's Go</button></td> 
+                            <td>Afficher l’état de l’hôtel</td>                             
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/displayHotel.action.php">Let's Go</button></td> 
                         </tr>
                         <tr>  
                             <td>Afficher le nombre de chambres réservées</td>  
-                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/displayHotel.action.php">Let's Go</button></td>                                                                                                                                            
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/displayBookedRoom.action.php">Let's Go</button></td>                                                                                                                                          
                         </tr>
                         <tr>
                             <td>Afficher le nombre de chambres libres</td>
