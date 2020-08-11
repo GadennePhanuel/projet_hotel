@@ -21,9 +21,18 @@ session_start();
     <title>Menu.php</title>
 </head>
 <body>
-<div class="container-xl">
+<div class="container">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">VotreHôtel.fr</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link" href="menu.php">Retour au menu</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
             <h1>ETAT DE L'HOTEL</h1>
         </div>
     </div>
@@ -68,11 +77,6 @@ session_start();
     </div>
     <?php } ?>
 
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
-        </div>
-    </div>
 </div>
 
 

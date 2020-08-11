@@ -28,11 +28,14 @@ session_start();
         <header class="masthead mb-auto">
             <div class="inner">
                 <h3 class="masthead-brand">VotreHôtel.fr</h3>
+                <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="menu.php">Retour au menu</a>
+            </nav>
             </div>
         </header>
 
         <div class="row justify-content-center">
-            <div class="col-4">
+            <div class="col-12">
               <h1>MENU DE L'HOTEL</h1>
             </div>
         </div>
