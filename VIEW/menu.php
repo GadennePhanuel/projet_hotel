@@ -19,76 +19,82 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
 
-    <title>Menu.php</title>
+    <title>MenuEmploye.php</title>
 </head>
+
 <body>
-    <div class="container-xl">
+    <div class="container">
+
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <h3 class="masthead-brand">VotreHôtel.fr</h3>
+            </div>
+        </header>
+
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-4">
               <h1>MENU DE L'HOTEL</h1>
             </div>
         </div>
         
         <div class="row justify_content-center">      
-            <div class="col-8 menuList">
-                <ul class="list-group">
-                    <li class="list-group-item">Liste des menus</li>
-
-                    
-                    <li class="list-group-item list-group-item-1 list-group-item-primary">Afficher l’état de l’hôtel</li>
-                    <li class="list-group-item list-group-item-1 list-group-item-success">Afficher le nombre de chambres réservées</li>
-                    <li class="list-group-item list-group-item-1 list-group-item-success"> Afficher le nombre de chambres libres</li>
-                    <li class="list-group-item list-group-item-1 list-group-item-info">Afficher le numéro de la première chambre vide</li>
-                    <li class="list-group-item list-group-item-1 list-group-item-info">Afficher le numéro de la dernière chambre vide</li>
-                    <li class="list-group-item list-group-item-1 list-group-item-warning">Réserver une chambre</li>
-                    <li class="list-group-item list-group-item-1 list-group-item-warning">Libérer une chambre</li>
-                    <li class="list-group-item list-group-item-1 list-group-item-warning">Modifier une réservation</li>
-                    <li class="list-group-item list-group-item-1 list-group-item-warning">Annuler une réservation</li>
-
-                    <li class="list-group-item list-group-item-1 list-group-item-danger">Quitter</li>
-                </ul>
-            </div>
-            <div class="col-4 menuSubmit">
-                <ul class="list-group">
-                    <li class="list-group-item">Choix</li>
-
+            <div class="col-8 menu-list">
+                <table class="table table-striped">
                     <form action="" method="post">
-                        <li class="list-group-item list-group-item-2 list-group-item-primary">
-                            <button type="submit" class="btn btn-primary" formaction="../CTRL/displayHotel.action.php">Let's Go</button>
-                        </li>
-                        <li class="list-group-item list-group-item-2 list-group-item-success">
-                            <button type="submit" class="btn btn-success" formaction="../CTRL/displayBookedRoom.action.php">Let's Go</button>
-                        </li>
-                        <li class="list-group-item list-group-item-2 list-group-item-success">
-                            <button type="submit" class="btn btn-success" formaction="../CTRL/displayFreeRoom.action.php">Let's Go</button>
-                        </li>
-                        <li class="list-group-item list-group-item-2 list-group-item-info">
-                            <button type="submit" class="btn btn-info" formaction="../CTRL/displayFirstRoom.action.php">Let's Go</button>
-                        </li>
-                        <li class="list-group-item list-group-item-2 list-group-item-info">
-                            <button type="submit" class="btn btn-info" formaction="../CTRL/displayLastRoom.action.php">Let's Go</button>
-                        </li>
-                        <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="submit" class="btn btn-warning" formaction="../CTRL/passwordBooking.action.php">Let's Go</button>
-                        </li>
-                        <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="submit" class="btn btn-warning" formaction="../CTRL/passwordFree.action.php">Let's Go</button>
-                        </li>
-                        <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="submit" class="btn btn-warning" formaction="../CTRL/passwordEdit.action.php">Let's Go</button>
-                        </li>
-                        <li class="list-group-item list-group-item-2 list-group-item-warning">
-                            <button type="submit" class="btn btn-warning" formaction="../CTRL/passwordCancel.action.php">Let's Go</button>
-                        </li>
-
-                        <li class="list-group-item list-group-item-2 list-group-item-danger">
-                            <button type="button" class="btn btn-danger"> <a href="../VIEW/login.php">Let's Go</a> </button>
-                        </li>
-                    </form>
-                </ul>
+                    <thead>
+                        <tr>
+                            <th scope="col">Listes des menus</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Afficher l’état de l’hôtel</td>  
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/displayBookedRoom.action.php">Let's Go</button></td> 
+                        </tr>
+                        <tr>  
+                            <td>Afficher le nombre de chambres réservées</td>  
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/displayHotel.action.php">Let's Go</button></td>                                                                                                                                            
+                        </tr>
+                        <tr>
+                            <td>Afficher le nombre de chambres libres</td>
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/displayFreeRoom.action.php">Let's Go</button></td>
+                        </tr>
+                        <tr>  
+                            <td>Afficher le numéro de la première chambre vide</td>      
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/displayFirstRoom.action.php">Let's Go</button></td>            
+                        </tr>
+                        <tr>  
+                            <td>Afficher le numéro de la dernière chambre vide</td>       
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/displayLastRoom.action.php">Let's Go</button></td>           
+                        </tr>
+                        <tr>   
+                            <td>Réserver une chambre</td>           
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/passwordBooking.action.php">Let's Go</button></td>      
+                        </tr>
+                        <tr>  
+                            <td>Libérer une chambre</td>  
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/passwordFree.action.php">Let's Go</button></td>                
+                        </tr>
+                        <tr>  
+                            <td>Modifier une réservation</td>      
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/passwordEdit.action.php">Let's Go</button></td>            
+                        </tr>
+                        <tr>  
+                            <td>Annuler une réservation</td> 
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/passwordCancel.action.php">Let's Go</button></td>                 
+                        </tr>
+                        <tr>   
+                            <td>Quitter</td>     
+                            <td><button type="button" class="btn btn-danger"> <a href="../VIEW/login.php">Let's Go</a> </button></td>            
+                    </tbody>
+                </table>
             </div>
         </div>
 
+        <footer>
+                <p>Projet aout 2020 - PGA && MVI.</p>
+        </footer>
         
     </div>
 

@@ -18,6 +18,7 @@ require_once "../MODELE/PDF_Invoice.class.php";
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/index.css">
+    <title>login.php</title>
 </head>
 
 <body class="text-center">
