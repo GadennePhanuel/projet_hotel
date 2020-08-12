@@ -144,6 +144,52 @@ label{
     font-weight: 700;
     font-size: 18px;
 }
+/*
+  * booking.php
+*/
+.listTypeRoom{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.typeRoom{
+    width: 40%;
+    padding: 15px;
+    margin: 0 15px 30px 15px;
+    border: 1px solid #fff;
+}
+.typeRoom p:last-child{
+    margin-bottom: 0;
+}
+.formBooking{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.formBooking div{
+    margin: 10px;
+}
+.submitBooking{
+    margin-top: 50px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
  * Header

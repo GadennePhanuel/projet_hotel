@@ -206,7 +206,7 @@ class Hotel
                 "Vue : " => $this->roomsCVP[0]->getView(),
                 "Surface: " => $this->roomsCVP[0]->getSize(),
                 "Options :" => $this->roomsCVP[0]->getOptionList(),
-                "Prix: " => $this->roomsCVP[0]->getPrice()
+                "Prix: " => $this->roomsCVP[0]->getPrice() . "€ HT /nuit"
             ];
 
         }
@@ -224,7 +224,7 @@ class Hotel
                 "Vue : " => $this->roomsCVJ[0]->getView(),
                 "Surface: " => $this->roomsCVJ[0]->getSize(),
                 "Options :" => $this->roomsCVJ[0]->getOptionList(),
-                "Prix: " => $this->roomsCVJ[0]->getPrice()
+                "Prix: " => $this->roomsCVJ[0]->getPrice(). "€ HT /nuit"
             ];
         }
 
@@ -241,7 +241,7 @@ class Hotel
                 "Vue : " => $this->roomsCVO[0]->getView(),
                 "Surface: " => $this->roomsCVO[0]->getSize(),
                 "Options :" => $this->roomsCVO[0]->getOptionList(),
-                "Prix: " => $this->roomsCVO[0]->getPrice()
+                "Prix: " => $this->roomsCVO[0]->getPrice(). "€ HT /nuit"
                 ];
 
         }
@@ -259,7 +259,7 @@ class Hotel
                 "Vue : " => $this->roomsCVIO[0]->getView(),
                 "Surface: " => $this->roomsCVIO[0]->getSize(),
                 "Options :" => $this->roomsCVIO[0]->getOptionList(),
-                "Prix: " => $this->roomsCVIO[0]->getPrice()
+                "Prix: " => $this->roomsCVIO[0]->getPrice(). "€ HT /nuit"
             ];
         }
 
@@ -276,7 +276,7 @@ class Hotel
                 "Vue : " => $this->roomsCDA[0]->getView(),
                 "Surface: " => $this->roomsCDA[0]->getSize(),
                 "Options :" => $this->roomsCDA[0]->getOptionList(),
-                "Prix: " => $this->roomsCDA[0]->getPrice()
+                "Prix: " => $this->roomsCDA[0]->getPrice(). "€ HT /nuit"
             ];
         }
 
@@ -293,7 +293,7 @@ class Hotel
                 "Vue : " => $this->roomsExec[0]->getView(),
                 "Surface: " => $this->roomsExec[0]->getSize(),
                 "Options :" => $this->roomsExec[0]->getOptionList(),
-                "Prix: " => $this->roomsExec[0]->getPrice()
+                "Prix: " => $this->roomsExec[0]->getPrice(). "€ HT /nuit"
             ];
         }
 
@@ -310,7 +310,7 @@ class Hotel
                 "Vue : " => $this->roomsAmb[0]->getView(),
                 "Surface: " => $this->roomsAmb[0]->getSize(),
                 "Options :" => $this->roomsAmb[0]->getOptionList(),
-                "Prix: " => $this->roomsAmb[0]->getPrice()
+                "Prix: " => $this->roomsAmb[0]->getPrice(). "€ HT /nuit"
             ];
         }
 
@@ -327,7 +327,7 @@ class Hotel
                 "Vue : " => $this->roomsRoyale[0]->getView(),
                 "Surface: " => $this->roomsRoyale[0]->getSize(),
                 "Options :" => $this->roomsRoyale[0]->getOptionList(),
-                "Prix: " => $this->roomsRoyale[0]->getPrice()
+                "Prix: " => $this->roomsRoyale[0]->getPrice(). "€ HT /nuit"
             ];
         }
         return $res = [$arrayCVP, $arrayCVJ, $arrayCVO, $arrayCVIO, $arrayCDA, $arrayCptExec, $arrayCptAmb, $arrayCptRoyale];

@@ -16,34 +16,45 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
-    <title>Document</title>
+    <title>booking.php</title>
 </head>
 <body>
 
-    <div class="container-xl">
+    <div class="container">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <h3 class="masthead-brand">VotreHôtel.fr</h3>
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link active" href="menu.php">Retour au menu</a>
+                </nav>
+            </div>
+        </header>
+
         <div class="row justify-content-center">
-            <div class="col-8">
-                <h1>Chambres occupés</h1>
+            <div class="col-12">
+                <h1>Types de chambre</h1>
             </div>
         </div>
-        <?php $displayRoomType = $_SESSION['displayRoomType'];
-        foreach($displayRoomType as $type){?>
-            <div>
-                <?php $list = $type;
-                foreach ($list as $key => $value){?>
-                    <p><?php echo $key. ' ' .$value. "<br>" ?></p>
-                <?php } ?>
-            </div>
-            <br>
-        <?php } ?>
-        <form action="../CTRL/bookingRoom.action.php" method="post" >
+
+        <div class="listTypeRoom">
+            <?php $displayRoomType = $_SESSION['displayRoomType'];
+            foreach($displayRoomType as $type){?>
+                <div class="typeRoom">
+                    <?php $list = $type;
+                    foreach ($list as $key => $value){?>
+                        <p><?php echo $key. ' ' .$value. "<br>" ?></p>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+        </div>
+        <form action="../CTRL/bookingRoom.action.php" method="post" class="formBooking">
             <div class="form-example">
-                <label for="type">Saisissez le type de chambre souhaitée (1 à 8) </label>
-                <input type="text" name="type" id="type" required>
+                <label for="type">Saisissez le type de chambre souhaitée : </label>
+                <input type="number" name="type" id="type" min="1" max="8" placeholder="1-8" required>
 
             </div>
             <div >
-                <label for="dateStart">Start date:</label>
+                <label for="dateStart">Date d'arrivée : </label>
 
                 <input type="date" id="dateStart" name="dateStart"
                        required
@@ -51,7 +62,7 @@ session_start();
                        min="<?php echo date("Y-m-d"); ?>" max="<?php $d=strtotime("+2 Years"); echo date("Y-m-d", $d); ?>">
             </div>
             <div >
-                <label for="dateEnd">Ending date:</label>
+                <label for="dateEnd">Date de départ : </label>
 
                 <input type="date" id="dateEnd" name="dateEnd"
                        required
@@ -72,12 +83,14 @@ session_start();
             }
             ?>
 
-            <div class="row justify-content-center">
-                <div class="col-3">
-                    <input type="submit"  class="btn btn-success" value="envoyer" />
-                    <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
-                </div>
+            <div class="row justify-content-center submitBooking">
+                    <input type="submit"  class="btn btn-secondary btn-secondary2" value="Valider" />
             </div>
+        </form>
+
+        <footer>
+            <p>Projet aout 2020 - PGA && MVI.</p>
+        </footer>
     </div>
 </body>
 </html>
