@@ -60,8 +60,12 @@ session_start();
                     </div>
                 </div>
             <?php } ?>
-        </div>       
-       
+        </div>
+
+        <footer>
+            <p>Projet aout 2020 - PGA && MVI.</p>
+        </footer>
+
     </div>
 
 

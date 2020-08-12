@@ -39,7 +39,7 @@ session_start();
 
     <?php if(isset($_SESSION['displayRoomBooked']) && !empty($_SESSION['displayRoomBooked'])) {  ?>
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
             <p>
                 <?php echo $_SESSION['displayRoomBooked']; ?>
             </p>
@@ -49,7 +49,7 @@ session_start();
 
     <?php if(isset($_SESSION['displayRoomFree']) && !empty($_SESSION['displayRoomFree'])) {  ?>
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
             <p>
                 <?php echo $_SESSION['displayRoomFree']; ?>
             </p>
@@ -59,7 +59,7 @@ session_start();
 
     <?php if(isset($_SESSION['displayFirstRoomFree']) && !empty($_SESSION['displayFirstRoomFree'])) {  ?>
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
             <p>
                 <?php echo $_SESSION['displayFirstRoomFree']; ?>
             </p>
@@ -69,7 +69,7 @@ session_start();
 
     <?php if(isset($_SESSION['displayLastRoomFree']) && !empty($_SESSION['displayLastRoomFree'])) {  ?>
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
             <p>
                 <?php echo $_SESSION['displayLastRoomFree']; ?>
             </p>
@@ -77,6 +77,9 @@ session_start();
     </div>
     <?php } ?>
 
+    <footer>
+        <p>Projet aout 2020 - PGA && MVI.</p>
+    </footer>
 </div>
 
 
