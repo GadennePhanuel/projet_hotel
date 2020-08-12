@@ -18,7 +18,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
 
-    <title>confirm Booking</title>
+    <title>paiementBooking.php</title>
 </head>
 <body>
 <div class="container">
