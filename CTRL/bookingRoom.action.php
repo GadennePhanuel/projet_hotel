@@ -10,8 +10,12 @@ require_once "../MODELE/PDF_Invoice.class.php";
 session_start();
 
 $typechoose = $_POST['type'];
+$_SESSION['typechoose'] = $typechoose;
 $dateStart = $_POST['dateStart'];
 $dateEnd = $_POST['dateEnd'];
+$_SESSION['dateStart'] = $dateStart;
+$_SESSION['dateEnd'] = $dateEnd;
+
 
 $customer = $_SESSION['customer'];
 $hotel = $_SESSION['hotel'];
@@ -25,7 +29,7 @@ $dateStart1 = new DateTime($dateStart);
 $dateEnd1 = new DateTime($dateEnd);
 
 
-if ($dateStart1 > $dateEnd1 || $dateStart1 == $dateEnd1){
+if ((isset($dateStart) && !empty($dateStart)) && (isset($dateEnd) && !empty($dateEnd)) && ($dateStart1 > $dateEnd1 || $dateStart1 == $dateEnd1)){
     $message['saisi'] = "veuillez saisir des dates de réservation valide";
     $_SESSION['message'] = $message;
 
@@ -37,24 +41,29 @@ if ($dateStart1 > $dateEnd1 || $dateStart1 == $dateEnd1){
 
         header("Location: ../VIEW/booking.php");
 
-    }elseif($typechoose >= 1 && $typechoose <= 8){
+    }else{
+        //$booking = $hotel->booking($dateStart,$dateEnd,$customer,$typechoose);
+        $roomType = $hotel->displayRoomType();
+        $roomChoose = $roomType[$typechoose - 1];
 
-        $booking = $hotel->booking($dateStart,$dateEnd,$customer,$typechoose);
+        //$dateStart = $booking->getDateStart();
+        //$dateEnd = $booking->getDateEnd();
 
-        $dateStart = $booking->getDateStart();
-        $dateEnd = $booking->getDateEnd();
 
-        $interval = $dateStart->diff($dateEnd);
+        $interval = (new DateTime($dateStart))->diff(new DateTime($dateEnd));
         $days = $interval->d;
-        $prix = $booking->getPrice();
+        //$prix = $roomChoose->getPrice();
+        $prix = intval($roomChoose['Prix: ']);
+        $_SESSION['prix'] = $prix;
         $prixTotalHT = $prix * $days;
         $prixTotalTTC = $prixTotalHT * 1.2;
         $_SESSION['prixTotalTTC'] = $prixTotalTTC;
-        $_SESSION['room'] = $booking;
 
-        $booking = $booking->displayRoom();
+
+        $_SESSION['room'] = $roomChoose;
+
+        //$booking = $roomChoose->displayRoom();
         $_SESSION['booking'] = $booking;
-
         header("Location: ../VIEW/paiementBooking.php");
     }
 

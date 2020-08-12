@@ -37,15 +37,25 @@ session_start();
         </div>
     </div>
 
-    <?php foreach ($_SESSION['booking'] as $content){ ?>
+    <?php foreach ($_SESSION['room'] as $key => $content){ ?>
         <div class="row justify-content-center">
             <div class="col-12">
                 <p>
-                    <?php echo $content. "<br>"?>
+                    <?php echo $key . " " . $content. "<br>"?>
                 </p>
             </div>
         </div>
     <?php } ?>
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <p>
+                Date d'arrivée : <?php echo $_SESSION['dateStart']. "<br>"?>
+            </p>
+            <p>
+                Date de départ : <?php echo $_SESSION['dateEnd']. "<br>"?>
+            </p>
+        </div>
+    </div>
     <div class="row justify-content-center">
         <div class="col-12">
             <p>

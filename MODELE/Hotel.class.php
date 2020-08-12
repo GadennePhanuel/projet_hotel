@@ -202,7 +202,7 @@ class Hotel
         }
         if ($cptCVP > 0){
             $arrayCVP = [
-                "Chambre 1: " => $this->roomsCVP[0]->getType(),
+                "Chambre type 1: " => $this->roomsCVP[0]->getType(),
                 "Vue : " => $this->roomsCVP[0]->getView(),
                 "Surface: " => $this->roomsCVP[0]->getSize(),
                 "Options :" => $this->roomsCVP[0]->getOptionList(),
@@ -220,7 +220,7 @@ class Hotel
         }
         if ($cptCVJ > 0){
             $arrayCVJ = [
-                "Chambre 2: " => $this->roomsCVJ[0]->getType(),
+                "Chambre type 2: " => $this->roomsCVJ[0]->getType(),
                 "Vue : " => $this->roomsCVJ[0]->getView(),
                 "Surface: " => $this->roomsCVJ[0]->getSize(),
                 "Options :" => $this->roomsCVJ[0]->getOptionList(),
@@ -237,7 +237,7 @@ class Hotel
         }
         if ($cptCVO > 0){
             $arrayCVO =[
-                "Chambre 3: " => $this->roomsCVO[0]->getType(),
+                "Chambre type 3: " => $this->roomsCVO[0]->getType(),
                 "Vue : " => $this->roomsCVO[0]->getView(),
                 "Surface: " => $this->roomsCVO[0]->getSize(),
                 "Options :" => $this->roomsCVO[0]->getOptionList(),
@@ -255,7 +255,7 @@ class Hotel
         }
         if ($cptCVIO > 0){
             $arrayCVIO = [
-                "Chambre 4: " => $this->roomsCVIO[0]->getType(),
+                "Chambre type 4: " => $this->roomsCVIO[0]->getType(),
                 "Vue : " => $this->roomsCVIO[0]->getView(),
                 "Surface: " => $this->roomsCVIO[0]->getSize(),
                 "Options :" => $this->roomsCVIO[0]->getOptionList(),
@@ -272,7 +272,7 @@ class Hotel
         }
         if ($cptCDA > 0){
             $arrayCDA = [
-                "Chambre 5: " => $this->roomsCDA[0]->getType(),
+                "Chambre type 5: " => $this->roomsCDA[0]->getType(),
                 "Vue : " => $this->roomsCDA[0]->getView(),
                 "Surface: " => $this->roomsCDA[0]->getSize(),
                 "Options :" => $this->roomsCDA[0]->getOptionList(),
@@ -289,7 +289,7 @@ class Hotel
         }
         if ($cptExec > 0){
             $arrayCptExec = [
-                "Chambre 6: " => $this->roomsExec[0]->getType(),
+                "Chambre type 6: " => $this->roomsExec[0]->getType(),
                 "Vue : " => $this->roomsExec[0]->getView(),
                 "Surface: " => $this->roomsExec[0]->getSize(),
                 "Options :" => $this->roomsExec[0]->getOptionList(),
@@ -306,7 +306,7 @@ class Hotel
         }
         if ($cptAmb > 0){
             $arrayCptAmb = [
-                "Chambre 7: " => $this->roomsAmb[0]->getType(),
+                "Chambre type 7: " => $this->roomsAmb[0]->getType(),
                 "Vue : " => $this->roomsAmb[0]->getView(),
                 "Surface: " => $this->roomsAmb[0]->getSize(),
                 "Options :" => $this->roomsAmb[0]->getOptionList(),
@@ -323,7 +323,7 @@ class Hotel
         }
         if ($cptRoyale > 0){
             $arrayCptRoyale = [
-                "Chambre 8: " => $this->roomsRoyale[0]->getType(),
+                "Chambre type 8: " => $this->roomsRoyale[0]->getType(),
                 "Vue : " => $this->roomsRoyale[0]->getView(),
                 "Surface: " => $this->roomsRoyale[0]->getSize(),
                 "Options :" => $this->roomsRoyale[0]->getOptionList(),

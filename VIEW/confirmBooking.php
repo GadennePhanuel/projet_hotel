@@ -47,6 +47,14 @@ session_start();
             </div>
         <?php } ?>
 
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <p>
+                    Prix total TTC : <?php echo $_SESSION['prixTotalTTC']." €". "<br>"?>
+                </p>
+            </div>
+        </div>
+
         <footer>
             <p>Projet aout 2020 - PGA && MVI.</p>
         </footer>
