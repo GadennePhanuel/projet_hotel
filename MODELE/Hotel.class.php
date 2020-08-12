@@ -466,6 +466,38 @@ class Hotel
             }
     }
 
+    public function editBookingTmp($numRoom, $newDateStart, $newDateEnd){
+        $newDateStart = new DateTime($newDateStart);
+        $newDateEnd = new DateTime($newDateEnd);
+
+        if (($numRoom > 0 && $numRoom <= count($this->rooms)) && ($this->rooms[$numRoom-1]->getIsEmpty() == 1)){
+
+            $room = $this->rooms[$numRoom-1];
+
+            $dateStart = $room->getDateStart();
+            $dateEnd = $room->getDateEnd();
+            $interval = $dateStart->diff($dateEnd);
+            $intervalDate = $interval->format('%d');  //format numérique en nb de jours
+            $price = $room->getPrice();
+            $prixTotal = $intervalDate * $price;
+            $prixTotalTTC = $prixTotal * 1.2;
+
+
+            $interval = $newDateStart->diff($newDateEnd);
+            $intervalDate = $interval->format('%d');  //format numérique en nb de jours
+            $newPrixTotal = $intervalDate * $price;
+            $newPrixTotalTTC = $newPrixTotal * 1.2;
+
+            $prixDiff = $newPrixTotalTTC - $prixTotalTTC;
+
+
+            $client1 = $room->getCustomers()[0];
+
+
+            return array($room, $client1, $prixDiff);
+        }
+    }
+
     public function freeARoom($res)
     {
 

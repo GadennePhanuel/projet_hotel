@@ -190,10 +190,12 @@ label{
     text-align: center;
 }
 
-
-
-
-
+/*
+  * paiementEditBooking.php
+*/
+.newDateEditBooking{
+    margin-top: 50px;
+}
 
 
 

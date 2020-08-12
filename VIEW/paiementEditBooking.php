@@ -18,33 +18,49 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
 
-    <title>confirm Booking</title>
+    <title>paiementEditBooking</title>
 </head>
 <body>
-<div class="container-xl">
+<div class="container">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">VotreHôtel.fr</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="menu.php">Retour au menu</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="row justify-content-center">
-        <div class="col-8">
-            <h1>Recapitulatif de la réservation</h1>
+        <div class="col-12">
+            <h1>Recapitulatif de la nouvelle réservation</h1>
         </div>
     </div>
 
     <?php foreach ($_SESSION['roomModified'] as $content){ ?>
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-12">
                 <p>
                     <?php echo $content. "<br>"?>
                 </p>
             </div>
         </div>
     <?php } ?>
-    <div class="row justify-content-center">
-        <div class="col-8">
+    <div class="row justify-content-center newDateEditBooking">
+        <div class="col-12">
             <p>
-                Prix total TTC : <?php echo $_SESSION['prixDiff']. "<br>"?>
+                <?php echo "Nouvelle date de réservation : ".$_SESSION['newDateStart']." - ".$_SESSION['newDateEnd'] .  "<br>"?>
             </p>
         </div>
     </div>
-    <form action="../CTRL/paiementEditBooking2.action.php" method="post" >
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <p>
+                Prix total TTC : <?php echo $_SESSION['prixDiff']. "€" . "<br>"?>
+            </p>
+        </div>
+    </div>
+    <form action="../CTRL/paiementEditBooking2.action.php" method="post" class="formPaiementBooking">
         <p>
             <label for="mastercard">N° carte bancaire (16): </label>
             <input type="text" minlength="16" maxlength="16" name="mastercard" id="mastercard" required>
@@ -61,11 +77,8 @@ session_start();
             unset($_SESSION["message"]);
         }
         ?>
-        <div class="row justify-content-center">
-            <div class="col-3">
-                <input type="submit" class="btn btn-success" value="envoyer" />
-
-            </div>
+        <div class="row justify-content-center submitPaiementBooking">
+                <input type="submit" class="btn btn-secondary btn-secondary2" value="Valider" />
         </div>
 </div>
 

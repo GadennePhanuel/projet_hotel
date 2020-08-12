@@ -21,17 +21,26 @@ session_start();
     <title>editBooking.php</title>
 </head>
 <body>
-<div class="container-xl">
+<div class="container">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">VotreHôtel.fr</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="menu.php">Retour au menu</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
             <h1>Chambres occupés</h1>
         </div>
     </div>
     <?php if (is_array($_SESSION['roomsBookedSimple'])){ ?>
-        <form action="../CTRL/editBooking2.action.php" method="post" >
+        <form action="../CTRL/editBooking2.action.php" method="post" class="formBooking">
             <?php foreach ($_SESSION['roomsBookedSimple'] as $room){ ?>
                 <div class="row justify-content-center">
-                    <div class="col-8">
+                    <div class="col-12">
                         <input type="radio" checked id="<?php echo $room[0] ?>" name="id" value="<?php echo $room[0] ?>">
 
                             <label for="<?php echo $room[0] ?>" >
@@ -46,10 +55,10 @@ session_start();
             <?php } ?>
 
             <div class="row justify-content-center">
-                <div class="col-8">
-                    <label for="dateStart">Start date:</label>
+                <div class="col-12">
+                    <label for="dateStart">Nouvelle date d'arrivée:</label>
 
-                    <input type="date" id="dateStart" name="dateStart"
+                    <input type="date" id="dateStart" name="newDateStart"
                            required
                            value="0000-00-00"
                            min="<?php echo date("Y-m-d"); ?>" max="<?php $d=strtotime("+2 Years"); echo date("Y-m-d", $d); ?>">
@@ -57,10 +66,10 @@ session_start();
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-8">
+                <div class="col-12">
                     <label for="dateEnd">Nouvelle date de fin:</label>
 
-                    <input type="date" id="dateEnd" name="dateEnd"
+                    <input type="date" id="dateEnd" name="newDateEnd"
                            required
                            value="0000-00-00"
                            min="<?php $d=strtotime("+1 Day"); echo date("Y-m-d", $d); ?>" max="<?php $d=strtotime("+2 Years"); echo date("Y-m-d", $d); ?>">
@@ -68,8 +77,8 @@ session_start();
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-8">
-                    <button type="submit" class="btn btn-success">Envoyer</button>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-secondary btn-secondary2 submitBooking">Envoyer</button>
                 </div>
             </div>
         </form>
@@ -77,7 +86,7 @@ session_start();
 
     <?php }else{ ?>
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-12">
                 <p>
                     <?php echo $_SESSION['roomsBookedSimple']. "<br>"?>
                 </p>
@@ -89,7 +98,7 @@ session_start();
     if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
         foreach ($_SESSION["message"] as $value){
             ?>
-            <div class="error_msg">
+            <div class="error_msg error_msg_paiementBooking">
                 <?php        echo $value;   ?>
             </div>
             <?php
@@ -98,11 +107,9 @@ session_start();
     }
     ?>
 
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
-        </div>
-    </div>
+    <footer>
+        <p>Projet aout 2020 - PGA && MVI.</p>
+    </footer>
 </div>
 
 <?php unset($_SESSION['roomModified']);

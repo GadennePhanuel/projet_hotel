@@ -106,9 +106,9 @@ class Tools
                 "$size\n" .
                 "$view\n" .
                 "$optionsList",
-            "Nb jour"     => "$intervalDate",
+            "Nb nuit"     => $intervalDate - 1,
             "P.U. HT"      => "$price",
-            "MONTANT H.T." => "$total",
+            "MONTANT H.T." => $intervalDate * $price,
             "TVA"          => "1" );
         $size = $pdf->addLine( $y, $line );
         $y   += $size + 2;

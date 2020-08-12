@@ -13,9 +13,12 @@ $cb = $_POST['mastercard'];
 $room = $_SESSION['room'];
 $hotel = $_SESSION['hotel'];
 
-$prixDiff = $_SESSION['prixDiff'];
-$client1 = $_SESSION['client1'];
-$numOfFacture = $_SESSION['numOfFacture'];
+$numRoom = $_SESSION['numRoom'];
+$newDateStart = $_SESSION['newDateStart'];
+$newDateEnd = $_SESSION['newDateEnd'];
+
+
+
 
 
 $message = array(
@@ -24,11 +27,21 @@ $message = array(
 );
 
 if (strlen((int)$cb) == 16){
-    if ($prixDiff >= 0){
-        Tools::exportCSV($prixDiff, $client1, $cb);
-        Tools::facture($client1, $prixDiff, $room, $numOfFacture, $cb);
+
+    $roomModified = $hotel->editBooking($numRoom, $newDateStart, $newDateEnd);  //recupére un tableau ($room, $client1, $prixDiff, $numOfFacture)
+    $_SESSION['room'] = $roomModified[0];
+    $_SESSION['prixDiff'] = $roomModified[2];
+    $_SESSION['client1'] = $roomModified[1];
+    $_SESSION['numOfFacture'] = $roomModified[3];
+    $roomModified[0] = $roomModified[0]->displayRoom();
+
+    $_SESSION['roomModified'] = $roomModified[0];
+
+    if ($_SESSION['prixDiff'] >= 0){
+        Tools::exportCSV($_SESSION['prixDiff'], $_SESSION['client1'], $cb);
+        Tools::facture($_SESSION['client1'], $_SESSION['prixDiff'], $_SESSION['room'], $_SESSION['numOfFacture'], $cb);
     }else{
-        Tools::exportCSV($prixDiff, $client1, $cb);
+        Tools::exportCSV($_SESSION['prixDiff'], $_SESSION['client1'], $cb);
     }
     header("Location: ../VIEW/confirmEditBooking.php");
 }else{

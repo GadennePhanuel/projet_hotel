@@ -18,19 +18,28 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
 
-    <title>editBooking.php</title>
+    <title>confirmEditBooking</title>
 </head>
-<body>
-<div class="container-xl">
+<body class="text-center">
+<div class="container">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">VotreHôtel.fr</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="menu.php">Retour au menu</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
             <h1>Recapitulatif de la modification</h1>
         </div>
     </div>
 
     <?php foreach ($_SESSION['roomModified'] as $content){ ?>
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-12">
                 <p>
                     <?php echo $content. "<br>"?>
                 </p>
@@ -41,15 +50,15 @@ session_start();
     <div class="row justify-content-center">
         <div class="col-8">
             <p>
-                Montant dû TTC : <?php echo $_SESSION['prixDiff']. "<br>"?>
+                Montant dû TTC : <?php echo $_SESSION['prixDiff']. " €" . "<br>"?>
             </p>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
-        </div>
-    </div>
+
+    <footer>
+        <p>Projet aout 2020 - PGA && MVI.</p>
+    </footer>
+
 </div>
 
 
