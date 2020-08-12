@@ -127,7 +127,7 @@ class Hotel
         //création d'un tableau contenant toutes les chambres occupés
         $roomsBooked =array();
         foreach ($this->rooms as $room){
-            if($room->getIsEmpty() == 0){
+            if($room->getIsEmpty() == 1){
                 $roomsBooked[] = $room;
             }
         }
