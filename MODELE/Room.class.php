@@ -48,7 +48,7 @@ class Room
             if (!isset($this->customersList) && empty($this->customersList)){
                 foreach ($this->customers as $customer) {
 
-                    $this->customersList = $this->customersList . " " . $customer->getNom() . " " . $customer->getPrenom() . " " . $customer->getAge() . " - ";
+                    $this->customersList = $this->customersList . " " . $customer->getNom() . " " . $customer->getPrenom() . " " . $customer->getAge() . "ans"." - ";
 
                 }
             }
@@ -58,7 +58,7 @@ class Room
             $vu = "Vue: ". $this->view;
             $taille = "Taille: ". $this->size;
             $opt = "Options: ". $this->optionList;
-            $prix = "Prix de la nuit: ". $this->price;
+            $prix = "Prix de la nuit: ". $this->price . "€ HT";
             $stat = "Statut: occupé";
             $client = "Occupant: ". $this->customersList;
             $dateReserv = "Date de réservation: ".$this->dateStart->format('d-m-Y')." au ".$this->dateEnd->format('d-m-Y');
@@ -73,7 +73,7 @@ class Room
             $vu = "Vue: ". $this->view;
             $taille = "Taille: ". $this->size;
             $opt = "Options: ". $this->optionList;
-            $prix = "Prix de la nuit: ". $this->price;
+            $prix = "Prix de la nuit: ". $this->price . "€ HT";
             $stat = "Statut: libre";
 
             $result = array($ch, $ty, $vu, $taille, $opt, $prix, $stat);

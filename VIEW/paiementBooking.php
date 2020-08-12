@@ -21,16 +21,25 @@ session_start();
     <title>confirm Booking</title>
 </head>
 <body>
-<div class="container-xl">
+<div class="container">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">VotreHôtel.fr</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="menu.php">Retour au menu</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
             <h1>Recapitulatif de la réservation</h1>
         </div>
     </div>
 
     <?php foreach ($_SESSION['booking'] as $content){ ?>
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-12">
                 <p>
                     <?php echo $content. "<br>"?>
                 </p>
@@ -38,37 +47,39 @@ session_start();
         </div>
     <?php } ?>
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
             <p>
-                Prix total TTC : <?php echo $_SESSION['prixTotalTTC']. "<br>"?>
+                Prix total TTC : <?php echo $_SESSION['prixTotalTTC']." €". "<br>"?>
             </p>
         </div>
     </div>
-    <form action="../CTRL/paiementBookingRoom.action.php" method="post" >
-    <p>
-        <label for="mastercard">N° carte bancaire (16): </label>
-        <input type="text" minlength="16" maxlength="16" name="mastercard" id="mastercard" required>
-    </p>
-        <?php
-        if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
-            foreach ($_SESSION["message"] as $value){
-                ?>
-                <div class="error_msg">
-                    <?php        echo $value;   ?>
-                </div>
-                <?php
+
+    <form action="../CTRL/paiementBookingRoom.action.php" method="post" class="formPaiementBooking" >
+        <h4>Paiement</h4>
+        <p>
+            <label for="mastercard">N° carte bancaire (16): </label>
+            <input type="text" minlength="16" maxlength="16" name="mastercard" id="mastercard" required>
+        </p>
+            <?php
+            if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
+                foreach ($_SESSION["message"] as $value){
+                    ?>
+                    <div class="error_msg error_msg_paiementBooking">
+                        <?php        echo $value;   ?>
+                    </div>
+                    <?php
+                }
+                unset($_SESSION["message"]);
             }
-            unset($_SESSION["message"]);
-        }
-        ?>
-
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <input type="submit" class="btn btn-success" value="envoyer" />
-
+            ?>
+        <div class="row justify-content-center submitPaiementBooking">
+                <input type="submit" class="btn btn-secondary btn-secondary2" value="Payer et valider réservation" />
         </div>
-    </div>
+    </form>
 
+    <footer>
+        <p>Projet aout 2020 - PGA && MVI.</p>
+    </footer>
 </div>
 
 
