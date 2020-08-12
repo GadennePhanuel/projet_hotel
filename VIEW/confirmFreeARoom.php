@@ -18,13 +18,22 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
 
-    <title>editBooking.php</title>
+    <title>confirmFreeARoom</title>
 </head>
-<body>
-    <div class="container-xl">
+<body class="text-center">
+    <div class="container">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <h3 class="masthead-brand">VotreHôtel.fr</h3>
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link active" href="menu.php">Retour au menu</a>
+                </nav>
+            </div>
+        </header>
+
         <div class="row justify-content-center">
-            <div class="col-8">
-                <h1>Chambre libérée</h1>
+            <div class="col-12">
+                <h1>Rappel de la chambre libérée</h1>
             </div>
         </div>
 
@@ -38,14 +47,12 @@ session_start();
             </div>
         <?php } ?>
 
+        <footer>
+            <p>Projet aout 2020 - PGA && MVI.</p>
+        </footer>
+
     </div>
 
-
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
-        </div>
-    </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
