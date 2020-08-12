@@ -19,85 +19,75 @@ session_start();
     <link rel="stylesheet" href="CSS/menu.css">
 </head>
 <body>
-<div class="container-xl">
+<div class="container">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">VotreHôtel.fr</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="menu.php">Retour au menu</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
             <h1>Module de création client</h1>
         </div>
     </div>
-    <form action="../CTRL/createClientCheck.action.php" method="post" >
-        <div >
-            <label for="nom">Nom: </label>
-            <input type="text" name="nom" id="nom" required>
-        </div>
-        <p>
-            <label for="prenom">Prenom: </label>
-            <input type="text" name="prenom" id="prenom" required>
-        </p>
-        <p>
-            <label for="age">Age: </label>
-            <input type="text" name="age" id="age" required>
-        </p>
-        <p>
-            <label for="login">Login: </label>
-            <input type="text" name="login" id="login" required>
-        </p>
-        <p>
-            <label for="email">Mail: </label>
-            <input type="text" name="email" id="email" required>
-        </p>
 
-    <br>
+    <form action="../CTRL/createClientCheck.action.php" method="post" class="formCreateClient">
+      <div class="formClientPrincipal">
+          <h4>Client Principal</h4>
+          <label for="nom">Nom: </label>
+          <input type="text" name="nom" id="nom" required>
+          <label for="prenom">Prenom: </label>
+          <input type="text" name="prenom" id="prenom" required>
+          <label for="age">Age: </label>
+          <input type="text" name="age" id="age" required>
+          <label for="login">Login: </label>
+          <input type="text" name="login" id="login" required>
+          <label for="email">Mail: </label>
+          <input type="text" name="email" id="email" required>
+      </div>
 
-        <div>
-            <p>
-                <label for="nomSec">Nom: </label>
-                <input type="text" name="nomSec" id="nomSec" >
-            </p>
-            <p>
-                <label for="prenomSec">Prenom:  </label>
-                <input type="text" name="prenomSec" id="prenomSec" >
-            </p>
-            <p>
-                <label for="ageSec">Age: </label>
-                <input type="text" name="ageSec" id="ageSec" >
-            </p>
-        </div>
+      <div>
+          <h4>Clients Secondaires</h4>
+          <div class="formClientsSecondaires">
+              <div class="formClient">
+                  <label for="nomSec">Nom: </label>
+                  <input type="text" name="nomSec" id="nomSec" >
+                  <label for="prenomSec">Prenom:  </label>
+                  <input type="text" name="prenomSec" id="prenomSec" >
+                  <label for="ageSec">Age: </label>
+                  <input type="text" name="ageSec" id="ageSec" >
 
-    <br>
+              </div>
 
+              <div class="formClient">
+                  <label for="nomSec2">Nom: </label>
+                  <input type="text" name="nomSec2" id="nomSec2" >
+                  <label for="prenomSec2">Prenom: </label>
+                  <input type="text" name="prenomSec2" id="prenomSec2" >
+                  <label for="ageSec2">Age: </label>
+                  <input type="text" name="ageSec2" id="ageSec2" >
 
-        <div>
-            <p>
-                <label for="nomSec2">Nom: </label>
-                <input type="text" name="nomSec2" id="nomSec2" >
-            </p>
-            <p>
-                <label for="prenomSec2">Prenom: </label>
-                <input type="text" name="prenomSec2" id="prenomSec2" >
-            </p>
-            <p>
-                <label for="ageSec2">Age: </label>
-                <input type="text" name="ageSec2" id="ageSec2" >
-            </p>
-        </div>
+              </div>
 
-    <br>
-        <div>
+              <div class="formClient">
+                  <label for="nomSec3">Nom: </label>
+                  <input type="text" name="nomSec3" id="nomSec3" >
+                  <label for="prenomSec3">Prenom: </label>
+                  <input type="text" name="prenomSec3" id="prenomSec3" >
+                  <label for="ageSec3">Age: </label>
+                  <input type="text" name="ageSec3" id="ageSec3" >
+              </div>
+          </div>
+      </div>
 
-            <p>
-                <label for="nomSec3">Nom: </label>
-                <input type="text" name="nomSec3" id="nomSec3" >
-            </p>
-            <p>
-                <label for="prenomSec3">Prenom: </label>
-                <input type="text" name="prenomSec3" id="prenomSec3" >
-            </p>
-            <p>
-                <label for="ageSec3">Age: </label>
-                <input type="text" name="ageSec3" id="ageSec3" >
-            </p>
-        </div>
+      <div class="row justify-content-center submitCreateClient">
+          <input type="submit" class="btn btn-secondary btn-secondary2" value="Valider" />
+      </div>
+    </form>
 
         <?php
         if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
@@ -113,12 +103,9 @@ session_start();
         unset($_SESSION['customer'])
         ?>
 
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <input type="submit" class="btn btn-success" value="envoyer" />
-            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
-        </div>
-    </div>
+        <footer>
+            <p>Projet aout 2020 - PGA && MVI.</p>
+        </footer>
 </div>
 
 </body>

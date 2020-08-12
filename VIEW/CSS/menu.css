@@ -104,12 +104,46 @@ h3{
     margin: 0;
 }
 
-
-
-
-
-
-
+/*
+  * createClient.php
+*/
+h4{
+    text-align: center;
+    text-decoration: underline;
+}
+.formClientPrincipal{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto 60px auto;
+}
+.formClientsSecondaires{
+    display: flex;
+    justify-content: space-around;
+}
+.formClient{
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+}
+label{
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+.submitCreateClient{
+    margin-top: 100px;
+}
+.btn-secondary2,
+.btn-secondary2:hover,
+.btn-secondary2:focus {
+    width: 250px;
+    color: #333;
+    text-shadow: none; /* Prevent inheritance from `body` */
+    background-color: #fff;
+    border: .05rem solid #fff;
+    font-weight: 700;
+    font-size: 18px;
+}
 
 /*
  * Header
