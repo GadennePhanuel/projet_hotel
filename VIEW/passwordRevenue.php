@@ -9,6 +9,7 @@ require_once "../MODELE/PDF_Invoice.class.php";
 session_start();
 ?>
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,12 +17,14 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/menu.css">
+    <link rel="stylesheet" href="CSS/index.css">
 
-    <title>remboursementCancelBooking</title>
+    <title>passwordRevenue.php</title>
 </head>
+
 <body class="text-center">
-<div class="container">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
     <header class="masthead mb-auto">
         <div class="inner">
             <h3 class="masthead-brand">VotreHôtel.fr</h3>
@@ -31,32 +34,12 @@ session_start();
         </div>
     </header>
 
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <h1>Recapitulatif de l'annulation et du remboursement</h1>
-        </div>
-    </div>
-
-    <?php foreach ($_SESSION['roomCancel'] as $content){ ?>
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <p>
-                    <?php echo $content. "<br>"?>
-                </p>
-            </div>
-        </div>
-    <?php } ?>
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <p>
-                Remboursement : <?php echo $_SESSION['remboursement']." €". "<br>"?>
-            </p>
-        </div>
-    </div>
-    <form action="../CTRL/remboursementCancelBooking.action.php" method="post" class="formPaiementBooking" >
-        <p>
-            <label for="mastercard">N° carte bancaire (16): </label>
-            <input type="text" minlength="16" maxlength="16" name="mastercard" id="mastercard" required>
+    <main role="main" class="inner cover">
+        <h1 class="cover-heading">Saisissez votre mot de passe</h1>
+        <p class="lead">
+        <form action="../CTRL/displayRevenue.action.php" method="post" class="form-example">
+            <input type="password" name="password" id="password" placeholder="password" required>
+            <input type="submit" class="btn btn-secondary" value="Valider" />
         </p>
         <?php
         if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
@@ -70,16 +53,15 @@ session_start();
             unset($_SESSION["message"]);
         }
         ?>
-        <div class="row justify-content-center submitPaiementBooking">
-                <input type="submit" class="btn btn-secondary btn-secondary2" value="Valider" />
-        </div>
-    </form>
+        <?php unset($_SESSION['password']);?>
+    </main>
 
-    <footer>
-        <p>Projet aout 2020 - PGA && MVI.</p>
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Projet aout 2020 - PGA && MVI.</p>
+        </div>
     </footer>
 </div>
-
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -87,6 +87,10 @@ session_start();
                             <td>Annuler une réservation</td> 
                             <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/passwordCancel.action.php">Let's Go</button></td>                 
                         </tr>
+                        <tr>
+                            <td>Chiffre d'affaire</td>
+                            <td><button type="submit" class="btn btn-secondary" formaction="../CTRL/passwordRevenue.action.php">Let's Go</button></td>
+                        </tr>
                         <tr>   
                             <td>Quitter</td>     
                             <td><button type="button" class="btn btn-danger"> <a href="../VIEW/login.php">Let's Go</a> </button></td>            
@@ -125,6 +129,8 @@ session_start();
         unset($_SESSION['numRoom']);
         unset($_SESSION['newDateStart']);
         unset($_SESSION['newDateEnd']);
+        unset($_SESSION['date']);
+        unset($_SESSION['revenue']);
     ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

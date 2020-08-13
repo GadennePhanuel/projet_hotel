@@ -19,7 +19,7 @@ class Hotel
     private $roomsAmb = array();
     private $roomsRoyale = array();
     private $arrCsv;
-    private static $revenue;
+    private static $revenue = array();
     private static $nbPaiement = 0;
 
 
@@ -332,6 +332,7 @@ class Hotel
         }
         return $res = [$arrayCVP, $arrayCVJ, $arrayCVO, $arrayCVIO, $arrayCDA, $arrayCptExec, $arrayCptAmb, $arrayCptRoyale];
     }
+
     public function booking ($dateStart,$dateEnd,$customer,$typechoose){
 
         switch ($typechoose){
@@ -395,9 +396,7 @@ class Hotel
         $prixTotal = $intervalDate * $price;
         $prixTotalTTC = $prixTotal * 1.2;
 
-        $CA = self::$revenue;
-        $CA = $CA + $prixTotalTTC;
-        self::$revenue = $CA;
+        self::revenueGenerated($prixTotalTTC);
 
         $client1 = $room->getCustomers()[0];
 
@@ -408,6 +407,24 @@ class Hotel
 
     }
 
+    public static function revenueGenerated($montant){
+        $date = date("Y-m-d");
+
+        self::$revenue[$date][] = $montant;
+    }
+
+    public static function displayRevenue($date){
+        $montantTotal = 0;
+        foreach (self::$revenue[$date] as $montant){
+            $montantTotal = $montantTotal + $montant;
+        }
+
+        if (isset($montantTotal) && !empty($montantTotal)){
+            return 0;
+        }else{
+            return $montantTotal;
+        }
+    }
 
     public function displayRoomsBookedSimple(){
         //création d'un tableau contenant toutes les chambres occupés

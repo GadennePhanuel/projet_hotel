@@ -18,7 +18,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
 
-    <title>remboursementCancelBooking</title>
+    <title>displayRevenue</title>
 </head>
 <body class="text-center">
 <div class="container">
@@ -26,61 +26,34 @@ session_start();
         <div class="inner">
             <h3 class="masthead-brand">VotreHôtel.fr</h3>
             <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link" href="menu.php">Retour au menu</a>
+                <a class="nav-link active" href="menu.php">Retour au menu</a>
             </nav>
         </div>
     </header>
 
     <div class="row justify-content-center">
         <div class="col-12">
-            <h1>Recapitulatif de l'annulation et du remboursement</h1>
+            <h1>Chiffre d'affaire</h1>
         </div>
     </div>
 
-    <?php foreach ($_SESSION['roomCancel'] as $content){ ?>
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <p>
-                    <?php echo $content. "<br>"?>
-                </p>
-            </div>
-        </div>
-    <?php } ?>
+
     <div class="row justify-content-center">
-        <div class="col-12">
+        <div class="col-8">
             <p>
-                Remboursement : <?php echo $_SESSION['remboursement']." €". "<br>"?>
+                <?php echo "Chiffre d'affaires du ". $_SESSION['date'] . " : " ."<br>"
+                            . $_SESSION['revenue'] . " €";
+                ?>
             </p>
         </div>
     </div>
-    <form action="../CTRL/remboursementCancelBooking.action.php" method="post" class="formPaiementBooking" >
-        <p>
-            <label for="mastercard">N° carte bancaire (16): </label>
-            <input type="text" minlength="16" maxlength="16" name="mastercard" id="mastercard" required>
-        </p>
-        <?php
-        if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
-            foreach ($_SESSION["message"] as $value){
-                ?>
-                <div class="error_msg">
-                    <?php        echo $value;   ?>
-                </div>
-                <?php
-            }
-            unset($_SESSION["message"]);
-        }
-        ?>
-        <div class="row justify-content-center submitPaiementBooking">
-                <input type="submit" class="btn btn-secondary btn-secondary2" value="Valider" />
-        </div>
-    </form>
+
 
     <footer>
         <p>Projet aout 2020 - PGA && MVI.</p>
     </footer>
+
 </div>
-
-
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

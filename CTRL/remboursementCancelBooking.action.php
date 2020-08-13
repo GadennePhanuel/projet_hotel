@@ -8,8 +8,6 @@ require_once "../MODELE/Hotel.class.php";
 require_once "../MODELE/PDF_Invoice.class.php";
 session_start();
 
-$client1 = $_SESSION['client1'];
-$totalTTC = $_SESSION['remboursement'];
 $cb = $_POST['mastercard'];
 
 $numRoom = $_SESSION['numRoom'];
@@ -33,7 +31,8 @@ if (strlen((int)$cb) == 16){
 
     $_SESSION['roomCancel'] = $roomCancel;
 
-    Tools::exportCSV($totalTTC,$client1, $cb);
+    Tools::exportCSV($_SESSION['remboursement'],$_SESSION['client1'], $cb);
+    Hotel::revenueGenerated($_SESSION['remboursement']);
     header("Location: ../VIEW/confirmCancelBooking.php");
 }else{
     $message['mdp'] = "Numéro de carte invalide";

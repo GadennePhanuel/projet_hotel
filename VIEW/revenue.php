@@ -18,68 +18,64 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
 
-    <title>remboursementCancelBooking</title>
+    <title>editBooking.php</title>
 </head>
-<body class="text-center">
+<body>
 <div class="container">
     <header class="masthead mb-auto">
         <div class="inner">
             <h3 class="masthead-brand">VotreHôtel.fr</h3>
             <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link" href="menu.php">Retour au menu</a>
+                <a class="nav-link active" href="menu.php">Retour au menu</a>
             </nav>
         </div>
     </header>
 
     <div class="row justify-content-center">
         <div class="col-12">
-            <h1>Recapitulatif de l'annulation et du remboursement</h1>
+            <h1>Choisir date</h1>
         </div>
     </div>
 
-    <?php foreach ($_SESSION['roomCancel'] as $content){ ?>
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <p>
-                    <?php echo $content. "<br>"?>
-                </p>
-            </div>
-        </div>
-    <?php } ?>
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <p>
-                Remboursement : <?php echo $_SESSION['remboursement']." €". "<br>"?>
-            </p>
-        </div>
-    </div>
-    <form action="../CTRL/remboursementCancelBooking.action.php" method="post" class="formPaiementBooking" >
-        <p>
-            <label for="mastercard">N° carte bancaire (16): </label>
-            <input type="text" minlength="16" maxlength="16" name="mastercard" id="mastercard" required>
-        </p>
-        <?php
-        if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
-            foreach ($_SESSION["message"] as $value){
-                ?>
-                <div class="error_msg">
-                    <?php        echo $value;   ?>
+        <form action="../CTRL/displayRevenue2.action.php" method="post" class="formBooking">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <label for="date">Choisir date</label>
+
+                    <input type="date" id="date" name="date"
+                           required
+                           value="00-00-0000"
+                           >
                 </div>
-                <?php
-            }
-            unset($_SESSION["message"]);
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-secondary btn-secondary2 submitBooking">Envoyer</button>
+                </div>
+            </div>
+        </form>
+
+
+    <?php
+    if (isset($_SESSION["message"]) && !empty($_SESSION["message"])){
+        foreach ($_SESSION["message"] as $value){
+            ?>
+            <div class="error_msg error_msg_paiementBooking">
+                <?php        echo $value;   ?>
+            </div>
+            <?php
         }
-        ?>
-        <div class="row justify-content-center submitPaiementBooking">
-                <input type="submit" class="btn btn-secondary btn-secondary2" value="Valider" />
-        </div>
-    </form>
+        unset($_SESSION["message"]);
+    }
+    ?>
 
     <footer>
         <p>Projet aout 2020 - PGA && MVI.</p>
     </footer>
 </div>
 
+?>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
