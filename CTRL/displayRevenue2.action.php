@@ -8,7 +8,7 @@ require_once "../MODELE/Hotel.class.php";
 require_once "../MODELE/PDF_Invoice.class.php";
 session_start();
 
-
+$hotel = $_SESSION['hotel'];
 $date = $_POST['date'];
 
 $message = array(
@@ -17,7 +17,7 @@ $message = array(
 );
 
 if(isset($date) && !empty($date)){
-    $revenue = Hotel::displayRevenue($date);
+    $revenue = $hotel->displayRevenue($date);
 
     $_SESSION['date'] = $date;
     $_SESSION['revenue'] = $revenue;

@@ -43,7 +43,7 @@ if (strlen((int)$cb) == 16){
     $_SESSION['booking'] = $booking;
 
 
-    $hotel::paiement($_SESSION['room'], $cb);
+    $hotel->paiement($_SESSION['room'], $cb);
     header("Location: ../VIEW/confirmBooking.php");
 }else{
     $message['mdp'] = "Numéro de carte invalide";

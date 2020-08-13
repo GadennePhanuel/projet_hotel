@@ -32,7 +32,10 @@ if (strlen((int)$cb) == 16){
     $_SESSION['roomCancel'] = $roomCancel;
 
     Tools::exportCSV($_SESSION['remboursement'],$_SESSION['client1'], $cb);
-    Hotel::revenueGenerated($_SESSION['remboursement']);
+    date_default_timezone_set('Europe/Paris');
+    $date = date('Y-m-d');
+    $hotel->setRevenue($date, $_SESSION['remboursement']);
+
     header("Location: ../VIEW/confirmCancelBooking.php");
 }else{
     $message['mdp'] = "Numéro de carte invalide";

@@ -19,8 +19,8 @@ class Hotel
     private $roomsAmb = array();
     private $roomsRoyale = array();
     private $arrCsv;
-    private static $revenue = array();
-    private static $nbPaiement = 0;
+    private $revenue = array();
+    private $nbPaiement = 0;
 
 
     public function __construct(array $arrCsv)
@@ -384,9 +384,9 @@ class Hotel
         return $roomChoose;
     }
 
-    public static function paiement($room, $cb){
-        self::$nbPaiement++;
-        $numOfFacture = self::$nbPaiement;
+    public function paiement($room, $cb){
+        $this->nbPaiement++;
+        $numOfFacture = $this->nbPaiement;
 
         $dateStart = $room->getDateStart();
         $dateEnd = $room->getDateEnd();
@@ -396,34 +396,23 @@ class Hotel
         $prixTotal = $intervalDate * $price;
         $prixTotalTTC = $prixTotal * 1.2;
 
-        self::revenueGenerated($prixTotalTTC);
-
         $client1 = $room->getCustomers()[0];
 
-
+        date_default_timezone_set('Europe/Paris');
+        $date = date('Y-m-d');
+        $this->revenue[$date][] = $prixTotalTTC;
 
         Tools::exportCSV($prixTotalTTC,$client1, $cb);
         Tools::facture($client1, $prixTotal, $room, $numOfFacture, $cb);
 
     }
 
-    public static function revenueGenerated($montant){
-        $date = date("Y-m-d");
-
-        self::$revenue[$date][] = $montant;
-    }
-
-    public static function displayRevenue($date){
+    public function displayRevenue($date){
         $montantTotal = 0;
-        foreach (self::$revenue[$date] as $montant){
+        foreach ($this->revenue[$date] as $montant){
             $montantTotal = $montantTotal + $montant;
         }
-
-        if (isset($montantTotal) && !empty($montantTotal)){
-            return $montantTotal;
-        }else{
-            return 0;
-        }
+        return $montantTotal;
     }
 
     public function displayRoomsBookedSimple(){
@@ -451,8 +440,8 @@ class Hotel
             $newDateEnd = new DateTime($newDateEnd);
 
             if (($numRoom > 0 && $numRoom <= count($this->rooms)) && ($this->rooms[$numRoom-1]->getIsEmpty() == 1)){
-                self::$nbPaiement++;
-                $numOfFacture = self::$nbPaiement;
+                $this->nbPaiement++;
+                $numOfFacture = $this->$nbPaiement;
                 $room = $this->rooms[$numRoom-1];
 
                 $dateStart = $room->getDateStart();
@@ -805,20 +794,22 @@ class Hotel
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getRevenue()
+    public function getRevenue(): array
     {
         return $this->revenue;
     }
 
     /**
-     * @param mixed $revenue
+     * @param $date
+     * * @param $montant
      */
-    public function setRevenue($revenue)
+    public function setRevenue($date, $montant): void
     {
-        $this->revenue = $revenue;
+        $this->revenue[$date][] = $montant;
     }
+
 
 
 }

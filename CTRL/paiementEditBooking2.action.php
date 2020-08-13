@@ -40,10 +40,17 @@ if (strlen((int)$cb) == 16){
     if ($_SESSION['prixDiff'] >= 0){
         Tools::exportCSV($_SESSION['prixDiff'], $_SESSION['client1'], $cb);
         Tools::facture($_SESSION['client1'], $_SESSION['prixDiff'], $_SESSION['room'], $_SESSION['numOfFacture'], $cb);
-        Hotel::revenueGenerated($_SESSION['prixDiff']);
+
+        date_default_timezone_set('Europe/Paris');
+        $date = date('Y-m-d');
+        $hotel->setRevenue($date, $_SESSION['prixDiff']);
+
     }else{
         Tools::exportCSV($_SESSION['prixDiff'], $_SESSION['client1'], $cb);
-        Hotel::revenueGenerated($_SESSION['prixDiff']);
+
+        date_default_timezone_set('Europe/Paris');
+        $date = date('Y-m-d');
+        $hotel->setRevenue($date, $_SESSION['prixDiff']);
     }
 
     header("Location: ../VIEW/confirmEditBooking.php");
