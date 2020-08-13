@@ -420,9 +420,9 @@ class Hotel
         }
 
         if (isset($montantTotal) && !empty($montantTotal)){
-            return 0;
-        }else{
             return $montantTotal;
+        }else{
+            return 0;
         }
     }
 
