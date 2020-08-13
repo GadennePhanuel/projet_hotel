@@ -57,7 +57,7 @@ session_start();
 
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <button type="submit" class="btn btn-secondary btn-secondary2 submitBooking">Valider</button>
+                    <button type="submit" class="btn btn-secondary btn-secondary2 submitBooking">Libérer la chambre selectionnée</button>
                 </div>
             </div>
         </form>

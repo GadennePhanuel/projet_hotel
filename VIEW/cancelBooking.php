@@ -18,21 +18,30 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
 
-    <title>editBooking.php</title>
+    <title>cancelBooking</title>
 </head>
 <body>
-<div class="container-xl">
+<div class="container">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">VotreHôtel.fr</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link" href="menu.php">Retour au menu</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="row justify-content-center">
-        <div class="col-8">
-            <h1>Selectionnez la chambre à annuler</h1>
+        <div class="col-12">
+            <h1>Sélectionnez la chambre à annuler</h1>
         </div>
 
     </div>
     <?php if (is_array($_SESSION['roomsBookedSimple'])){ ?>
-        <form action="../CTRL/cancelBooking2.action.php" method="post" >
+        <form action="../CTRL/cancelBooking2.action.php" method="post" class="formBooking" >
             <?php foreach ($_SESSION['roomsBookedSimple'] as $room){ ?>
                 <div class="row justify-content-center">
-                    <div class="col-8">
+                    <div class="col-12">
                         <input type="radio" checked id="<?php echo $room[0] ?>" name="id" value="<?php echo $room[0] ?>">
 
                         <label for="<?php echo $room[0] ?>" >
@@ -48,8 +57,8 @@ session_start();
 
 
             <div class="row justify-content-center">
-                <div class="col-8">
-                    <button type="submit" class="btn btn-success">Envoyer</button>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-secondary btn-secondary2 submitBooking">Annuler la réservation</button>
                 </div>
             </div>
         </form>
@@ -57,7 +66,7 @@ session_start();
 
     <?php }else{ ?>
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-12">
                 <p>
                     <?php echo $_SESSION['roomsBookedSimple']. "<br>"?>
                 </p>
@@ -65,11 +74,9 @@ session_start();
         </div>
     <?php } ?>
 
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
-        </div>
-    </div>
+    <footer>
+        <p>Projet aout 2020 - PGA && MVI.</p>
+    </footer>
 </div>
 
 <?php unset($_SESSION['roomModified']);

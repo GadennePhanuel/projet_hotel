@@ -12,6 +12,10 @@ $client1 = $_SESSION['client1'];
 $totalTTC = $_SESSION['remboursement'];
 $cb = $_POST['mastercard'];
 
+$numRoom = $_SESSION['numRoom'];
+$newDateStart = $_SESSION['newDateStart'] ;
+$newDateEnd = $_SESSION['newDateEnd'];
+$hotel  = $_SESSION['hotel'];
 
 $message = array(
     'mastercard' => '',
@@ -19,6 +23,16 @@ $message = array(
 );
 
 if (strlen((int)$cb) == 16){
+    $roomCancel = $hotel->cancelBooking($numRoom);
+
+    $_SESSION['remboursement'] = $roomCancel[2];
+    $_SESSION['room'] = $roomCancel[0];
+    $_SESSION['client1'] = $roomCancel[1];
+
+    $roomCancel = $roomCancel[0]->displayRoom();
+
+    $_SESSION['roomCancel'] = $roomCancel;
+
     Tools::exportCSV($totalTTC,$client1, $cb);
     header("Location: ../VIEW/confirmCancelBooking.php");
 }else{

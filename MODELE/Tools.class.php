@@ -86,14 +86,14 @@ class Tools
         $pdf->addReference("$dateStartString au $dateEndString");
         $cols=array( "REFERENCE"    => 23,
             "DESIGNATION"  => 78,
-            "Nb jour"     => 22,
+            "Nb nuit"     => 22,
             "P.U. HT"      => 26,
             "MONTANT H.T." => 30,
             "TVA"          => 11 );
         $pdf->addCols( $cols);
         $cols=array( "REFERENCE"    => "L",
             "DESIGNATION"  => "L",
-            "Nb jour"     => "C",
+            "Nb nuit"     => "C",
             "P.U. HT"      => "R",
             "MONTANT H.T." => "R",
             "TVA"          => "C" );

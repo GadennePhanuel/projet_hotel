@@ -546,6 +546,31 @@ class Hotel
 
     }
 
+    public function cancelBookingTmp($res){
+
+        $array = [];
+
+        if (($res > 0 && $res <= count($this->rooms)) && ($this->rooms[$res - 1]->getIsEmpty() == 1)) {
+            $room = $this->rooms[$res - 1];
+            $dateStart = $room->getDateStart();
+            $dateEnd = $room->getDateEnd();
+            $price = $room->getPrice();
+            $client1 = $room->getCustomers()[0];
+
+
+            $interval = $dateStart->diff($dateEnd);
+            $intervalDate = $interval->format('%d');  //format numérique en nb de jours
+            $prixTotal = $intervalDate * $price;
+            $prixTotalTTC = $prixTotal * 1.2;
+
+            $prixRemb = $prixTotalTTC * -1;
+
+        }
+        $array = [$room, $client1, $prixRemb];
+        return $array;
+
+    }
+
     public function createArrCustomers($nom, $prenom, $age, $login, $email)
     {
 

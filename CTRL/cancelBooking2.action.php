@@ -13,8 +13,14 @@ $numRoom = $_POST['id'];
 $newDateStart = $_POST['newDateStart'];
 $newDateEnd = $_POST['newDateEnd'];
 $hotel  = $_SESSION['hotel'];
+$_SESSION['numRoom'] = $numRoom;
+$_SESSION['newDateStart'] = $newDateStart;
+$_SESSION['newDateEnd'] = $newDateEnd;
 
-$roomCancel = $hotel->cancelBooking($numRoom);
+
+
+$roomCancel = $hotel->cancelBookingTmp($numRoom);   //return array($room, $client1, $prixRemb)
+
 
 $_SESSION['remboursement'] = $roomCancel[2];
 $_SESSION['room'] = $roomCancel[0];

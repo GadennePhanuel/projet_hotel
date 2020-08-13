@@ -18,23 +18,38 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Gochi+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/menu.css">
 
-    <title>editBooking.php</title>
+    <title>confirmCancelBoking</title>
 </head>
-<body>
-<div class="container-xl">
+<body class="text-center">
+<div class="container">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">VotreHôtel.fr</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="menu.php">Retour au menu</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12">
+            <h1>Recapitulatif de l'annulation</h1>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12">
             <p>
                 Mr/Mme <?php echo $_SESSION['client1']->getPrenom() ?>  <?php echo $_SESSION['client1']->getNom() ?> a été remboursé de <?php echo abs($_SESSION['remboursement'])?> €
                 <br>
             </p>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-3">
-            <button type="button" class="btn btn-primary"><a href="menu.php">Retour au menu</a></button>
-        </div>
-    </div>
+
+    <footer>
+        <p>Projet aout 2020 - PGA && MVI.</p>
+    </footer>
+
 </div>
 
 
