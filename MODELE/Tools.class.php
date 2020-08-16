@@ -1,6 +1,16 @@
 <?php
 require_once "PDF_Invoice.class.php";
 
+/*
+ * PHP mailer
+ */
+    /* Namespace alias (don't need Exception this time). */
+    use PHPMailer\PHPMailer\PHPMailer;
+
+    /* Include the Composer generated autoload.php file. */
+    require 'C:\wamp64\composer\vendor\autoload.php';
+
+
 class Tools
 {
 
@@ -53,6 +63,7 @@ class Tools
         $date1 = date('d-m-Y');
         $nom = utf8_decode($client1->getNom());
         $prenom = utf8_decode($client1->getPrenom());
+        $emailCustomer = utf8_decode($client1->getEmail());
         $price = $room->getPrice();
         $size = utf8_decode($room->getSize());
         $type = utf8_decode($room->getType());
@@ -157,6 +168,31 @@ class Tools
 
 
         $pdf->Output("F", $name );
+
+
+        /*
+         * CREATION DE MAIL && ENVOI DE LA FACTURE PAR EMAIL AU CLIENT
+         */
+        /* Create a new PHPMailer object. */
+        $mail = new PHPMailer();
+
+        /* Set the mail sender. */
+        $mail->setFrom('projet_hotel@gmail.com', 'Projet_hotel');
+
+        /* Add a recipient. */
+        $mail->addAddress($emailCustomer, $nom."_".$prenom);
+
+        /* Set the subject. */
+        $mail->Subject = 'Facture';
+
+        /* Set the mail message body. */
+        $mail->Body = 'Voici votre facture.';
+
+        /* Add an attachement */
+        $mail->addAttachment($name, $nom."_".$prenom."_".$date.".pdf");
+
+        /* Finally send the mail. */
+        $mail->send();
     }
 
 }
